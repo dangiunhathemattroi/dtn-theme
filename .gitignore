@@ -9,3 +9,5 @@ ehthumbs.db
 Thumbs.db
 .shopify
 /.denv.env
+.vscode/
+.github/
