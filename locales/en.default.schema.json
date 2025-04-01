@@ -489,8 +489,8 @@
         "announcement": {
           "name": "Announcement",
           "settings": {
-            "text": {
-              "label": "Text",
+            "title": {
+              "label": "Title",
               "default": "Welcome to our store"
             },
             "text_alignment": {
@@ -507,6 +507,10 @@
             },
             "link": {
               "label": "Link"
+            },
+            "description": {
+              "label": "Description",
+              "placeholder": "Notification Description"
             }
           }
         }
