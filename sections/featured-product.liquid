@@ -190,7 +190,7 @@
                             {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                           </span>
                           <span class="svg-wrapper">
-                            {{- 'icon-minus.svg' | inline_asset_content -}}
+                            {%- render 'icon-alls', icon: 'icon-minus' -%}
                           </span>
                         </button>
                         <input
@@ -214,7 +214,7 @@
                             {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                           </span>
                           <span class="svg-wrapper">
-                            {{- 'icon-plus.svg' | inline_asset_content -}}
+                            {%- render 'icon-alls', icon: 'icon-plus' -%}
                           </span>
                         </button>
                       </quantity-input>
@@ -445,7 +445,7 @@
               class="link product__view-details animate-arrow"
             >
               {{ 'products.product.view_full_details' | t }}
-              {{- 'icon-arrow.svg' | inline_asset_content -}}
+              {%- render 'icon-alls', icon: 'icon-arrow' -%}
             </a>
           </section>
         </div>

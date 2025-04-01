@@ -133,7 +133,7 @@
                       >
                         <span class="deferred-media__poster-button motion-reduce">
                           <span class="svg-wrapper">
-                            {{- 'icon-play.svg' | inline_asset_content -}}
+                            {%- render 'icon-alls', icon: 'icon-play' -%}
                           </span>
                         </span>
 
@@ -179,7 +179,7 @@
                       aria-label="{{ 'accessibility.close' | t }}"
                     >
                       <span class="svg-wrapper">
-                        {{- 'icon-close.svg' | inline_asset_content -}}
+                        {%- render 'icon-alls', icon: 'icon-close' -%}
                       </span>
                     </button>
                     <div class="modal-video__content-info">

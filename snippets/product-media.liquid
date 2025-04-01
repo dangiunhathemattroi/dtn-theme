@@ -56,7 +56,7 @@
       {%- if media.media_type == 'model' -%}
         <span class="svg-wrapper">{{ 'icon-3d-model' | inline_asset_content }}</span>
       {%- else -%}
-        <span class="svg-wrapper">{{ 'icon-play.svg' | inline_asset_content }}</span>
+        <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-play' -%}</span>
       {%- endif -%}
     </span>
     <img

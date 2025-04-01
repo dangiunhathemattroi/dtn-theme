@@ -173,7 +173,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
+              {%- render 'icon-alls', icon: 'icon-caret' -%}
             </span>
           </button>
           <div class="slider-counter caption">
@@ -190,7 +190,7 @@
             aria-controls="Slider-{{ section.id }}"
           >
             <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
+              {%- render 'icon-alls', icon: 'icon-caret' -%}
             </span>
           </button>
         </div>
@@ -209,7 +209,7 @@
       </div>
     {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
-      {{ 'mask-arch.svg' | inline_asset_content }}
+      {%- render 'icon-alls', icon: 'icon-mask-arch' -%}
     {%- endif -%}
   </div>
 </div>

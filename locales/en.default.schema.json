@@ -453,6 +453,15 @@
         },
         "paragraph": {
           "content": "Appear only on large screens"
+        },
+        "select_display_type": {
+          "label": "Display type",
+          "option__1": {
+            "label": "Dropdown"
+          },
+          "option__2": {
+            "label": "Sliders"
+          }
         },                     
         "show_social": {
           "label": "Social media icons",

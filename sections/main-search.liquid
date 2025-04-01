@@ -117,12 +117,12 @@
                 aria-label="{{ 'general.search.reset' | t }}"
               >
                 <span class="svg-wrapper">
-                  {{- 'icon-reset.svg' | inline_asset_content -}}
+                  {%- render 'icon-alls', icon: 'icon-reset' -%}
                 </span>
               </button>
               <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
                 <span class="svg-wrapper">
-                  {{- 'icon-search.svg' | inline_asset_content -}}
+                  {%- render 'icon-alls', icon: 'icon-search' -%}
                 </span>
               </button>
             </div>
@@ -177,7 +177,7 @@
                     {%- endfor -%}
                   </select>
                   <span class="svg-wrapper">
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                    {%- render 'icon-alls', icon: 'icon-caret' -%}
                   </span>
                 </div>
               </div>
@@ -330,7 +330,7 @@
   </div>
 {% endpaginate %}
 {% if section.settings.image_shape == 'arch' %}
-  {{ 'mask-arch.svg' | inline_asset_content }}
+  {%- render 'icon-alls', icon: 'icon-mask-arch' -%}
 {%- endif -%}
 
 {% schema %}

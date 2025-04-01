@@ -41,7 +41,7 @@
         aria-controls="Slider-{{ section.id }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-caret' -%}
         </span>
       </button>
       <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
@@ -76,7 +76,7 @@
         aria-controls="Slider-{{ section.id }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-caret' -%}
         </span>
       </button>
 
@@ -87,10 +87,10 @@
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
         >
           <span class="svg-wrapper">
-            {{- 'icon-pause.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-pause' -%}
           </span>
           <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-play' -%}
           </span>
         </button>
       {%- endif -%}
@@ -200,7 +200,7 @@
         aria-controls="Slider-{{ section.id }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-caret' -%}
         </span>
       </button>
       <div class="slider-counter slider-counter--{{ section.settings.slider_visual }}{% if section.settings.slider_visual == 'counter' or section.settings.slider_visual == 'numbers' %} caption{% endif %}">
@@ -235,7 +235,7 @@
         aria-controls="Slider-{{ section.id }}"
       >
         <span class="svg-wrapper">
-          {{- 'icon-caret.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-caret' -%}
         </span>
       </button>
 
@@ -246,10 +246,10 @@
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
         >
           <span class="svg-wrapper">
-            {{- 'icon-pause.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-pause' -%}
           </span>
           <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-play' -%}
           </span>
         </button>
       {%- endif -%}
