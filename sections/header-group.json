@@ -54,7 +54,7 @@
         "announcement_dET6Mg"
       ],
       "settings": {
-        "select_display_type": "sliders",
+        "select_display_type": "dropdown",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "color_scheme": "",
