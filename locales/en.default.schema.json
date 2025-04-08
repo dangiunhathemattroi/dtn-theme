@@ -466,7 +466,7 @@
         "select_display_type": {
           "label": "Display type",
           "option__1": {
-            "label": "Dropdown"
+            "label": "Modal"
           },
           "option__2": {
             "label": "Sliders"
@@ -510,7 +510,11 @@
             },
             "description": {
               "label": "Description",
-              "placeholder": "Notification Description"
+              "info": "Notification Description"
+            },
+            "label_link": {
+              "label": "Label link",
+              "info": "Only works when Display type is Dropdown"
             }
           }
         }

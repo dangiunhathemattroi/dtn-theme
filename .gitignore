@@ -11,3 +11,4 @@ Thumbs.db
 /.denv.env
 .vscode/
 .github/
+/node_modules
