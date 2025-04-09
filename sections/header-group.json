@@ -17,37 +17,37 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "title": "Welcome to our store",
-            "description": "",
+            "title": "EXCLUSIVE PRIVILEGES FOR MEMBERS ONLY",
+            "description": "Join TN Luxury today to unlock exclusive offers at TN - DigiWORLD and enjoy a premium shopping experience like no other!",
             "link": "",
-            "label_link": ""
+            "label_link": "BECOME A MEMBER NOW!"
           }
         },
         "announcement_kQDWiq": {
           "type": "announcement",
           "settings": {
-            "title": "Welcome to our store",
-            "description": "",
+            "title": "FREE SHIPPING FOR MEMBERS",
+            "description": "Sign up for TN Luxury membership to enjoy complimentary delivery on every order!\nOr receive free shipping on orders of at least $65.",
             "link": "",
-            "label_link": ""
+            "label_link": "Join Now!"
           }
         },
         "announcement_7zBcCJ": {
           "type": "announcement",
           "settings": {
-            "title": "Welcome to our store",
-            "description": "",
+            "title": "EASY RETURNS",
+            "description": "If you're not satisfied with your order, you may be eligible for a refund.\nPlease refer to our Return Policy for more details.",
             "link": "",
-            "label_link": ""
+            "label_link": "EASY RETURNS"
           }
         },
         "announcement_dET6Mg": {
           "type": "announcement",
           "settings": {
-            "title": "Welcome to our store",
-            "description": "",
+            "title": "REWARD YOUR STYLE",
+            "description": "Every purchase brings you closer to exclusive gifts and premium offers.\nJoin TN Luxury’s loyalty program today and start earning points with every order.\nRedeem your points for luxury rewards, exclusive vouchers, or free upgrades.",
             "link": "",
-            "label_link": ""
+            "label_link": "Sign up and reward yourself – you deserve it."
           }
         }
       },
