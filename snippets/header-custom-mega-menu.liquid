@@ -1,0 +1,74 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-custom-mega-menu' %}
+{% endcomment %}
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for block in section.blocks -%}
+      <li>
+        {% case block.type %}
+          {% when 'collections_image_menu' %}
+            {% assign count = 0 %}
+            {% for collection in block.settings.collection_list_menu %}
+              {% if collection.image != blank %}
+                {% assign count = count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            {% assign columns = count | at_least: 1 | at_most: 5 %}
+            {% assign margin = 20 | times: columns | plus: 80 %}
+            {% assign width = 1920 | minus: margin | divided_by: columns %}
+            {% style %}
+              .collection-menu__list {
+                --columns: {{ columns }};
+                grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+              }
+            {% endstyle %}
+            {% capture styles %} border-radius: {{ block.settings.border |  append: '%' }} {% endcapture %}
+            {%- capture sizes -%}
+                (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
+                (min-width: 990px) calc(({{ media_width | times: 100 }}vw - 4rem) / 4),
+                (min-width: 768px) calc((100vw - 15rem) / 8),
+                calc((100vw - 8rem) / 3)
+            {%- endcapture -%}
+            <header-menu>
+              <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
+                <summary id="HeaderMenu-{{ block.id }}" class="header__menu-item list-menu__item link focus-inset">
+                  <a
+                    {%- if block.settings.link.active %}
+                    class="header__active-menu-item"
+                    {% endif %}
+                    href="{{ block.settings.link | default: "javascript:0;"}}">
+                    {{- block.settings.title | escape -}}
+                  </a>
+                  {%- render 'icon-alls'
+                    , icon: 'icon-caret' -%}
+                </summary>
+                <div
+                  id="MegaMenu-Content-{{ forloop.index }}"
+                  class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                  tabindex="-1">
+                  <ul class="collection-menu__list" role="list">
+                    {%- for collection in block.settings.collection_list_menu -%}
+                      {% if collection.image != blank %}
+                        <li>
+                          <a
+                            id="HeaderMenu-{{ collection.handle }}"
+                            href="{{ collection.url }}"
+                            class="mega-menu__link mega-menu__link--level-1 link"
+                            role="button">
+                            {{ collection.image | image_url: width: width | image_tag: loading: 'lazy', sizes: sizes, style: styles, class: "image-full-width", alt: collection.image.alt | escape }}
+                          </a>
+                        </li>
+                      {% endif %}
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </details>
+            </header-menu>
+        {% endcase %}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

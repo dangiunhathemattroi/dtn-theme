@@ -2,36 +2,50 @@ class DetailsDisclosure extends HTMLElement {
   constructor() {
     super();
     this.mainDetailsToggle = this.querySelector('details');
-    this.content = this.mainDetailsToggle.querySelector('summary').nextElementSibling;
+    this.summary = this.mainDetailsToggle.querySelector('summary');
+    this.content = this.summary.nextElementSibling;
+    this.header = document.querySelector('header');
 
-    this.mainDetailsToggle.addEventListener('focusout', this.onFocusOut.bind(this));
-    this.mainDetailsToggle.addEventListener('toggle', this.onToggle.bind(this));
-  }
+    this.leaveTimeout = null;
 
-  onFocusOut() {
-    setTimeout(() => {
-      if (!this.contains(document.activeElement)) this.close();
+    this.summary.addEventListener('mouseenter', () => this.delayedOpen());
+    this.header.addEventListener('mouseleave', (e) => {
+      if (!this.header.contains(e.relatedTarget)) {
+        this.delayedClose();
+      }
     });
+    this.header.addEventListener('mouseenter', () => this.cancelClose());
   }
 
-  onToggle() {
-    if (!this.animations) this.animations = this.content.getAnimations();
+  delayedOpen() {
+    clearTimeout(this.leaveTimeout);
+    this.open();
+  }
 
-    if (this.mainDetailsToggle.hasAttribute('open')) {
-      this.animations.forEach((animation) => animation.play());
-    } else {
-      this.animations.forEach((animation) => animation.cancel());
+  delayedClose() {
+    this.leaveTimeout = setTimeout(() => this.close(), 200);
+  }
+
+  cancelClose() {
+    clearTimeout(this.leaveTimeout);
+  }
+
+  open() {
+    if (!this.mainDetailsToggle.hasAttribute('open')) {
+      this.mainDetailsToggle.setAttribute('open', '');
+      this.summary.setAttribute('aria-expanded', true);
     }
   }
 
   close() {
-    this.mainDetailsToggle.removeAttribute('open');
-    this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded', false);
+    if (this.mainDetailsToggle.hasAttribute('open')) {
+      this.mainDetailsToggle.removeAttribute('open');
+      this.summary.setAttribute('aria-expanded', false);
+    }
   }
 }
 
 customElements.define('details-disclosure', DetailsDisclosure);
-
 class HeaderMenu extends DetailsDisclosure {
   constructor() {
     super();
