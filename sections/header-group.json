@@ -19,7 +19,8 @@
           "settings": {
             "title": "Welcome to our store",
             "description": "",
-            "link": ""
+            "link": "",
+            "label_link": ""
           }
         },
         "announcement_kQDWiq": {
@@ -27,7 +28,8 @@
           "settings": {
             "title": "Welcome to our store",
             "description": "",
-            "link": ""
+            "link": "",
+            "label_link": ""
           }
         },
         "announcement_7zBcCJ": {
@@ -35,7 +37,8 @@
           "settings": {
             "title": "Welcome to our store",
             "description": "",
-            "link": ""
+            "link": "",
+            "label_link": ""
           }
         },
         "announcement_dET6Mg": {
@@ -43,7 +46,8 @@
           "settings": {
             "title": "Welcome to our store",
             "description": "",
-            "link": ""
+            "link": "",
+            "label_link": ""
           }
         }
       },
@@ -54,9 +58,9 @@
         "announcement_dET6Mg"
       ],
       "settings": {
-        "select_display_type": "dropdown",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
+        "select_display_type": "modal",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
         "color_scheme": "",
         "show_line_separator": true,
         "show_social": false,
