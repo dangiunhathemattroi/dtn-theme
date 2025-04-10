@@ -133,6 +133,9 @@
         "text": {
           "label": "Text"
         },
+        "secondary_text": {
+          "label": "Secondary text"
+        },
         "button_background": {
           "label": "Solid button background"
         },
@@ -159,6 +162,13 @@
         "favicon": {
           "label": "Favicon",
           "info": "Displayed at 32 x 32px"
+        },
+        "transparent": {
+          "content": "Transparent",
+          "logo": {
+            "light": "Logo light",
+            "dark": "Logo dark"
+          }
         }
       }
     },
@@ -1151,6 +1161,13 @@
             "label": "Always, reduce logo size"
           }
         },
+        "transparent": {
+          "content": "Transparent",
+          "header": {
+            "label": "Header transparent",
+            "info": "Edit your logo in [theme settings](/editor?context=theme&category=logo)"
+          }
+        },
         "header__utilities": {
           "content": "Utilities"
         },
@@ -1194,6 +1211,14 @@
             },
             "border": {
               "label": "Border image"
+            }
+          }
+        },
+        "dynamic_menu": {
+          "name": "Dynamic menu",
+          "settings": {
+            "menu": {
+              "label": "Menu"
             }
           }
         }

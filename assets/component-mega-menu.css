@@ -10,17 +10,17 @@
   left: 0;
   overflow-y: auto;
   padding-bottom: 3rem;
-  padding-top: 3rem;
+  padding-top: 4rem;
   position: absolute;
   right: 0;
   top: 100%;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.104, 0.204, 0.492, 1);
   pointer-events: none;
   box-shadow: 0 10px 15px #0000001a;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  visibility: hidden;
   pointer-events: none;
+  transform: translateY(-2.5rem);
 }
 
 .shopify-section-header-sticky .mega-menu__content {
@@ -33,13 +33,12 @@
 
 .js .mega-menu__content {
   opacity: 0;
-  transform: translateY(-1.5rem);
 }
 
 .mega-menu[open] .mega-menu__content {
   opacity: 1;
-  visibility: visible;
   pointer-events: auto;
+  z-index: 1;
 }
 
 .mega-menu__list {

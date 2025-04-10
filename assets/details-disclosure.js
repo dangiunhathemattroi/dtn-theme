@@ -9,12 +9,14 @@ class DetailsDisclosure extends HTMLElement {
     this.leaveTimeout = null;
 
     this.summary.addEventListener('mouseenter', () => this.delayedOpen());
-    this.header.addEventListener('mouseleave', (e) => {
-      if (!this.header.contains(e.relatedTarget)) {
+
+    this.mainDetailsToggle.addEventListener('mouseleave', (e) => {
+      if (!this.mainDetailsToggle.contains(e.relatedTarget)) {
         this.delayedClose();
       }
     });
-    this.header.addEventListener('mouseenter', () => this.cancelClose());
+
+    this.mainDetailsToggle.addEventListener('mouseenter', () => this.cancelClose());
   }
 
   delayedOpen() {
@@ -31,9 +33,17 @@ class DetailsDisclosure extends HTMLElement {
   }
 
   open() {
+    const allMenus = document.querySelectorAll('details');
+    allMenus.forEach((menu) => {
+      if (menu !== this.mainDetailsToggle) {
+        menu.removeAttribute('open');
+        menu.querySelector('summary')?.setAttribute('aria-expanded', false);
+      }
+    });
+
     if (!this.mainDetailsToggle.hasAttribute('open')) {
-      this.mainDetailsToggle.setAttribute('open', '');
       this.summary.setAttribute('aria-expanded', true);
+      this.mainDetailsToggle.setAttribute('open', '');
     }
   }
 
@@ -44,8 +54,6 @@ class DetailsDisclosure extends HTMLElement {
     }
   }
 }
-
-customElements.define('details-disclosure', DetailsDisclosure);
 class HeaderMenu extends DetailsDisclosure {
   constructor() {
     super();

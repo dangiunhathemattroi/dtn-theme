@@ -2366,6 +2366,8 @@ input[type='checkbox'] {
   display: block;
   position: relative;
   background-color: rgb(var(--color-background));
+  --color-white: 255, 255, 255;
+  --color-black: 0, 0, 0;
 }
 
 .header-wrapper--border-bottom {
@@ -2377,6 +2379,103 @@ input[type='checkbox'] {
   grid-template-areas: 'left-icons heading icons';
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
+}
+
+.header.is-sticky:after {
+  opacity: 1;
+}
+
+.header-wrapper.transparent--true {
+  position: absolute;
+  background: transparent;
+  border-bottom-color: transparent;
+  width: 100%;
+}
+
+.header-wrapper.transparent--true .logolink .logoimg {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+.header-wrapper .logolink .logoimg--light {
+  position: absolute;
+  object-fit: contain;
+  opacity: 0;
+}
+
+.header-wrapper.transparent--true.transparent-border--true {
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+.header-wrapper.transparent--true:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: -1;
+  background: var(--color-header-bg, var(--bg-body, #fff));
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-100%);
+}
+.header-wrapper.transparent--true:hover:before,
+.header-wrapper.transparent--true.is-sticky:before {
+  transform: translateY(0%);
+}
+
+.menu-item-link {
+  color: rgb(var(--color-foreground, --color-black));
+  text-decoration: none;
+}
+
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .localization-selector.link,
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .header__icon,
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .header__active-menu-item,
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .header__heading-link .h2,
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .menu-item-link {
+  color: rgb(var(--color-secondary-foreground, --color-white));
+}
+
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .header__menu-item {
+  color: rgba(var(--color-secondary-foreground, --color-white), 0.75);
+}
+
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .logolink.text-logo {
+  color: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .logolink .logoimg {
+  opacity: 0;
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .logolink .logoimg--light {
+  opacity: 1;
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a {
+  color: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a:after {
+  background: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky)
+  .thb-localization-forms.inside-header
+  .select-arrow
+  svg
+  path {
+  stroke: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header.transparent--true:not(:hover):not(.is-sticky) .thb-localization-forms.inside-header .select select {
+  color: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .thb-secondary-area .thb-item-count {
+  background-color: rgb(var(--color-secondary-foreground, --color-white));
+  color: var(--color-header-icons, --color-accent);
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .thb-secondary-area-item.thb-secondary-myaccount {
+  color: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) svg {
+  --color-header-links: rgb(var(--color-secondary-foreground, --color-white));
+  --color-header-icons: rgb(var(--color-secondary-foreground, --color-white));
+}
+.header-wrapper.transparent--true:not(:hover):not(.is-sticky) .mobile-toggle span {
+  background: rgb(var(--color-secondary-foreground, --color-white));
 }
 
 @media screen and (max-width: 767px) {
@@ -2837,7 +2936,7 @@ details[open] > .header__menu-item {
 }
 
 details[open]:hover > .header__menu-item {
-  text-decoration-thickness: 0.2rem;
+  text-decoration-thickness: 1px;
 }
 
 details[open] > .header__menu-item .icon-caret {

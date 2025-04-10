@@ -35,11 +35,7 @@
             <header-menu>
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                 <summary id="HeaderMenu-{{ block.id }}" class="header__menu-item list-menu__item link focus-inset">
-                  <a
-                    {%- if block.settings.link.active %}
-                    class="header__active-menu-item"
-                    {% endif %}
-                    href="{{ block.settings.link | default: "javascript:0;"}}">
+                  <a class="menu-item-link {%- if block.settings.link.active %} header__active-menu-item {% endif %}" href="{{ block.settings.link | default: "javascript:0;"}}">
                     {{- block.settings.title | escape -}}
                   </a>
                   {%- render 'icon-alls'
