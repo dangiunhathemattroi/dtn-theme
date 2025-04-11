@@ -89,9 +89,9 @@
         "dynamic_menu_nKbKRT": {
           "type": "dynamic_menu",
           "settings": {
-            "menu": "",
-            "title": "",
-            "link": ""
+            "menu": "new-arrival",
+            "title": "New Arrival",
+            "link": "shopify://collections/television"
           }
         }
       },
