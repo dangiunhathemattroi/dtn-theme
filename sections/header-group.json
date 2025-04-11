@@ -70,6 +70,35 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "collections_image_menu_TyDEjB": {
+          "type": "collections_image_menu",
+          "settings": {
+            "collection_list_menu": [
+              "smart-tivi-lg",
+              "panasonic",
+              "tivi-samsung",
+              "sony",
+              "tivi-xiaomi"
+            ],
+            "border": 4,
+            "title": "Brands",
+            "link": ""
+          }
+        },
+        "dynamic_menu_nKbKRT": {
+          "type": "dynamic_menu",
+          "settings": {
+            "menu": "",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "collections_image_menu_TyDEjB",
+        "dynamic_menu_nKbKRT"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "center",
