@@ -98,7 +98,7 @@
 
 {%- style -%}
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem{{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
   }
 
   .section-header {
@@ -139,7 +139,17 @@
   endif
 %}
 
-<{{ header_tag }} {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %} class="{% if section.settings.header_transparent == true %} transparent--true transparent-border--true {% else %} gradient {% endif %}  header-wrapper color-{{ section.settings.color_scheme }} {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+{% liquid
+  assign transparent = false
+  if section.settings.enable_on_homepage and template.name == 'index'
+    assign transparent = true
+  endif
+  if section.settings.enable_on_collection_page and template.name == 'collection'
+    assign transparent = true
+  endif
+%}
+
+<{{ header_tag }} {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %} class="{% if section.settings.header_transparent == true and transparent == true %} transparent--true transparent-border--true {% else %} gradient {% endif %}  header-wrapper color-{{ section.settings.color_scheme }} {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -152,7 +162,7 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} {%- unless section.settings.full_page -%} page-width {%- endunless -%} {% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -169,29 +179,29 @@
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link logolink link link--text focus-inset">
         {%- if settings.logo != blank -%}
-           {% if section.settings.header_transparent == true and settings.logo_light != blank %}
+          {% if section.settings.header_transparent == true and transparent == true and settings.logo_light != blank %}
             <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo_light.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo_light.aspect_ratio -%}
-                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo_light | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce logoimg logoimg--light', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true }}
-                
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce logoimg', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true }}
-              </div>
+              {%- assign logo_alt = settings.logo_light.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo_light.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{ settings.logo_light | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce logoimg logoimg--light', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true }}
+
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce logoimg', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true }}
+            </div>
           {% else %}
-              <div class="header__heading-logo-wrapper">
-                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true
-                }}
-              </div>
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__heading-logo motion-reduce', widths: widths, height: logo_height, width: settings.logo_width, alt: logo_alt, sizes: sizes, preload: true
+              }}
+            </div>
           {% endif %}
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
@@ -226,7 +236,7 @@
       {%- endif -%}
       <a href="{{ routes.root_url }}" class="header__heading-link logolink link link--text focus-inset">
         {%- if settings.logo != blank -%}
-          {% if section.settings.header_transparent == true and settings.logo_light != blank %}
+          {% if section.settings.header_transparent == true and transparent == true and settings.logo_light != blank %}
             <div class="header__heading-logo-wrapper">
               {%- assign logo_alt = settings.logo_light.alt | default: shop.name | escape -%}
               {%- assign logo_height = settings.logo_width | divided_by: settings.logo_light.aspect_ratio -%}
@@ -290,7 +300,8 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% render 'header-search', input_id: 'Search-In-Modal' %}
+      {% render 'header-search'
+        , input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
         <a
@@ -302,11 +313,13 @@
               {%- if customer and customer.has_avatar? -%}
                 {{ customer | avatar }}
               {%- else -%}
-                <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-account' -%}</span>
+                <span class="svg-wrapper">{%- render 'icon-alls'
+, icon: 'icon-account' -%}</span>
               {%- endif -%}
             </account-icon>
           {%- else -%}
-            <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-account' -%}</span>
+            <span class="svg-wrapper">{%- render 'icon-alls'
+, icon: 'icon-account' -%}</span>
           {%- endif -%}
           <span class="visually-hidden">
             {%- liquid
@@ -448,7 +461,7 @@
     }
 
     reveal() {
-      if (this.headerIsAlwaysSticky) return;     
+      if (this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
     }
@@ -621,6 +634,12 @@
         "label": "t:sections.header.settings.show_line_separator.label"
       },
       {
+        "type": "checkbox",
+        "id": "full_page",
+        "default": true,
+        "label": "t:sections.header.settings.full_page.label"
+      },
+      {
         "type": "header",
         "content": "t:sections.header.settings.header__1.content"
       },
@@ -646,6 +665,18 @@
         "label": "t:sections.header.settings.transparent.header.label",
         "default": true,
         "info": "t:sections.header.settings.transparent.header.info"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_on_homepage",
+        "label": "t:sections.header.settings.enable_homepage",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_on_collection_page",
+        "label": "t:sections.header.settings.enable_collections",
+        "default": false
       },
       {
         "type": "header",
@@ -750,7 +781,7 @@
         "type": "dynamic_menu",
         "name": "t:sections.header.blocks.dynamic_menu.name",
         "settings": [
-           {
+          {
             "type": "link_list",
             "id": "menu",
             "label": "t:sections.header.blocks.dynamic_menu.settings.menu.label"
@@ -764,6 +795,57 @@
             "type": "url",
             "id": "link",
             "label": "t:sections.header.blocks.collections_image_menu.settings.link.label"
+          }
+        ]
+      },
+      {
+        "type": "menu_column_with_image",
+        "name": "t:sections.header.blocks.menu_column_with_image.name",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.menu.label"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "t:sections.header.blocks.collections_image_menu.settings.title.label"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "t:sections.header.blocks.collections_image_menu.settings.link.label"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image.label"
+          },
+          {
+            "type": "url",
+            "id": "link_image",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image.url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image_2.label"
+          },
+          {
+            "type": "url",
+            "id": "link_image_2",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image_2.url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image_3.label"
+          },
+          {
+            "type": "url",
+            "id": "link_image_3",
+            "label": "t:sections.header.blocks.menu_column_with_image.settings.image_3.url"
           }
         ]
       }

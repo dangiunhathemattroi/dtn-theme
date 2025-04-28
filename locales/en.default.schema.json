@@ -1140,6 +1140,9 @@
         "show_line_separator": {
           "label": "Separator line"
         },
+        "full_page": {
+          "label": "Full page width"
+        },
         "header__1": {
           "content": "Color"
         },
@@ -1168,6 +1171,8 @@
             "info": "Edit your logo in [theme settings](/editor?context=theme&category=logo)"
           }
         },
+        "enable_homepage": "Enable on homepage",
+        "enable_collections": "Enable on collection page",
         "header__utilities": {
           "content": "Utilities"
         },
@@ -1218,7 +1223,30 @@
           "name": "Dynamic menu",
           "settings": {
             "menu": {
+              "label": "Menu",
+            }
+          }
+        },
+        "menu_column_with_image": {
+          "name": "Menu column width image",
+          "settings": {
+            "menu": {
               "label": "Menu"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "image": {
+              "label": "Image",
+              "url": "Link image"
+            },
+            "image_2": {
+              "label": "Image 2",
+              "url": "Link image 2"
+            },
+            "image_3": {
+              "label": "Image 3",
+              "url": "Link image 3"
             }
           }
         }

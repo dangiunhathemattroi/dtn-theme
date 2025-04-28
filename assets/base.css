@@ -2947,6 +2947,7 @@ details[open] > .header__menu-item .icon-caret {
   transition: text-decoration-thickness var(--duration-short) ease;
   color: rgb(var(--color-foreground));
   text-underline-offset: 0.3rem;
+  text-decoration: underline;
 }
 
 .header__menu-item:hover .header__active-menu-item {
@@ -3145,6 +3146,18 @@ details-disclosure > details {
 
 .global-media-settings--no-shadow:after {
   content: none;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
 }
 
 .global-media-settings img,
