@@ -64,7 +64,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 @media screen and (min-width: 768px) {
   .menu-drawer {
-    width: 40rem;
+    width: 50rem;
     border-width: 0 var(--drawer-border-width) 0 0;
     border-style: solid;
     border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));

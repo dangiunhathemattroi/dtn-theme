@@ -105,6 +105,25 @@
   padding: 0 1.5rem;
 }
 
+.full-page-width {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+#menu-navigation [role='button'],
+#menu-navigation [type='button'] {
+  z-index: 10;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+#menu-navigation button,
+[role='button'] {
+  cursor: pointer;
+}
+
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   max-width: 100%;
 }
@@ -129,7 +148,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   }
 
   .header.page-width,
-  .utility-bar__grid.page-width {
+  .utility-bar__grid.page-width,
+  .header.full-page-width {
     padding-left: 3.2rem;
     padding-right: 3.2rem;
   }
@@ -151,6 +171,11 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   .header:not(.drawer-menu).page-width {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .header:not(.drawer-menu).full-page-width {
+    padding-left: 40px;
+    padding-right: 40px;
   }
 
   .page-width--narrow {

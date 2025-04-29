@@ -98,7 +98,7 @@
 
 {%- style -%}
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem{{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
   }
 
   .section-header {
@@ -162,10 +162,14 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} {%- unless section.settings.full_page -%} page-width {%- endunless -%} {% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} {%- unless section.settings.full_page -%} page-width {%- else -%} full-page-width {%- endunless -%} {% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
-      if section.settings.menu != blank
-        render 'header-drawer'
+      if section.settings.show_custom_menu == true
+        render 'header-drawer-v2'
+      else
+        if section.settings.menu != blank
+          render 'header-drawer'
+        endif
       endif
 
       if section.settings.logo_position == 'top-center' or section.settings.menu == blank
@@ -215,9 +219,9 @@
     {%- liquid
       if section.settings.show_custom_menu == true
         if section.settings.menu_type_desktop == 'dropdown'
-          render 'header-custom-dropdown-menu'
+          render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-custom-mega-menu'
+          render 'header-mega-menu-v2'
         endif
       else
         if section.settings.menu != blank
@@ -345,9 +349,11 @@
         class="header__icon header__icon--cart link focus-inset"
         id="cart-icon-bubble">
         {% if cart == empty %}
-          <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-cart-empty' -%}</span>
+          <span class="svg-wrapper">{%- render 'icon-alls'
+, icon: 'icon-cart-empty' -%}</span>
         {% else %}
-          <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-cart' -%}</span>
+          <span class="svg-wrapper">{%- render 'icon-alls'
+, icon: 'icon-cart' -%}</span>
         {% endif %}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
@@ -425,10 +431,12 @@
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+      
       if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
         this.header.classList.add('scrolled-past-header');
         this.classList.add('is-sticky');
         if (this.preventHide) return;
+        
         requestAnimationFrame(this.hide.bind(this));
       } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
         this.header.classList.add('scrolled-past-header');
@@ -440,7 +448,7 @@
 
           this.isScrolling = setTimeout(() => {
             this.preventReveal = false;
-          }, 66);
+          }, 50);
 
           requestAnimationFrame(this.hide.bind(this));
         }
@@ -455,6 +463,7 @@
 
     hide() {
       if (this.headerIsAlwaysSticky) return;
+      
       this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
       this.closeMenuDisclosure();
       this.closeSearchModal();
@@ -462,12 +471,14 @@
 
     reveal() {
       if (this.headerIsAlwaysSticky) return;
+      
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
     }
 
     reset() {
       if (this.headerIsAlwaysSticky) return;
+      
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
     }
 

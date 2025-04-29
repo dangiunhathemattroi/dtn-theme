@@ -35,8 +35,13 @@
             <header-menu>
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                 <summary id="HeaderMenu-{{ block.id }}" class="header__menu-item list-menu__item link focus-inset">
-                  <a class="menu-item-link {% if block.settings.link == collection.url %} header__active-menu-item {% endif %}" href="{{ block.settings.link | default: "javascript:0;"}}">
-                    {{- block.settings.title | escape -}}
+                  <a
+                    class="menu-item-link {% if block.settings.link == request.path %} header__active-menu-item {% endif %}"
+                    {% if block.settings.link == blank %}
+                    disabled
+                    {% endif %}
+                    href="{{ block.settings.link | default: "javascript:0;"}}">
+                    <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
                   </a>
                   {%- render 'icon-alls'
                     , icon: 'icon-caret' -%}
@@ -51,7 +56,10 @@
                         <li class="menu_item menu_item_level_1 menu_col menu_col-automatic menu_item_submenu_type_automatic menu_item_layout menu_item_layout_image">
                           <a
                             id="HeaderMenu-{{ collection.handle }}"
-                            href="{{ collection.url }}"
+                            href="{{ collection.url | default: "javascript:0;" }}"
+                            {% if collection.url == blank %}
+                            disabled
+                            {% endif %}
                             class="mega-menu__link mega-menu__link--level-1 link"
                             role="button">
                             <div class="menu_image menu_image--above">
@@ -77,8 +85,13 @@
             <header-menu>
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                 <summary id="HeaderMenu-{{ block.id }}" class="header__menu-item list-menu__item link focus-inset">
-                  <a class="menu-item-link {% if block.settings.link == request.path %} header__active-menu-item {% endif %}" href="{{ block.settings.link | default: "javascript:0;"}}">
-                    {{- block.settings.title | escape -}}
+                  <a
+                    class="menu-item-link {% if block.settings.link == request.path %} header__active-menu-item {% endif %}"
+                    {% if block.settings.link == blank %}
+                    disabled
+                    {% endif %}
+                    href="{{ block.settings.link | default: "javascript:0;"}}">
+                    <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
                   </a>
                   {%- render 'icon-alls'
                     , icon: 'icon-caret' -%}
@@ -95,7 +108,10 @@
                           href="{{ link.url }}"
                           class="mega-menu__link mega-menu__link--level-1 link menu_item_link"
                           role="button"
-                          data-id="{{ link.handle }}-{{ forloop.index }}">
+                          data-id="{{ link.handle }}-{{ forloop.index }}"
+                          {% if link.url == blank %}
+                          disabled
+                          {% endif %}>
                           <span class="menu_item_text">{{ link.title | escape }}</span>
                         </a>
                       </li>
@@ -110,7 +126,10 @@
                               <a
                                 class="menu_item_link"
                                 role="button"
-                                href="{{ childlink.url | default: "javascript:0;"  }}">
+                                href="{{ childlink.url | default: "javascript:0;"  }}"
+                                {% if childlink.url == blank %}
+                                disabled
+                                {% endif %}>
                                 {%- case childlink.type -%}
                                   {%- when 'collection_link' -%}
                                     {%- if childlink.object.image != blank -%}
@@ -161,6 +180,9 @@
                                             role="button"
                                             class="menu_item_link"
                                             href="{{ grandlink.url |  default: "javascript:0;" }}"
+                                            {% if grandlink.url == blank %}
+                                            disabled
+                                            {% endif %}
                                             target="_self"
                                             title="{{ grandlink.title |  escape }}">
                                             <span class="menu_item_text">{{ grandlink.title | escape }}</span>
@@ -175,6 +197,9 @@
                                             role="button"
                                             class="menu_item_link"
                                             href="{{ grandlink.url |  default: "javascript:0;" }}"
+                                            {% if grandlink.url == blank %}
+                                            disabled
+                                            {% endif %}
                                             target="_self"
                                             title="{{ grandlink.title |  escape }}">
                                             <span class="menu_item_text">{{ grandlink.title | escape }}</span>
@@ -188,6 +213,9 @@
                                             role="button"
                                             class="menu_item_link"
                                             href="{{ grandlink.url |  default: "javascript:0;" }}"
+                                            {% if grandlink.url == blank %}
+                                            disabled
+                                            {% endif %}
                                             target="_self"
                                             title="{{ grandlink.title |  escape }}">
                                             <span class="menu_item_text">{{ grandlink.title | escape }}</span>
@@ -200,6 +228,9 @@
                                           role="button"
                                           class="menu_item_link"
                                           href="{{ grandlink.url |  default: "javascript:0;" }}"
+                                          {% if grandlink.url == blank %}
+                                          disabled
+                                          {% endif %}
                                           target="_self"
                                           title="{{ grandlink.title |  escape }}">
                                           <span class="menu_item_text">{{ grandlink.title | escape }}</span>
@@ -214,7 +245,12 @@
                                 {%- when 'collection_link' -%}
                                   {%- if grandlink.object.image != blank -%}
                                     <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a role="button" href="{{ grandlink.url | default: "javascript:0;"  }}">
+                                      <a
+                                        role="button"
+                                        {% if grandlink.url == blank %}
+                                        disabled
+                                        {% endif %}
+                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
                                         <div class="menu_image menu_image--above">
                                           {{ grandlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.image.alt | escape }}
                                         </div>
@@ -225,7 +261,12 @@
                                   {%- assign grand_media = grandlink.object.media | first | default: blank -%}
                                   {%- if grandlink.object.selected_or_first_available_variant.featured_media != blank -%}
                                     <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a role="button" href="{{ grandlink.url | default: "javascript:0;"  }}">
+                                      <a
+                                        role="button"
+                                        {% if grandlink.url == blank %}
+                                        disabled
+                                        {% endif %}
+                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
                                         <div class="menu_image menu_image--above">
                                           {{ grandlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
                                         </div>
@@ -233,7 +274,12 @@
                                     </li>
                                   {%- else if grand_media != blank -%}
                                     <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a role="button" href="{{ grandlink.url | default: "javascript:0;"  }}">
+                                      <a
+                                        role="button"
+                                        {% if grandlink.url == blank %}
+                                        disabled
+                                        {% endif %}
+                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
                                         <div class="menu_image menu_image--above">
                                           {{ grand_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grand_media.alt | escape }}
                                         </div>
@@ -243,7 +289,12 @@
                                 {%- when 'article_link' -%}
                                   {%- if grandlink.object.image != blank -%}
                                     <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a role="button" href="{{ grandlink.url | default: "javascript:0;"  }}">
+                                      <a
+                                        role="button"
+                                        {% if grandlink.url == blank %}
+                                        disabled
+                                        {% endif %}
+                                        href="{{ grandlink.url | default: "javascript:0;" }}">
                                         <div class="menu_image menu_image--above">
                                           {{ grandlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.image.alt | escape }}
                                         </div>
@@ -260,12 +311,17 @@
                 </dynamic-menu>
               </details>
             </header-menu>
-          {%- when 'menu_column_with_image' -%}
+          {% when 'menu_column_with_image' %}
             <header-menu>
               <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                 <summary id="HeaderMenu-{{ block.id }}" class="header__menu-item list-menu__item link focus-inset">
-                  <a class="menu-item-link {% if block.settings.link == collection.url %} header__active-menu-item {% endif %}" href="{{ block.settings.link | default: "javascript:0;"}}">
-                    <span>{{- block.settings.title | escape -}}</span>
+                  <a
+                    {% if block.settings.link == blank %}
+                    disabled
+                    {% endif %}
+                    class="menu-item-link {% if block.settings.link == request.path %} header__active-menu-item {% endif %}"
+                    href="{{ block.settings.link | default: "javascript:0;"}}">
+                    <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
                   </a>
                   {%- render 'icon-alls'
                     , icon: 'icon-caret' -%}
@@ -281,7 +337,10 @@
                           role="button"
                           target="_self"
                           class="menu_item_link"
-                          href="{{ link.url | default: "javascript:0;"}}">
+                          href="{{ link.url | default: "javascript:0;"}}"
+                          {% if link.url == blank %}
+                          disabled
+                          {% endif %}>
                           <span class="menu_item_text menu-heading">{{- link.title | escape -}}</span>
                         </a>
                         <ul class="menu_automatic menu--desktop">
@@ -291,7 +350,10 @@
                                 role="button"
                                 target="_self"
                                 class="menu_item_link"
-                                href="{{ child_link.url | default: "javascript:0;"}}">
+                                href="{{ child_link.url | default: "javascript:0;"}}"
+                                {% if child_link.url == blank %}
+                                disabled
+                                {% endif %}>
                                 <span class="menu_item_text">{{- child_link.title | escape -}}</span>
                               </a>
                               {%- for grand_link in child_link.links -%}
@@ -300,7 +362,10 @@
                                     role="button"
                                     target="_self"
                                     class="menu_item_link"
-                                    href="{{ grand_link.url | default: "javascript:0;"}}">
+                                    href="{{ grand_link.url | default: "javascript:0;"}}"
+                                    {% if grand_link.url == blank %}
+                                    disabled
+                                    {% endif %}>
                                     <span class="menu_item_text">{{- grand_link.title | escape -}}</span>
                                   </a>
                                 </li>
@@ -315,7 +380,10 @@
                         <a
                           id="HeaderMenu-{{ block.settings.image.alt }}"
                           href="{{ block.settings.link_image | default: "javascript:0;" }}"
-                          class="mega-menu__link mega-menu__link--level-1 link"
+                          class="mega-menu__link menu__link_layout_image mega-menu__link--level-1 link"
+                          {% if block.settings.link_image_3 == blank %}
+                          disabled
+                          {% endif %}
                           role="button">
                           <div class="menu_image menu_image--above">
                             <img
@@ -334,9 +402,74 @@
                               alt="{{ block.settings.image.alt |  escape }}"
                               loading="lazy"
                               class="image-menu"
-                              style=" border-radius: 4%"
                               width="{{ block.settings.image.width }}"
                               height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}">
+                          </div>
+                        </a>
+                      </li>
+                    {%- endif -%}
+                    {%- if block.settings.image_2 != blank -%}
+                      <li class="menu_item menu_item_level_1 menu_col menu_col-automatic menu_item_submenu_type_automatic menu_item_layout menu_item_layout_image">
+                        <a
+                          id="HeaderMenu-{{ block.settings.image_2.alt }}"
+                          href="{{ block.settings.link_image_2 | default: "javascript:0;" }}"
+                          class="mega-menu__link menu__link_layout_image mega-menu__link--level-1 link"
+                          {% if block.settings.link_image_3 == blank %}
+                          disabled
+                          {% endif %}
+                          role="button">
+                          <div class="menu_image menu_image--above">
+                            <img
+                              srcset="
+                                {%- if block.settings.image_2.width >= 375 -%}{{ block.settings.image_2 | image_url: width: 375 }} 375w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 750 -%}{{ block.settings.image_2 | image_url: width: 750 }} 750w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 1100 -%}{{ block.settings.image_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 1500 -%}{{ block.settings.image_2 | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 1780 -%}{{ block.settings.image_2 | image_url: width: 1780 }} 1780w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 2000 -%}{{ block.settings.image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 3000 -%}{{ block.settings.image_2 | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                {%- if block.settings.image_2.width >= 3840 -%}{{ block.settings.image_2 | image_url: width: 3840 }} 3840w,{%- endif -%}
+                                {{ block.settings.image_2 | image_url }} {{ block.settings.image_2.width }}w
+                              "
+                              src="{{ block.settings.image_2 | image_url: width: block.settings.image_2.width }}"
+                              alt="{{ block.settings.image_2.alt |  escape }}"
+                              loading="lazy"
+                              class="image-menu"
+                              width="{{ block.settings.image_2.width }}"
+                              height="{{ block.settings.image_2.width | divided_by: block.settings.image_2.aspect_ratio }}">
+                          </div>
+                        </a>
+                      </li>
+                    {%- endif -%}
+                    {%- if block.settings.image_3 != blank -%}
+                      <li class="menu_item menu_item_level_1 menu_col menu_col-automatic menu_item_submenu_type_automatic menu_item_layout menu_item_layout_image">
+                        <a
+                          id="HeaderMenu-{{ block.settings.image_3.alt }}"
+                          href="{{ block.settings.link_image_3 | default: "javascript:0;" }}"
+                          {% if block.settings.link_image_3 == blank %}
+                          disabled
+                          {% endif %}
+                          class="mega-menu__link menu__link_layout_image mega-menu__link--level-1 link"
+                          role="button">
+                          <div class="menu_image menu_image--above">
+                            <img
+                              srcset="
+                                {%- if block.settings.image_3.width >= 375 -%}{{ block.settings.image_3 | image_url: width: 375 }} 375w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 750 -%}{{ block.settings.image_3 | image_url: width: 750 }} 750w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 1100 -%}{{ block.settings.image_3 | image_url: width: 1100 }} 1100w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 1500 -%}{{ block.settings.image_3 | image_url: width: 1500 }} 1500w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 1780 -%}{{ block.settings.image_3 | image_url: width: 1780 }} 1780w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 2000 -%}{{ block.settings.image_3 | image_url: width: 2000 }} 2000w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 3000 -%}{{ block.settings.image_3 | image_url: width: 3000 }} 3000w,{%- endif -%}
+                                {%- if block.settings.image_3.width >= 3840 -%}{{ block.settings.image_3 | image_url: width: 3840 }} 3840w,{%- endif -%}
+                                {{ block.settings.image_3 | image_url }} {{ block.settings.image_3.width }}w
+                              "
+                              src="{{ block.settings.image_3 | image_url: width: block.settings.image_3.width }}"
+                              alt="{{ block.settings.image_3.alt |  escape }}"
+                              loading="lazy"
+                              class="image-menu"
+                              width="{{ block.settings.image_3.width }}"
+                              height="{{ block.settings.image_3.width | divided_by: block.settings.image.aspect_ratio }}">
                           </div>
                         </a>
                       </li>

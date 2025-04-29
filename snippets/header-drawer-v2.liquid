@@ -1,0 +1,335 @@
+{% comment %}
+  Renders a header drawer menu for mobile and desktop.
+
+  Usage:
+  {% render 'header-drawer' %}
+{% endcomment %}
+
+<header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+      <span>
+        {%- render 'icon-alls'
+          , icon: 'icon-hamburger' -%}
+        {%- render 'icon-alls'
+          , icon: 'icon-close' -%}
+      </span>
+    </summary>
+    <mega-menu-drawer id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container scrollbar-smooth">
+          <nav id="menu-navigation" class="menu-drawer__navigation">
+            <ul
+              id="menu-level-0"
+              class="menu-drawer__menu has-submenu list-menu"
+              role="list">
+              {% for block in section.blocks %}
+                <li class="menu_item menu_item_level_0 menu_item_submenu_type_automatic menu_item_mobile">
+                  {% case block.type %}
+                    {% when 'collections_image_menu' %}
+                      <a
+                        role="button"
+                        target="_self"
+                        title="{{ block.settings.title | escape }}"
+                        class="menu_item_link"
+                        {% if block.settings.link == blank %}
+                        disabled
+                        {% endif %}
+                        href="{{ block.settings.link | default: "javascript:0;"}}">
+                        <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
+                        <span class="menu_indicator" mobile="true">
+                          <span class="menu_indicator_icon">
+                            {%- render 'icon-alls'
+                              , icon: 'icon-caret' -%}
+                          </span>
+                        </span>
+                      </a>
+                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                        {%- for collection in block.settings.collection_list_menu -%}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_layout menu_item_layout_image">
+                            <a
+                              role="button"
+                              href="{{ collection.url | default: "javascript:0;" }}"
+                              target="_self"
+                              title="{{ collection.title | escape }}"
+                              class="menu_item_link menu_item_content_alignment_center">
+                              <div class="menu_image menu_image--above">
+                                <img
+                                  src="{{ collection.image | image_url: width: collection.image.width }}"
+                                  alt="{{ collection.image.alt |  escape }}"
+                                  loading="lazy"
+                                  sizes="{{ sizes }}"
+                                  class="image-menu"
+                                  style="border-radius: {{ block.settings.border |  append: '%' }}"
+                                  width="{{ collection.image.width }}"
+                                  height="{{ collection.image.width | divided_by: collection.image.aspect_ratio }}">
+                              </div>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {% when 'dynamic_menu' %}
+                      <a
+                        role="button"
+                        target="_self"
+                        title="{{ block.settings.title | escape }}"
+                        class="menu_item_link"
+                        {% if block.settings.link == blank %}
+                        disabled
+                        {% endif %}
+                        href="{{ block.settings.link | default: "javascript:0;"}}">
+                        <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
+                        <span class="menu_indicator" mobile="true">
+                          <span class="menu_indicator_icon">
+                            {%- render 'icon-alls'
+                              , icon: 'icon-caret' -%}
+                          </span>
+                        </span>
+                      </a>
+                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                        {% for link in block.settings.menu.links %}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header">
+                            <a
+                              role="button"
+                              target="_self"
+                              title="{{ link.title | escape }}"
+                              class="menu_item_link"
+                              {% if link.url == blank %}
+                              disabled
+                              {% endif %}
+                              href="{{ link.url | default: "javascript:0;"}}">
+                              <span class="menu_item_text">{{ link.title | escape }}</span>
+                              <span class="menu_indicator" mobile="true">
+                                <span class="menu_indicator_icon">
+                                  {%- render 'icon-alls'
+                                    , icon: 'icon-caret' -%}
+                                </span>
+                              </span>
+                              <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                                {% for childlink in link.links %}
+                                  <li class="menu_item menu_item_level_2 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_image">
+                                    <a
+                                      role="button"
+                                      target="_self"
+                                      title="{{ childlink.title | escape }}"
+                                      class="menu_item_link"
+                                      {% if childlink.url == blank %}
+                                      disabled
+                                      {% endif %}
+                                      href="{{ childlink.url | default: "javascript:0;"}}">
+                                      <span class="menu_item_text">{{ childlink.title | escape }}</span>
+                                      <span class="menu_indicator" mobile="true">
+                                        <span class="menu_indicator_icon">
+                                          {%- render 'icon-alls'
+                                            , icon: 'icon-caret' -%}
+                                        </span>
+                                      </span>
+                                    </a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% when 'menu_column_with_image' %}
+                      <a
+                        role="button"
+                        target="_self"
+                        title="{{ block.settings.title | escape }}"
+                        class="menu_item_link"
+                        {% if block.settings.link == blank %}
+                        disabled
+                        {% endif %}
+                        href="{{ block.settings.link | default: "javascript:0;"}}">
+                        <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
+                        <span class="menu_indicator" mobile="true">
+                          <span class="menu_indicator_icon">
+                            {%- render 'icon-alls'
+                              , icon: 'icon-caret' -%}
+                          </span>
+                        </span>
+                      </a>
+                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                        <li>{{ 'test' | escape }}</li>
+                      </ul>
+                  {% endcase %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+          <div class="menu-drawer__utility-links">
+            {%- if shop.customer_accounts_enabled -%}
+              <a
+                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
+                rel="nofollow">
+                {%- if section.settings.enable_customer_avatar -%}
+                  <account-icon>
+                    {%- if customer and customer.has_avatar? -%}
+                      {{ customer | avatar }}
+                    {%- else -%}
+                      <span class="svg-wrapper">
+                        {%- render 'icon-alls'
+                          , icon: 'icon-account' -%}
+                      </span>
+                    {%- endif -%}
+                  </account-icon>
+                {%- else -%}
+                  <span class="svg-wrapper">
+                    {%- render 'icon-alls'
+                      , icon: 'icon-account' -%}
+                  </span>
+                {%- endif -%}
+                {%- liquid
+                  if customer
+                    echo 'customer.account_fallback' | t
+                  else
+                    echo 'customer.log_in' | t
+                  endif
+                -%}
+              </a>
+            {%- endif -%}
+            {%- if localization.available_countries or localization.available_languages -%}
+              <div class="menu-drawer__localization header-localization">
+                {%- if localization.available_countries and localization.available_countries.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization'
+                      , id: 'HeaderCountryMobileForm'
+                      , class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
+                          {{ 'localization.country_label' | t }}
+                        </h2>
+                        {%- render 'country-localization'
+                          , localPosition: 'HeaderCountryMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {% endif %}
+
+                {%- if localization.available_languages and localization.available_languages.size > 1 -%}
+                  <localization-form>
+                    {%- form 'localization'
+                      , id: 'HeaderLanguageMobileForm'
+                      , class: 'localization-form' -%}
+                      <div>
+                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
+                          {{ 'localization.language_label' | t }}
+                        </h2>
+                        {%- render 'language-localization'
+                          , localPosition: 'HeaderLanguageMobile' -%}
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+            <ul class="list list-social list-unstyled" role="list">
+              {%- if settings.social_twitter_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-twitter' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_facebook_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-facebook' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_pinterest_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-pinterest' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_instagram_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-instagram' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tiktok_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-tiktok' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_tumblr_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-tumblr' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_snapchat_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-snapchat' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_youtube_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-youtube' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_vimeo_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {%- render 'icon-alls'
+                        , icon: 'icon-vimeo' -%}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </mega-menu-drawer>
+  </details>
+</header-drawer>
+<script src="{{ 'mega-menu-drawer.js' | asset_url }}" defer></script>
