@@ -93,11 +93,38 @@
             "title": "New Arrival",
             "link": "shopify://collections/television"
           }
+        },
+        "menu_column_with_image_E3Cac9": {
+          "type": "menu_column_with_image",
+          "settings": {
+            "menu": "",
+            "title": "Fan",
+            "link": "",
+            "image": "shopify://shop_images/tivi-LG.jpg",
+            "link_image": "",
+            "image_2": "shopify://shop_images/tivi-samsung.jpg",
+            "link_image_2": "",
+            "image_3": "shopify://shop_images/LG_1.jpg",
+            "link_image_3": ""
+          }
+        },
+        "menu_column_with_image_M3qLK6": {
+          "type": "menu_column_with_image",
+          "settings": {
+            "menu": "televisions",
+            "title": "Television",
+            "link": "",
+            "link_image": "",
+            "link_image_2": "",
+            "link_image_3": ""
+          }
         }
       },
       "block_order": [
         "collections_image_menu_TyDEjB",
-        "dynamic_menu_nKbKRT"
+        "dynamic_menu_nKbKRT",
+        "menu_column_with_image_E3Cac9",
+        "menu_column_with_image_M3qLK6"
       ],
       "settings": {
         "logo_position": "middle-left",
@@ -107,9 +134,12 @@
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
+        "full_page": true,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "",
         "header_transparent": true,
+        "enable_on_homepage": true,
+        "enable_on_collection_page": false,
         "enable_country_selector": true,
         "enable_language_selector": true,
         "enable_customer_avatar": true,
