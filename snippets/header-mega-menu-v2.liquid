@@ -131,7 +131,7 @@
                                 disabled
                                 {% endif %}>
                                 {%- case childlink.type -%}
-                                  {%- when 'collection_link' -%}
+                                  {%- when 'collection_link' or 'article_link' -%}
                                     {%- if childlink.object.image != blank -%}
                                       <div class="menu_image menu_image--above">
                                         {{ childlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: childlink.object.image.alt | escape }}
@@ -147,162 +147,59 @@
                                       {%- if childlink.object.selected_or_first_available_variant.featured_media != blank -%}
                                         {{ childlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: childlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
                                       {%- else if child_media != blank -%}
-                                        {{ child_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: media.alt | escape }}
+                                        {{ child_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: child_media.alt | escape }}
                                       {%- else -%}
                                         <span class="menu_item_text">
                                           {{ childlink.title | escape }}
                                         </span>
                                       {%- endif -%}
                                     </div>
-                                  {%- when 'article_link' -%}
-                                    {%- if childlink.object.image != blank -%}
-                                      <div class="menu_image menu_image--above">
-                                        {{ childlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: childlink.object.image.alt | escape }}
-                                      </div>
-                                    {%- else -%}
-                                      <span class="menu_item_text">
-                                        {{ childlink.title | escape }}
-                                      </span>
-                                    {%- endif -%}
                                   {%- else -%}
-                                    <span class="menu_item_text menu-heading">
+                                    <span class="menu_item_text">
                                       {{ childlink.title | escape }}
                                     </span>
                                 {%- endcase -%}
                               </a>
                               <ul class="menu_automatic menu--desktop">
-                                {%- for grandlink in childlink.links -%}
-                                  {%- case grandlink.type -%}
-                                    {%- when 'collection_link' -%}
-                                      {%- if grandlink.object.image == blank -%}
-                                        <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
-                                          <a
-                                            role="button"
-                                            class="menu_item_link"
-                                            href="{{ grandlink.url |  default: "javascript:0;" }}"
-                                            {% if grandlink.url == blank %}
-                                            disabled
-                                            {% endif %}
-                                            target="_self"
-                                            title="{{ grandlink.title |  escape }}">
-                                            <span class="menu_item_text">{{ grandlink.title | escape }}</span>
-                                          </a>
-                                        </li>
-                                      {%- endif -%}
-                                    {%- when 'product_link' -%}
-                                      {%- assign grand_media = grandlink.object.media | first | default: blank -%}
-                                      {%- if grandlink.object.selected_or_first_available_variant.featured_media == blank and grand_media == blank -%}
-                                        <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
-                                          <a
-                                            role="button"
-                                            class="menu_item_link"
-                                            href="{{ grandlink.url |  default: "javascript:0;" }}"
-                                            {% if grandlink.url == blank %}
-                                            disabled
-                                            {% endif %}
-                                            target="_self"
-                                            title="{{ grandlink.title |  escape }}">
-                                            <span class="menu_item_text">{{ grandlink.title | escape }}</span>
-                                          </a>
-                                        </li>
-                                      {%- endif -%}
-                                    {%- when 'article_link' -%}
-                                      {%- if grandlink.object.image == blank -%}
-                                        <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
-                                          <a
-                                            role="button"
-                                            class="menu_item_link"
-                                            href="{{ grandlink.url |  default: "javascript:0;" }}"
-                                            {% if grandlink.url == blank %}
-                                            disabled
-                                            {% endif %}
-                                            target="_self"
-                                            title="{{ grandlink.title |  escape }}">
-                                            <span class="menu_item_text">{{ grandlink.title | escape }}</span>
-                                          </a>
-                                        </li>
-                                      {%- endif -%}
-                                    {%- else -%}
-                                      <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
-                                        <a
-                                          role="button"
-                                          class="menu_item_link"
-                                          href="{{ grandlink.url |  default: "javascript:0;" }}"
-                                          {% if grandlink.url == blank %}
-                                          disabled
-                                          {% endif %}
-                                          target="_self"
-                                          title="{{ grandlink.title |  escape }}">
-                                          <span class="menu_item_text">{{ grandlink.title | escape }}</span>
-                                        </a>
-                                      </li>
-                                  {%- endcase -%}
+                                {%- for grandchildlink in childlink.links -%}
+                                  <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
+                                    <a
+                                      role="button"
+                                      class="menu_item_link"
+                                      href="{{ grandchildlink.url |  default: "javascript:0;" }}"
+                                      {% if grandchildlink.url == blank %}
+                                      disabled
+                                      {% endif %}
+                                      target="_self"
+                                      title="{{ grandchildlink.title |  escape }}">
+                                      {%- case grandchildlink.type -%}
+                                        {%- when 'collection_link' or 'article_link' -%}
+                                          {%- if grandchildlink.object.image != blank -%}
+                                            <div class="menu_image menu_image--above">
+                                              {{ grandchildlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandchildlink.object.image.alt | escape }}
+                                            </div>
+                                          {%- else -%}
+                                            <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                          {%- endif -%}
+                                        {%- when 'product_link' -%}
+                                          {%- assign grandchild_media = grandchildlink.object.media | first | default: blank -%}
+                                          {%- if grandchildlink.object.selected_or_first_available_variant.featured_media != blank -%}
+                                            {{ grandchildlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandchildlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
+                                          {%- elsif grandchild_media != blank -%}
+                                            <div class="menu_image menu_image--above">
+                                              {{ grandchild_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandchild_media.alt | escape }}
+                                            </div>
+                                          {%- else -%}
+                                            <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                          {%- endif -%}
+                                        {%- else -%}
+                                          <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                      {%- endcase -%}
+                                    </a>
+                                  </li>
                                 {%- endfor -%}
                               </ul>
                             </li>
-                            {%- for grandlink in childlink.links -%}
-                              {%- case grandlink.type -%}
-                                {%- when 'collection_link' -%}
-                                  {%- if grandlink.object.image != blank -%}
-                                    <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a
-                                        role="button"
-                                        {% if grandlink.url == blank %}
-                                        disabled
-                                        {% endif %}
-                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
-                                        <div class="menu_image menu_image--above">
-                                          {{ grandlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.image.alt | escape }}
-                                        </div>
-                                      </a>
-                                    </li>
-                                  {%- endif -%}
-                                {%- when 'product_link' -%}
-                                  {%- assign grand_media = grandlink.object.media | first | default: blank -%}
-                                  {%- if grandlink.object.selected_or_first_available_variant.featured_media != blank -%}
-                                    <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a
-                                        role="button"
-                                        {% if grandlink.url == blank %}
-                                        disabled
-                                        {% endif %}
-                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
-                                        <div class="menu_image menu_image--above">
-                                          {{ grandlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
-                                        </div>
-                                      </a>
-                                    </li>
-                                  {%- else if grand_media != blank -%}
-                                    <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a
-                                        role="button"
-                                        {% if grandlink.url == blank %}
-                                        disabled
-                                        {% endif %}
-                                        href="{{ grandlink.url | default: "javascript:0;"  }}">
-                                        <div class="menu_image menu_image--above">
-                                          {{ grand_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grand_media.alt | escape }}
-                                        </div>
-                                      </a>
-                                    </li>
-                                  {%- endif -%}
-                                {%- when 'article_link' -%}
-                                  {%- if grandlink.object.image != blank -%}
-                                    <li class="menu_col menu_item menu_item_layout menu_item_layout_image mega-menu__link mega-menu__link--level-1 link">
-                                      <a
-                                        role="button"
-                                        {% if grandlink.url == blank %}
-                                        disabled
-                                        {% endif %}
-                                        href="{{ grandlink.url | default: "javascript:0;" }}">
-                                        <div class="menu_image menu_image--above">
-                                          {{ grandlink.object.image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandlink.object.image.alt | escape }}
-                                        </div>
-                                      </a>
-                                    </li>
-                                  {%- endif -%}
-                              {%- endcase -%}
-                            {%- endfor -%}
                           {%- endfor -%}
                         </ul>
                       </div>
@@ -344,29 +241,29 @@
                           <span class="menu_item_text menu-heading">{{- link.title | escape -}}</span>
                         </a>
                         <ul class="menu_automatic menu--desktop">
-                          {%- for child_link in link.links -%}
+                          {%- for childlink in link.links -%}
                             <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
                               <a
                                 role="button"
                                 target="_self"
                                 class="menu_item_link"
-                                href="{{ child_link.url | default: "javascript:0;"}}"
-                                {% if child_link.url == blank %}
+                                href="{{ childlink.url | default: "javascript:0;"}}"
+                                {% if childlink.url == blank %}
                                 disabled
                                 {% endif %}>
-                                <span class="menu_item_text">{{- child_link.title | escape -}}</span>
+                                <span class="menu_item_text">{{- childlink.title | escape -}}</span>
                               </a>
-                              {%- for grand_link in child_link.links -%}
+                              {%- for grandchildlink in childlink.links -%}
                                 <li class="menu_item mega-menu__link--level-2 menu_item_layout_text menu_col menu_item_layout mega-menu__link link">
                                   <a
                                     role="button"
                                     target="_self"
                                     class="menu_item_link"
-                                    href="{{ grand_link.url | default: "javascript:0;"}}"
-                                    {% if grand_link.url == blank %}
+                                    href="{{ grandchildlink.url | default: "javascript:0;"}}"
+                                    {% if grandchildlink.url == blank %}
                                     disabled
                                     {% endif %}>
-                                    <span class="menu_item_text">{{- grand_link.title | escape -}}</span>
+                                    <span class="menu_item_text">{{- grandchildlink.title | escape -}}</span>
                                   </a>
                                 </li>
                               {%- endfor -%}
@@ -381,7 +278,7 @@
                           id="HeaderMenu-{{ block.settings.image.alt }}"
                           href="{{ block.settings.link_image | default: "javascript:0;" }}"
                           class="mega-menu__link menu__link_layout_image mega-menu__link--level-1 link"
-                          {% if block.settings.link_image_3 == blank %}
+                          {% if block.settings.link_image == blank %}
                           disabled
                           {% endif %}
                           role="button">
@@ -414,7 +311,7 @@
                           id="HeaderMenu-{{ block.settings.image_2.alt }}"
                           href="{{ block.settings.link_image_2 | default: "javascript:0;" }}"
                           class="mega-menu__link menu__link_layout_image mega-menu__link--level-1 link"
-                          {% if block.settings.link_image_3 == blank %}
+                          {% if block.settings.link_image_2 == blank %}
                           disabled
                           {% endif %}
                           role="button">

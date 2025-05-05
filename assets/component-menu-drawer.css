@@ -44,7 +44,6 @@ menu-drawer > details[open] > summary::before {
 
 .js .menu-drawer {
   height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
 }
 
 .js details[open] > .menu-drawer,
@@ -92,10 +91,6 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.js .menu-drawer__menu li {
-  margin-bottom: 0.2rem;
 }
 
 .menu-drawer__menu-item {
@@ -187,7 +182,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 @media screen and (max-width: 989px) {
   .header--has-localizations:where(:not(.header--has-social)) .menu-drawer__utility-links {
-    padding: 2rem 3rem;
+    padding: 12px 15px;
   }
 }
 

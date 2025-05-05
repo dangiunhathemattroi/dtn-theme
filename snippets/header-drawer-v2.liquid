@@ -37,35 +37,51 @@
                         {% endif %}
                         href="{{ block.settings.link | default: "javascript:0;"}}">
                         <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
-                        <span class="menu_indicator" mobile="true">
-                          <span class="menu_indicator_icon">
-                            {%- render 'icon-alls'
-                              , icon: 'icon-caret' -%}
+                        {% if block.settings.collection_list_menu.count > 0 %}
+                          <span class="menu_indicator" mobile="true">
+                            <span class="menu_indicator_icon">
+                              {%- render 'icon-alls'
+                                , icon: 'icon-caret' -%}
+                            </span>
                           </span>
-                        </span>
+                        {% endif %}
                       </a>
-                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                      <ul class="collections_image_menu menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
                         {%- for collection in block.settings.collection_list_menu -%}
-                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_layout menu_item_layout_image">
-                            <a
-                              role="button"
-                              href="{{ collection.url | default: "javascript:0;" }}"
-                              target="_self"
-                              title="{{ collection.title | escape }}"
-                              class="menu_item_link menu_item_content_alignment_center">
-                              <div class="menu_image menu_image--above">
-                                <img
-                                  src="{{ collection.image | image_url: width: collection.image.width }}"
-                                  alt="{{ collection.image.alt |  escape }}"
-                                  loading="lazy"
-                                  sizes="{{ sizes }}"
-                                  class="image-menu"
-                                  style="border-radius: {{ block.settings.border |  append: '%' }}"
-                                  width="{{ collection.image.width }}"
-                                  height="{{ collection.image.width | divided_by: collection.image.aspect_ratio }}">
-                              </div>
-                            </a>
-                          </li>
+                          {% if collection.image != blank %}
+                            <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_image">
+                              <a
+                                role="button"
+                                href="{{ collection.url | default: "javascript:0;" }}"
+                                target="_self"
+                                title="{{ collection.title | escape }}"
+                                class="menu_item_link menu_item_content_alignment_center">
+                                <div class="menu_image menu_image--above">
+                                  <img
+                                    srcset="
+                                    {{ collection.image | image_url: width: 180 }} 180w,
+                                    {{ collection.image | image_url: width: 360 }} 360w,
+                                    {{ collection.image | image_url: width: 540 }} 540w,
+                                    {{ collection.image | image_url: width: 720 }} 720w,
+                                    {{ collection.image | image_url: width: 900 }} 900w,
+                                    {{ collection.image | image_url: width: 1080 }} 1080w,
+                                    {{ collection.image | image_url: width: 1296 }} 1296w,
+                                    {{ collection.image | image_url: width: 1512 }} 1512w,
+                                    {{ collection.image | image_url: width: 1728 }} 1728w,
+                                    {{ collection.image | image_url: width: 2048 }} 2048w
+                                  "
+                                    sizes="100vw"
+                                    src="{{ collection.image | image_url: width: collection.image.width }}"
+                                    alt="{{ collection.image.alt |  escape }}"
+                                    loading="lazy"
+                                    class="image-menu"
+                                    style="border-radius: {{ block.settings.border |  append: '%' }}"
+                                    width="{{ collection.image.width }}"
+                                    height="{{ collection.image.width | divided_by: collection.image.aspect_ratio }}">
+                                </div>
+                              </a>
+                            </li>
+                          {% endif %}
                         {%- endfor -%}
                       </ul>
                     {% when 'dynamic_menu' %}
@@ -79,16 +95,18 @@
                         {% endif %}
                         href="{{ block.settings.link | default: "javascript:0;"}}">
                         <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
-                        <span class="menu_indicator" mobile="true">
-                          <span class="menu_indicator_icon">
-                            {%- render 'icon-alls'
-                              , icon: 'icon-caret' -%}
+                        {% if block.settings.menu.links.size > 0 %}
+                          <span class="menu_indicator" mobile="true">
+                            <span class="menu_indicator_icon">
+                              {%- render 'icon-alls'
+                                , icon: 'icon-caret' -%}
+                            </span>
                           </span>
-                        </span>
+                        {% endif %}
                       </a>
-                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                      <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile" tabindex="-1">
                         {% for link in block.settings.menu.links %}
-                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header">
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header {% if link.links.size > 0 %} has-child {% endif %}">
                             <a
                               role="button"
                               target="_self"
@@ -99,36 +117,151 @@
                               {% endif %}
                               href="{{ link.url | default: "javascript:0;"}}">
                               <span class="menu_item_text">{{ link.title | escape }}</span>
-                              <span class="menu_indicator" mobile="true">
-                                <span class="menu_indicator_icon">
-                                  {%- render 'icon-alls'
-                                    , icon: 'icon-caret' -%}
+                              {% if link.links.size > 0 %}
+                                <span class="menu_indicator" mobile="true">
+                                  <span class="menu_indicator_icon">
+                                    {%- render 'icon-alls'
+                                      , icon: 'icon-caret' -%}
+                                  </span>
                                 </span>
-                              </span>
-                              <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
-                                {% for childlink in link.links %}
-                                  <li class="menu_item menu_item_level_2 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_image">
-                                    <a
-                                      role="button"
-                                      target="_self"
-                                      title="{{ childlink.title | escape }}"
-                                      class="menu_item_link"
-                                      {% if childlink.url == blank %}
-                                      disabled
-                                      {% endif %}
-                                      href="{{ childlink.url | default: "javascript:0;"}}">
-                                      <span class="menu_item_text">{{ childlink.title | escape }}</span>
-                                      <span class="menu_indicator" mobile="true">
-                                        <span class="menu_indicator_icon">
-                                          {%- render 'icon-alls'
-                                            , icon: 'icon-caret' -%}
-                                        </span>
-                                      </span>
-                                    </a>
-                                  </li>
-                                {% endfor %}
-                              </ul>
+                              {% endif %}
                             </a>
+                            <ul class="menu_submenu menu_submenu_type_automatic menu_submenu--mobile" tabindex="-1">
+                              {% for childlink in link.links %}
+                                <li class="menu_item menu_item_level_2 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout {% if childlink.links %} has-child {% endif %}">
+                                  <a
+                                    role="button"
+                                    target="_self"
+                                    title="{{ childlink.title | escape }}"
+                                    class="menu_item_link"
+                                    {% if childlink.url == blank %}
+                                    disabled
+                                    {% endif %}
+                                    href="{{ childlink.url | default: "javascript:0;"}}">
+                                    {%- case childlink.type -%}
+                                      {%- when 'collection_link' or 'article_link' -%}
+                                        {%- if childlink.object.image != blank -%}
+                                          <div class="menu_image menu_image--above">
+                                            {{ childlink.object.image | image_url: width: childlink.object.image.width | image_tag: loading: 'lazy', sizes: '100vw', class: "image-menu", alt: childlink.object.image.alt | escape }}
+                                          </div>
+                                          {% if childlink.links.size > 0 %}
+                                            <span class="menu_indicator menu_indicator_width_image" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {% endif %}
+                                        {%- else -%}
+                                          <span class="menu_item_text">{{ childlink.title | escape }}</span>
+                                          {% if childlink.links.size > 0 %}
+                                            <span class="menu_indicator" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {% endif %}
+                                        {%- endif -%}
+                                      {%- when 'product_link' -%}
+                                        {%- assign child_media = childlink.object.media | first | default: blank -%}
+                                        {%- if childlink.object.selected_or_first_available_variant.featured_media != blank -%}
+                                          <div class="menu_image menu_image--above">
+                                            {{ childlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: childlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
+                                          </div>
+                                          {% if childlink.links.size > 0 %}
+                                            <span class="menu_indicator menu_indicator_width_image" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {% endif %}
+                                        {%- else if child_media != blank -%}
+                                          <div class="menu_image menu_image--above">
+                                            {{ child_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: child_media.alt | escape }}
+                                          </div>
+                                          {% if childlink.links.size > 0 %}
+                                            <span class="menu_indicator menu_indicator_width_image" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {% endif %}
+                                        {%- else -%}
+                                          <span class="menu_item_text">{{ childlink.title | escape }}</span>
+                                          {% if childlink.links.size > 0 %}
+                                            <span class="menu_indicator" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {% endif %}
+                                        {%- endif -%}
+                                      {%- else -%}
+                                        <span class="menu_item_text">{{ childlink.title | escape }}</span>
+                                        <span class="menu_indicator" mobile="true">
+                                          <span class="menu_indicator_icon">
+                                            {%- render 'icon-alls'
+                                              , icon: 'icon-caret' -%}
+                                          </span>
+                                        </span>
+                                        {% if childlink.links.size > 0 %}
+                                          <span class="menu_indicator" mobile="true">
+                                            <span class="menu_indicator_icon">
+                                              {%- render 'icon-alls'
+                                                , icon: 'icon-caret' -%}
+                                            </span>
+                                          </span>
+                                        {% endif %}
+                                    {%- endcase -%}
+                                  </a>
+                                  <ul class="menu_submenu menu_submenu_type_automatic menu_submenu--mobile">
+                                    {% for grandchildlink in childlink.links %}
+                                      <li class="menu_item menu_item_level_3 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout">
+                                        <a
+                                          role="button"
+                                          target="_self"
+                                          title="{{ grandchildlink.title | escape }}"
+                                          class="menu_item_link"
+                                          {% if grandchildlink.url == blank %}
+                                          disabled
+                                          {% endif %}
+                                          href="{{ grandchildlink.url | default: "javascript:0;"}}">
+                                          {%- case grandchildlink.type -%}
+                                            {%- when 'collection_link' or 'article_link' -%}
+                                              {%- if grandchildlink.object.image != blank -%}
+                                                <div class="menu_image menu_image--above">
+                                                  {{ grandchildlink.object.image | image_url: width: grandchildlink.object.image.width | image_tag: loading: 'lazy', sizes: '100vw', class: "image-menu", alt: grandchildlink.object.image.alt | escape }}
+                                                </div>
+                                              {%- else -%}
+                                                <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                              {%- endif -%}
+                                            {%- when 'product_link' -%}
+                                              <div class="menu_image menu_image--above">
+                                                {%- assign grandchild_media = grandchildlink.object.media | first | default: blank -%}
+                                                {%- if grandchildlink.object.selected_or_first_available_variant.featured_media != blank -%}
+                                                  {{ grandchildlink.object.selected_or_first_available_variant.featured_media.preview_image | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandchildlink.object.selected_or_first_available_variant.featured_media.preview_image.alt | escape }}
+                                                {%- else if grandchild_media != blank -%}
+                                                  {{ grandchild_media | image_url: width: 727 | image_tag: loading: 'lazy', sizes: sizes, class: "image-menu", alt: grandchild_media.alt | escape }}
+                                                {%- else -%}
+                                                  <span class="menu_item_text">
+                                                    {{ childlink.title | escape }}
+                                                  </span>
+                                                {%- endif -%}
+                                              </div>
+                                            {%- else -%}
+                                              <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                          {%- endcase -%}
+                                        </a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                </li>
+                              {% endfor %}
+                            </ul>
                           </li>
                         {% endfor %}
                       </ul>
@@ -143,15 +276,137 @@
                         {% endif %}
                         href="{{ block.settings.link | default: "javascript:0;"}}">
                         <span class="menu_item_text">{{ block.settings.title | default: block.settings.menu | escape }}</span>
-                        <span class="menu_indicator" mobile="true">
-                          <span class="menu_indicator_icon">
-                            {%- render 'icon-alls'
-                              , icon: 'icon-caret' -%}
+                        {%- unless block.settings.menu.links.size == 0 and block.settings.image == blank and block.settings.image_2 == blank and block.settings.image_3 == blank -%}
+                          <span class="menu_indicator" mobile="true">
+                            <span class="menu_indicator_icon">
+                              {%- render 'icon-alls'
+                                , icon: 'icon-caret' -%}
+                            </span>
                           </span>
-                        </span>
+                        {%- endunless -%}
                       </a>
                       <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
-                        <li>{{ 'test' | escape }}</li>
+                        {% for link in block.settings.menu.links %}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header {% if link.links.size > 0 %} has-child {% endif %}">
+                            <a
+                              role="button"
+                              target="_self"
+                              title="{{ link.title | escape }}"
+                              class="menu_item_link"
+                              {% if link.url == blank %}
+                              disabled
+                              {% endif %}
+                              href="{{ link.url | default: "javascript:0;"}}">
+                              <span class="menu_item_text">{{ link.title | escape }}</span>
+                              {%- if link.links.size > 0 -%}
+                                <span class="menu_indicator" mobile="true">
+                                  <span class="menu_indicator_icon">
+                                    {%- render 'icon-alls'
+                                      , icon: 'icon-caret' -%}
+                                  </span>
+                                </span>
+                              {%- endif -%}
+                            </a>
+                            <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                              {% for childlink in link.links %}
+                                <li class="menu_item menu_item_level_2 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header {% if link.links.size > 0 %} has-child {% endif %}">
+                                  <a
+                                    role="button"
+                                    target="_self"
+                                    title="{{ childlink.title | escape }}"
+                                    class="menu_item_link"
+                                    {% if childlink.url == blank %}
+                                    disabled
+                                    {% endif %}
+                                    href="{{ childlink.url | default: "javascript:0;"}}">
+                                    <span class="menu_item_text">{{ childlink.title | escape }}</span>
+                                    {%- if childlink.links.size > 0 -%}
+                                      <span class="menu_indicator" mobile="true">
+                                        <span class="menu_indicator_icon">
+                                          {%- render 'icon-alls'
+                                            , icon: 'icon-caret' -%}
+                                        </span>
+                                      </span>
+                                    {%- endif -%}
+                                  </a>
+                                  <ul class="menu_submenu menu_submenu_type_automatic _menu_submenu--mobile">
+                                    {% for grandchildlink in childlink.links %}
+                                      <li class="menu_item menu_item_level_2 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header {% if link.links.size > 0 %} has-child {% endif %}">
+                                        <a
+                                          role="button"
+                                          target="_self"
+                                          title="{{ grandchildlink.title | escape }}"
+                                          class="menu_item_link"
+                                          {% if grandchildlink.url == blank %}
+                                          disabled
+                                          {% endif %}
+                                          href="{{ grandchildlink.url | default: "javascript:0;"}}">
+                                          <span class="menu_item_text">{{ grandchildlink.title | escape }}</span>
+                                          {%- if grandchildlink.links.size > 0 -%}
+                                            <span class="menu_indicator" mobile="true">
+                                              <span class="menu_indicator_icon">
+                                                {%- render 'icon-alls'
+                                                  , icon: 'icon-caret' -%}
+                                              </span>
+                                            </span>
+                                          {%- endif -%}
+                                        </a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </li>
+                        {% endfor %}
+                        {%- if block.settings.image != blank -%}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header">
+                            <a
+                              target="_self"
+                              href="{{ block.settings.link_image | default: "javascript:0;" }}"
+                              class="menu_item_link"
+                              {% if block.settings.link_image == blank %}
+                              disabled
+                              {% endif %}
+                              role="button">
+                              <div class="menu_image menu_image--above">
+                                {{ block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '100vw', class: "image-menu", alt: block.settings.image.alt | escape }}
+                              </div>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.image_2 != blank -%}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header">
+                            <a
+                              target="_self"
+                              href="{{ block.settings.link_image_2 | default: "javascript:0;" }}"
+                              class="menu_item_link"
+                              {% if block.settings.link_image_2 == blank %}
+                              disabled
+                              {% endif %}
+                              role="button">
+                              <div class="menu_image menu_image--above">
+                                {{ block.settings.image_2 | image_url: width: block.settings.image_2.width | image_tag: loading: 'lazy', sizes: '100vw', class: "image-menu", alt: block.settings.image_2.alt | escape }}
+                              </div>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                        {%- if block.settings.image_3 != blank -%}
+                          <li class="menu_item menu_item_level_1 menu_item_submenu_type_automatic menu_item_mobile menu_item_layout menu_item_layout_text menu_item_display_header">
+                            <a
+                              target="_self"
+                              href="{{ block.settings.link_image_3 | default: "javascript:0;" }}"
+                              class="menu_item_link"
+                              {% if block.settings.link_image_3 == blank %}
+                              disabled
+                              {% endif %}
+                              role="button">
+                              <div class="menu_image menu_image--above">
+                                {{ block.settings.image_3 | image_url: width: block.settings.image_3.width | image_tag: loading: 'lazy', sizes: '100vw', class: "image-menu", alt: block.settings.image_3.alt | escape }}
+                              </div>
+                            </a>
+                          </li>
+                        {%- endif -%}
                       </ul>
                   {% endcase %}
                 </li>
