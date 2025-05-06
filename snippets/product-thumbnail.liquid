@@ -46,7 +46,7 @@
 -%}
 
 {%- capture sizes -%}
-  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
+  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | divided_by: desktop_columns | round }}px, (min-width: 990px) calc({{ media_width | times: 100 | divided_by: desktop_columns }}vw - 10rem), (min-width: 768px) calc((100vw - 11.5rem) / 2), calc(100vw / {{ mobile_columns }} - 4rem)
 {%- endcapture -%}
 
 <div
@@ -64,15 +64,15 @@
       {% case media.media_type %}
         {% when 'video', 'external_video' %}
           <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-play' -%}
           </span>
         {% when 'model' %}
           <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-3d-model' -%}
           </span>
         {% else %}
           <span class="svg-wrapper">
-            {{- 'icon-zoom.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-zoom' -%}
           </span>
       {% endcase %}
     </span>
@@ -111,12 +111,12 @@
         {%- if media.media_type == 'model' -%}
           <span class="visually-hidden">{{ 'products.product.media.play_model' | t }}</span>
           <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-3d-model' -%}
           </span>
         {%- else -%}
           <span class="visually-hidden">{{ 'products.product.media.play_video' | t }}</span>
           <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-play' -%}
           </span>
         {%- endif -%}
       </span>
@@ -160,7 +160,7 @@
           data-shopify-xr-hidden
         >
           <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-3d-model' -%}
           </span>
           {{ 'products.product.xr_button' | t }}
         </button>

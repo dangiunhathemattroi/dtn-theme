@@ -28,7 +28,7 @@
       {%- if media.preview_image.width >= 4096 -%}{{ media.preview_image | image_url: width: 4096 }} 4096w,{%- endif -%}
       {{ media.preview_image | image_url }} {{ media.preview_image.width }}w
     "
-    sizes="(min-width: 750px) calc(100vw - 22rem), 1100px"
+    sizes="(min-width: 768px) calc(100vw - 22rem), 1100px"
     src="{{ media.preview_image | image_url: width: 1445 }}"
     alt="{{ media.alt | escape }}"
     loading="lazy"
@@ -56,7 +56,7 @@
       {%- if media.media_type == 'model' -%}
         <span class="svg-wrapper">{{ 'icon-3d-model' | inline_asset_content }}</span>
       {%- else -%}
-        <span class="svg-wrapper">{{ 'icon-play.svg' | inline_asset_content }}</span>
+        <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-play' -%}</span>
       {%- endif -%}
     </span>
     <img
@@ -68,7 +68,7 @@
         {{ media.preview_image | image_url }} {{ media.preview_image.width }}w
       "
       src="{{ media | image_url: width: 550, height: 550 }}"
-      sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+      sizes="(min-width: 1200px) calc((1200px - 10rem) / 2), (min-width: 768px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
       loading="lazy"
       width="576"
       height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"

@@ -6,7 +6,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -52,7 +52,7 @@
       {%- if form.errors -%}
         <small id="RecoverEmail-email-error" class="form__message">
           <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-error' -%}
           </span>
           {{ form.errors.messages.form }}
         </small>
@@ -75,7 +75,7 @@
     {%- if recover_success == true -%}
       <h3 class="form__message" tabindex="-1" autofocus>
         <span class="svg-wrapper">
-          {{- 'icon-success.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-success' -%}
         </span>
         {{ 'customer.recover_password.success' | t }}
       </h3>
@@ -85,7 +85,7 @@
         <h2 class="form__message" tabindex="-1" autofocus>
           <span class="visually-hidden">{{ 'accessibility.error' | t }} </span>
           <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-error' -%}
           </span>
           {{ 'templates.contact.form.error_heading' | t }}
         </h2>

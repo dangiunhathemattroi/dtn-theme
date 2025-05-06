@@ -5,7 +5,7 @@ if (!customElements.get('quantity-popover')) {
       constructor() {
         super();
         this.mql = window.matchMedia('(min-width: 990px)');
-        this.mqlTablet = window.matchMedia('(min-width: 750px)');
+        this.mqlTablet = window.matchMedia('(min-width: 768px)');
         this.infoButtonDesktop = this.querySelector('.quantity-popover__info-button--icon-only');
         this.infoButtonMobile = this.querySelector('.quantity-popover__info-button--icon-with-label');
         this.popoverInfo = this.querySelector('.quantity-popover__info');

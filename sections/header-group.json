@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.header.name",
   "type": "header",
@@ -8,29 +17,133 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "scheme-1",
-            "link": ""
+            "title": "EXCLUSIVE PRIVILEGES FOR MEMBERS ONLY",
+            "description": "Join TN Luxury today to unlock exclusive offers at TN - DigiWORLD and enjoy a premium shopping experience like no other!",
+            "link": "",
+            "label_link": "BECOME A MEMBER NOW!"
+          }
+        },
+        "announcement_kQDWiq": {
+          "type": "announcement",
+          "settings": {
+            "title": "FREE SHIPPING FOR MEMBERS",
+            "description": "Sign up for TN Luxury membership to enjoy complimentary delivery on every order!\nOr receive free shipping on orders of at least $65.",
+            "link": "",
+            "label_link": "Join Now!"
+          }
+        },
+        "announcement_7zBcCJ": {
+          "type": "announcement",
+          "settings": {
+            "title": "EASY RETURNS",
+            "description": "If you're not satisfied with your order, you may be eligible for a refund.\nPlease refer to our Return Policy for more details.",
+            "link": "",
+            "label_link": "EASY RETURNS"
+          }
+        },
+        "announcement_dET6Mg": {
+          "type": "announcement",
+          "settings": {
+            "title": "REWARD YOUR STYLE",
+            "description": "Every purchase brings you closer to exclusive gifts and premium offers.\nJoin TN Luxury’s loyalty program today and start earning points with every order.\nRedeem your points for luxury rewards, exclusive vouchers, or free upgrades.",
+            "link": "",
+            "label_link": "Sign up and reward yourself – you deserve it."
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
-      ]
+        "announcement-bar-0",
+        "announcement_kQDWiq",
+        "announcement_7zBcCJ",
+        "announcement_dET6Mg"
+      ],
+      "settings": {
+        "select_display_type": "modal",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "color_scheme": "",
+        "show_line_separator": true,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "collections_image_menu_TyDEjB": {
+          "type": "collections_image_menu",
+          "settings": {
+            "collection_list_menu": [
+              "smart-tivi-lg",
+              "panasonic",
+              "tivi-samsung",
+              "sony",
+              "tivi-xiaomi"
+            ],
+            "border": 4,
+            "title": "Brands",
+            "link": "shopify://collections/television"
+          }
+        },
+        "dynamic_menu_nKbKRT": {
+          "type": "dynamic_menu",
+          "settings": {
+            "menu": "new-arrival",
+            "title": "New Arrival",
+            "link": "shopify://collections/television"
+          }
+        },
+        "menu_column_with_image_E3Cac9": {
+          "type": "menu_column_with_image",
+          "settings": {
+            "menu": "",
+            "title": "Fan",
+            "link": "",
+            "image": "shopify://shop_images/tivi-LG.jpg",
+            "link_image": "",
+            "image_2": "shopify://shop_images/tivi-samsung.jpg",
+            "link_image_2": "",
+            "image_3": "shopify://shop_images/LG_1.jpg",
+            "link_image_3": ""
+          }
+        },
+        "menu_column_with_image_M3qLK6": {
+          "type": "menu_column_with_image",
+          "settings": {
+            "menu": "televisions",
+            "title": "Television",
+            "link": "",
+            "image": "shopify://shop_images/tivi-LG.jpg",
+            "link_image": "",
+            "link_image_2": "",
+            "link_image_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "collections_image_menu_TyDEjB",
+        "dynamic_menu_nKbKRT",
+        "menu_column_with_image_E3Cac9",
+        "menu_column_with_image_M3qLK6"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
         "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "show_custom_menu": true,
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
+        "full_page": true,
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "",
+        "header_transparent": true,
+        "enable_on_homepage": true,
+        "enable_on_collection_page": false,
         "enable_country_selector": true,
         "enable_language_selector": true,
-        "mobile_logo_position": "center",
+        "enable_customer_avatar": true,
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20

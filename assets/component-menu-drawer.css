@@ -44,7 +44,6 @@ menu-drawer > details[open] > summary::before {
 
 .js .menu-drawer {
   height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
 }
 
 .js details[open] > .menu-drawer,
@@ -62,9 +61,9 @@ details[open].menu-opening > .menu-drawer__submenu {
   visibility: hidden; /* hide menus from screen readers when hidden by submenu */
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   .menu-drawer {
-    width: 40rem;
+    width: 50rem;
     border-width: 0 var(--drawer-border-width) 0 0;
     border-style: solid;
     border-color: rgba(var(--color-foreground), var(--drawer-border-opacity));
@@ -92,10 +91,6 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-.js .menu-drawer__menu li {
-  margin-bottom: 0.2rem;
 }
 
 .menu-drawer__menu-item {
@@ -179,7 +174,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 2rem 3rem;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 767px) {
   .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }
@@ -187,7 +182,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 @media screen and (max-width: 989px) {
   .header--has-localizations:where(:not(.header--has-social)) .menu-drawer__utility-links {
-    padding: 2rem 3rem;
+    padding: 12px 15px;
   }
 }
 
@@ -234,7 +229,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.1rem 1.1rem;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 767px) {
   .menu-drawer.country-selector-open {
     transform: none !important;
     filter: none !important;

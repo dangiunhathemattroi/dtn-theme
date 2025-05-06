@@ -57,7 +57,7 @@
   width: calc(100% - 3rem);
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   .quick-add-modal__content {
     --modal-height-offset: 10rem;
     margin-top: var(--modal-height-offset);
@@ -101,7 +101,7 @@
   padding-bottom: 2.7rem;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   .section-bulk-quick-order-list-padding {
     padding-top: 3.6rem;
     padding-bottom: 3.6rem;
@@ -230,7 +230,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 767px) {
   quick-add-modal .slider .product__media-item.grid__item {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
@@ -308,7 +308,7 @@ quick-add-modal .product__column-sticky {
   position: relative;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   quick-add-modal .product:not(.product--no-media) .product__media-wrapper {
     max-width: 45%;
     width: calc(45% - var(--grid-desktop-horizontal-spacing) / 2);
@@ -365,7 +365,7 @@ quick-add-modal .product-media-container.constrain-height {
   --viewport-offset: calc((var(--modal-height-offset) + var(--modal-padding) + var(--popup-border-width)) * 2);
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 768px) {
   quick-add-modal .product-media-container.constrain-height {
     --constrained-min-height: 400px;
   }

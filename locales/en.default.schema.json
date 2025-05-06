@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "settings_schema": {
     "global": {
@@ -124,6 +133,9 @@
         "text": {
           "label": "Text"
         },
+        "secondary_text": {
+          "label": "Secondary text"
+        },
         "button_background": {
           "label": "Solid button background"
         },
@@ -150,6 +162,13 @@
         "favicon": {
           "label": "Favicon",
           "info": "Displayed at 32 x 32px"
+        },
+        "transparent": {
+          "content": "Transparent",
+          "logo": {
+            "light": "Logo light",
+            "dark": "Logo dark"
+          }
         }
       }
     },
@@ -453,6 +472,15 @@
         },
         "paragraph": {
           "content": "Appear only on large screens"
+        },
+        "select_display_type": {
+          "label": "Display type",
+          "option__1": {
+            "label": "Modal"
+          },
+          "option__2": {
+            "label": "Sliders"
+          }
         },                     
         "show_social": {
           "label": "Social media icons",
@@ -471,8 +499,8 @@
         "announcement": {
           "name": "Announcement",
           "settings": {
-            "text": {
-              "label": "Text",
+            "title": {
+              "label": "Title",
               "default": "Welcome to our store"
             },
             "text_alignment": {
@@ -489,6 +517,14 @@
             },
             "link": {
               "label": "Link"
+            },
+            "description": {
+              "label": "Description",
+              "info": "Notification Description"
+            },
+            "label_link": {
+              "label": "Label link",
+              "info": "Only works when Display type is Modal"
             }
           }
         }
@@ -1083,6 +1119,9 @@
             "label": "Middle center"
           }
         },
+        "show_custom_menu": {
+          "label": "Show custom menu"
+        },
         "menu": {
           "label": "Menu"
         },
@@ -1100,6 +1139,9 @@
         },
         "show_line_separator": {
           "label": "Separator line"
+        },
+        "full_page": {
+          "label": "Full page width"
         },
         "header__1": {
           "content": "Color"
@@ -1122,6 +1164,15 @@
             "label": "Always, reduce logo size"
           }
         },
+        "transparent": {
+          "content": "Transparent",
+          "header": {
+            "label": "Header transparent",
+            "info": "Edit your logo in [theme settings](/editor?context=theme&category=logo)"
+          }
+        },
+        "enable_homepage": "Enable on homepage",
+        "enable_collections": "Enable on collection page",
         "header__utilities": {
           "content": "Utilities"
         },
@@ -1148,6 +1199,56 @@
         "enable_customer_avatar": {
           "label": "Customer account avatar",
           "info": "Only visible when customers are signed in with Shop. [Manage customer accounts](/admin/settings/customer_accounts)"
+        }
+      },
+      "blocks": {
+        "collections_image_menu": {
+          "name": "Collections Image menu",
+          "settings": {
+            "list_menu": {
+              "label": "Collection List"
+            },
+            "title":{
+              "label": "Title"
+            },
+            "link": {
+              "label": "Title link"
+            },
+            "border": {
+              "label": "Border image"
+            }
+          }
+        },
+        "dynamic_menu": {
+          "name": "Dynamic menu",
+          "settings": {
+            "menu": {
+              "label": "Menu",
+            }
+          }
+        },
+        "menu_column_with_image": {
+          "name": "Menu column width image",
+          "settings": {
+            "menu": {
+              "label": "Menu"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "image": {
+              "label": "Image",
+              "url": "Link image"
+            },
+            "image_2": {
+              "label": "Image 2",
+              "url": "Link image 2"
+            },
+            "image_3": {
+              "label": "Image 3",
+              "url": "Link image 3"
+            }
+          }
         }
       }
     },

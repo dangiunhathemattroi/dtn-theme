@@ -6,7 +6,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -25,7 +25,7 @@
     {%- if form.errors -%}
       <h2 class="form__message" tabindex="-1" autofocus>
         <span class="svg-wrapper">
-          {{- 'icon-error.svg' | inline_asset_content -}}
+          {%- render 'icon-alls', icon: 'icon-error' -%}
         </span>
         {{ 'templates.contact.form.error_heading' | t }}
       </h2>
@@ -63,7 +63,7 @@
       {%- if form.errors contains 'password' -%}
         <small id="password-error" class="form__message">
           <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-error' -%}
           </span>
           {{ form.errors.translated_fields.password | capitalize }}
           {{ form.errors.messages.password }}
@@ -89,7 +89,7 @@
       {%- if form.errors contains 'password_confirmation' -%}
         <small id="password_confirmation-error" class="form__message">
           <span class="svg-wrapper">
-            {{- 'icon-error.svg' | inline_asset_content -}}
+            {%- render 'icon-alls', icon: 'icon-error' -%}
           </span>
           {{ form.errors.translated_fields.password_confirmation | capitalize }}
           {{ form.errors.messages.password_confirmation }}

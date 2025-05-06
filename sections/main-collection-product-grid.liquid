@@ -28,7 +28,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -67,7 +67,7 @@
                   {%- endfor -%}
                 </select>
                 <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                  {%- render 'icon-alls', icon: 'icon-caret' -%}
                 </span>
               </div>
             </div>
@@ -191,7 +191,7 @@
     </div>
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
-    {{ 'mask-arch.svg' | inline_asset_content }}
+    {%- render 'icon-alls', icon: 'icon-mask-arch' -%}
   {%- endif -%}
 </div>
 

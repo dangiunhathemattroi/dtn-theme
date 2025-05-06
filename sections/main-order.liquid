@@ -6,7 +6,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 768px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -96,7 +96,7 @@
                       {%- for discount_allocation in line_item.line_level_discount_allocations -%}
                         <li>
                           <span class="svg-wrapper">
-                            {{- 'icon-discount.svg' | inline_asset_content -}}
+                            {%- render 'icon-alls', icon: 'icon-discount' -%}
                           </span>
                           {{- discount_allocation.discount_application.title | escape }} (-
                           {{- discount_allocation.amount | money -}}
@@ -238,7 +238,7 @@
                   {{ 'customer.order.discount' | t }}
                   <span class="cart-discount">
                     <span class="svg-wrapper">
-                      {{- 'icon-discount.svg' | inline_asset_content -}}
+                      {%- render 'icon-alls', icon: 'icon-discount' -%}
                     </span>
                     {{- discount_application.title | escape -}}
                   </span>
@@ -248,7 +248,7 @@
                     <span>-{{ discount_application.total_allocated_amount | money }}</span>
                     <span class="cart-discount">
                       <span class="svg-wrapper">
-                        {{- 'icon-discount.svg' | inline_asset_content -}}
+                        {%- render 'icon-alls', icon: 'icon-discount' -%}
                       </span>
                       {{- discount_application.title | escape -}}
                     </span>
