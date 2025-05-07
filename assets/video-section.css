@@ -4,6 +4,32 @@
   padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
 }
 
+.video-wrapper {
+  --ratio-percent: 56.25%;
+  padding-bottom: var(--ratio-percent);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  position: relative;
+}
+
+.image-treatment-overlay {
+  opacity: 0;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  background: rgba(var(--image-treatment-overlay));
+}
+
+.image-treatment-overlay:empty {
+  display: block;
+}
+
 /* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
 .scroll-trigger:where(.gradient.video-section__media) {
   background: transparent;
@@ -36,13 +62,102 @@
 .video-section__media video {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 300%;
 }
-
 .video-section__media video {
   background: #000000;
 }
-
 .video-section__media.media-fit-cover video {
   object-fit: cover;
+}
+.video-content {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+}
+.promotion-banner {
+  padding-bottom: 2rem;
+}
+.leading-tight {
+  line-height: 1.25;
+  overflow: hidden;
+  word-break: break-word;
+  display: block;
+  margin: 0;
+}
+.content-promotion-banner {
+  margin-top: 1.25rem;
+  font-weight: 500;
+  line-height: 25.2px;
+}
+
+.content-promotion-banner:after {
+  clear: both;
+  content: var(--tw-content);
+  display: block;
+}
+
+.button-video-with-text {
+  background: #ffffff;
+  color: #252525;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25.2px;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.promotion-content {
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .content-banner {
+    max-width: 610px;
+  }
+  .promotion-banner {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .promotion-content {
+    display: flex;
+  }
+  .video-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .content-promotion-banner {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .video-wrapper {
+    --ratio-percent: 100%;
+    min-height: 680px;
+  }
+  .button-video-with-text {
+    margin-top: 25px;
+    font-size: 14px;
+    line-height: 19.6px;
+  }
 }
