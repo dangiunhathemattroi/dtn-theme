@@ -12,16 +12,28 @@
     "video": {
       "type": "video",
       "settings": {
-        "heading": "",
-        "heading_size": "h1",
+        "heading": "Galaxy S25 Ultra: AI Powered",
+        "heading_size": "hxl",
+        "content": "<p>Experience the future with the <strong>Samsung Galaxy S25 Ultra</strong>. AI-enhanced photography and seamless performance take your mobile experience to the next level.</p>",
         "enable_video_looping": true,
-        "video_url": "https://www.youtube.com/watch?v=yFHqOHywtFQ",
-        "cover_image": "shopify://shop_images/Banner.webp",
+        "enable_video_autoplay": true,
+        "video_url": "https://www.youtube.com/watch?v=AwCM6kg34eE",
+        "video_url_mobile": "",
         "description": "",
         "full_width": true,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "button_label": "Explore Now",
+        "button_link": "",
+        "open_new_window": false,
+        "position": "bottom-left",
+        "text_alignment": "left",
+        "align_content": "end",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "text_alignment_mobile": "left",
+        "align_content_mobile": "end",
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "rich_text": {
