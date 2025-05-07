@@ -96,6 +96,9 @@
   font-weight: 500;
   line-height: 25.2px;
 }
+.content-promotion-banner > * {
+  margin-bottom: 0;
+}
 
 .content-promotion-banner:after {
   clear: both;
