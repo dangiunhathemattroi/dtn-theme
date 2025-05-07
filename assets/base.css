@@ -321,13 +321,19 @@ h5,
 }
 
 .hxl {
-  font-size: calc(var(--font-heading-scale) * 5rem);
+  font-size: calc(var(--font-heading-scale) * 2.1rem);
   line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
 }
 
 @media only screen and (min-width: 768px) {
   .hxl {
-    font-size: calc(var(--font-heading-scale) * 6.2rem);
+    font-size: calc(var(--font-heading-scale) * 3.4rem);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hxl {
+    font-size: calc(var(--font-heading-scale) * 5.6rem);
   }
 }
 
@@ -473,6 +479,34 @@ table:not([class]) td,
 table:not([class]) th {
   padding: 1em;
   border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+.video-hero iframe {
+  width: 100%;
+  height: 300%;
+}
+.-translate-y-1\/2 {
+  --tw-translate-x: 0;
+  --tw-translate-y: -50%;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x))
+    skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.top-1\/2 {
+  top: 50%;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.pointer-events-none {
+  pointer-events: none;
 }
 
 @media screen and (max-width: 767px) {

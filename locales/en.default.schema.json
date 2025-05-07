@@ -456,6 +456,72 @@
           "label": "Round"
         },
         "label": "Image shape"
+      },
+      "desktop_content_position": {
+        "options__1": {
+          "label": "Top Left"
+        },
+        "options__2": {
+          "label": "Top Center"
+        },
+        "options__3": {
+          "label": "Top Right"
+        },
+        "options__4": {
+          "label": "Middle Left"
+        },
+        "options__5": {
+          "label": "Middle Center"
+        },
+        "options__6": {
+          "label": "Middle Right"
+        },
+        "options__7": {
+          "label": "Bottom Left"
+        },
+        "options__8": {
+          "label": "Bottom Center"
+        },
+        "options__9": {
+          "label": "Bottom Right"
+        },
+        "label": "Position"
+      },
+      "desktop_content_alignment": {
+        "options__1": {
+          "label": "Left"
+        },
+        "options__2": {
+          "label": "Center"
+        },
+        "options__3": {
+          "label": "Right"
+        },
+        "label": "Alignment"
+      },
+      "mobile_content_position": {
+        "options__1": {
+          "label": "Left"
+        },
+        "options__2": {
+          "label": "Center"
+        },
+        "options__3": {
+          "label": "Right"
+        },
+        "label": "Mobile position"
+      },
+      "align_content": {
+        "options__1": {
+          "label": "Start"
+        },
+        "options__2": {
+          "label": "Center"
+        },
+        "options__3": {
+          "label": "End"
+        },
+        "label": "Align content"
       }
     },
     "announcement-bar": {
@@ -3073,6 +3139,9 @@
         "enable_video_looping": {
           "label": "Loop video"
         },
+        "enable_video_autoplay": {
+          "label": "Auto play video"
+        },
         "header__1": {
           "content": "Shopify-hosted video"
         },
@@ -3089,6 +3158,10 @@
           "label": "URL",
           "info": "Use a YouTube or Vimeo URL"
         },
+        "video_url_mobile": {
+          "label": "URL mobile",
+          "info": "Use a YouTube or Vimeo URL"
+        },
         "description": {
           "label": "Video alt text",
           "info": "Describe the video for those using screen readers"
@@ -3099,6 +3172,25 @@
         },
         "full_width": {
           "label": "Full width"
+        },
+        "content": {
+          "label": "Text"
+        },
+        "desktop_layout": {
+          "content": "Desktop layout",
+          "text_alignment": "Text alignment",
+          "position": "Position",
+          "align_content": "Align content"
+        },
+        "mobile_layout": {
+          "content": "Mobile layout",
+          "text_alignment": "Text alignment"
+        },
+        "button_layout": {
+          "content": "Button Layout",
+          "label": "Button label",
+          "link": "Link",
+          "target": "Open this link in a new window"
         }
       },
       "presets": {
