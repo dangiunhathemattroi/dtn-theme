@@ -57,6 +57,7 @@
   flex-direction: row;
   justify-content: center;
   text-decoration: none;
+  font-weight: 700;
 }
 
 .show-view-all-wrapper span {
