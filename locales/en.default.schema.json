@@ -873,6 +873,9 @@
           "label": "\"View all\" button",
           "info": "Visible if collection has more products than shown"
         },
+        "view_all_text": {
+          "label": "\"View all\" text"
+        },
         "view_all_style": {
           "label": "\"View all\" style",
           "options__1": {
@@ -3588,6 +3591,42 @@
       },
       "presets": {
         "name": "Collapsible content"
+      }
+    },
+    "featured-collection-list": {
+      "name": "Featured collection list",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "heading_tag": {
+          "label": "Heading tag"
+        },
+        "heading_alignment": {
+          "label": "Heading alignment"
+        },
+        "desktop_layout": {
+          "label": "Desktop layout"
+        },
+        "full_page": {
+          "label": "Full width page"
+        }
+      },
+      "blocks": {
+        "collection": {
+          "name": "Collection",
+          "settings": {
+            "collection": {
+              "label": "Collection"
+            },
+            "title": {
+              "label": " Title",
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "Featured collection list"
       }
     }
   }

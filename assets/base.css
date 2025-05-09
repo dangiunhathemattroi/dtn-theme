@@ -1137,6 +1137,9 @@ summary::-webkit-details-marker {
   .grid--peek.slider .grid__item:first-of-type {
     margin-left: 1.5rem;
   }
+  .grid--peek.slider-page-width.slider .grid__item:first-of-type {
+    margin-left: 0;
+  }
 
   /* Fix to show some space at the end of our sliders in all browsers */
   .grid--peek.slider:after {
@@ -1155,6 +1158,16 @@ summary::-webkit-details-marker {
   .slider--tablet.grid--peek.grid--1-col-tablet-down .grid__item,
   .slider--mobile.grid--peek.grid--1-col-tablet-down .grid__item {
     width: calc(100% - var(--grid-mobile-horizontal-spacing) - 3rem);
+  }
+
+  .slider--tablet.slider-page-width.grid--peek.grid--2-col-tablet-down .grid__item,
+  .grid--peek.slider-page-width .grid__item {
+    width: calc(50%);
+  }
+
+  .slider--tablet.slider-page-width.grid--peek.grid--1-col-tablet-down .grid__item,
+  .slider--mobile.slider-page-width.grid--peek.grid--1-col-tablet-down .grid__item {
+    width: calc(100%);
   }
 }
 
@@ -1182,6 +1195,19 @@ summary::-webkit-details-marker {
 
   .grid--1-col-tablet-down.grid--peek .grid__item {
     width: calc(100% - var(--grid-desktop-horizontal-spacing) - 3rem);
+  }
+
+  .slider--tablet.slider-page-width.grid--peek.grid--2-col-tablet .grid__item,
+  .slider--tablet.slider-page-width.grid--peek.grid--2-col-tablet-down .grid__item {
+    width: calc(50%);
+  }
+
+  .slider--tablet.slider-page-width.grid--peek .grid__item {
+    width: calc(25%);
+  }
+
+  .slider--tablet.slider-page-width.grid--peek.grid--3-col-tablet .grid__item {
+    width: calc(33.33%);
   }
 }
 
