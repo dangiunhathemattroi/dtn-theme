@@ -292,11 +292,13 @@
     padding: 0 5rem;
   }
 
-  .collection slider-component:not(.page-width-desktop) {
+  .collection slider-component:not(.page-width-desktop),
+  .collection .fc-skeleton:not(.page-width-desktop) {
     padding: 0;
   }
 
-  .collection--full-width slider-component:not(.slider-component-desktop) {
+  .collection--full-width slider-component:not(.slider-component-desktop),
+  .collection--full-width .fc-skeleton:not(.slider-component-desktop) {
     padding: 0 1.5rem;
     max-width: none;
   }
