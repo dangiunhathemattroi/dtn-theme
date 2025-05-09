@@ -220,7 +220,7 @@ slider-component.slider-component-full-width {
   }
 
   .slider--desktop.slider-page-width.grid--5-col-desktop .grid__item {
-    width: calc(100% / 4- var(--grid-desktop-horizontal-spacing) * 2);
+    width: calc(100% / 4 - var(--grid-desktop-horizontal-spacing) * 2);
   }
 
   .slider--desktop.slider-page-width.grid--4-col-desktop .grid__item {
