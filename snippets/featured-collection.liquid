@@ -33,6 +33,7 @@
           assign show_desktop_slider = true
         endif
       -%}
+
       <featured-collection
         class="featured-collection"
         data-section-id="{{ section.id }}"
@@ -87,6 +88,22 @@
           {% for block in section.blocks %}
             {% liquid
               assign collection_skeleton = collections[block.settings.collection]
+
+              assign products_to_display_skeleton = collection_skeleton.all_products_count
+
+              if collection_skeleton.all_products_count > section.settings.products_to_show
+                assign products_to_display_skeleton = section.settings.products_to_show
+              endif
+
+              assign show_mobile_skeleton_slider = false
+              if section.settings.swipe_on_mobile and products_to_display_skeleton > section.settings.columns_mobile
+                assign show_mobile_skeleton_slider = true
+              endif
+
+              assign show_desktop_skeleton_slider = false
+              if section.settings.enable_desktop_slider and products_to_display_skeleton > section.settings.columns_desktop
+                assign show_desktop_skeleton_slider = true
+              endif
             %}
 
             {% render 'skeleton-featured-collection'
@@ -98,8 +115,8 @@
               , columns_mobile: section.settings.columns_mobile
               , show_vendor: section.settings.show_vendor
               , show_rating: section.settings.show_rating
-              , show_mobile_slider: show_mobile_slider
-              , show_desktop_slider: show_desktop_slider
+              , show_mobile_slider: show_mobile_skeleton_slider
+              , show_desktop_slider: show_desktop_skeleton_slider
               , full_page: section.settings.full_page
             %}
           {% endfor %}

@@ -622,6 +622,17 @@
   .skeleton-wrapper-information {
     padding: 1.7rem 0;
   }
+  .slider-component-desktop .skeleton-wrapper {
+    display: flex;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .slider-component-mobile .skeleton-wrapper {
+    display: flex;
+    white-space: nowrap;
+  }
 }
 
 /* Card Shape Hover Rules */
