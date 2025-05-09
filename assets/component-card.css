@@ -550,6 +550,80 @@
   clip-path: polygon(var(--shape--blob-1));
 }
 
+/* Skeleton style */
+
+.skeleton-wrapper {
+  display: flex;
+}
+
+.skeleton-wrapper *:empty {
+  display: block;
+}
+
+.skeleton-wrapper .skeleton-wrapper-information {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.skeleton-wrapper-information {
+  padding: 1.3rem 0;
+}
+
+.skeleton-title,
+.skeleton-vendor,
+.skeleton-rating,
+.skeleton-price,
+.skeleton-wrapper-image {
+  background: rgb(201 201 201);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-title,
+.skeleton-vendor,
+.skeleton-rating,
+.skeleton-price {
+  height: 0.75rem;
+}
+
+.skeleton-title {
+  width: 75%;
+}
+
+.skeleton-vendor,
+.skeleton-rating {
+  margin-top: 0.5rem;
+}
+
+.skeleton-vendor,
+.skeleton-rating {
+  width: 30%;
+}
+
+.skeleton-price {
+  width: 50%;
+}
+
+.skeleton-price {
+  margin-top: 0.5rem;
+}
+
+.skeleton-wrapper-image {
+  padding-bottom: 100%;
+}
+
+.skeleton-wrapper-image:before {
+  content: '';
+  height: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .skeleton-wrapper-information {
+    padding: 1.7rem 0;
+  }
+}
+
 /* Card Shape Hover Rules */
 
 @media (prefers-reduced-motion: no-preference) {

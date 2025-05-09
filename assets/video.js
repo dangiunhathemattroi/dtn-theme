@@ -108,7 +108,6 @@ if (!customElements.get('video-external')) {
           videoContainer.querySelector('.iframe-video').addEventListener('load', () => {
             setTimeout(() => {
               this.play(videoContainer);
-              console.log(host);
 
               if (host == 'youtube') {
                 this.ytIframeId++;
