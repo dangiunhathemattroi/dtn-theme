@@ -77,7 +77,7 @@
         "description": "<p>Description Description Description</p>",
         "description_style": "body",
         "columns_desktop": 5,
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "full_page": false,
         "color_scheme": "",
         "image_ratio": "square",
@@ -90,7 +90,7 @@
         "padding_bottom": 24,
         "view_all_style": "solid",
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "padding_top_mobile": 12,
         "padding_bottom_mobile": 12
       }
