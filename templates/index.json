@@ -133,7 +133,7 @@
       "settings": {
         "image": "shopify://shop_images/2024_Home_GBM_Product_Marketing_Neo_QLED_8K_PC_1440x810_d9924013-d058-47b1-b54d-5a647f1c358d.webp",
         "image_overlay_opacity": 10,
-        "image_height": "medium",
+        "image_height": "large",
         "image_behavior": "none",
         "desktop_content_position": "bottom-left",
         "desktop_content_alignment": "left",
