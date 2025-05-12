@@ -143,11 +143,51 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "image_with_text_HDPhkH": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_TiVXPw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Explore Our TN-DiGiWorld",
+            "heading_size": "hxl"
+          }
+        },
+        "text_VqxAt4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>⏱️ We're Open 9 PM - 6 AM GMT+7 Today</p><p>📍 Address & Directions</p><p>🛍️ TN-DiGiWorld - Ready within 30 minutes</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_TiVXPw",
+        "text_VqxAt4"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/storeInformatio.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "video",
     "featured_collection_list_z3mCrw",
-    "image_banner_GHEJjb"
+    "image_banner_GHEJjb",
+    "image_with_text_HDPhkH"
   ]
 }
