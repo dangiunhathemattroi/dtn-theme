@@ -157,7 +157,7 @@
 @media screen and (max-width: 767px) {
   .video-wrapper {
     --ratio-percent: 100%;
-    min-height: 680px;
+    min-height: 68rem;
   }
   .button-video-with-text {
     margin-top: 25px;
