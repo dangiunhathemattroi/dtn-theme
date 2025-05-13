@@ -32,6 +32,7 @@
         "padding_bottom": 76,
         "text_alignment_mobile": "left",
         "align_content_mobile": "end",
+        "show_text_below": false,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
@@ -151,7 +152,7 @@
           "type": "heading",
           "settings": {
             "heading": "Explore Our TN-DiGiWorld",
-            "heading_size": "hxl"
+            "heading_size": "h2"
           }
         },
         "text_VqxAt4": {
@@ -172,6 +173,7 @@
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
+        "full_width": true,
         "image_behavior": "none",
         "content_layout": "no-overlap",
         "desktop_content_position": "top",
