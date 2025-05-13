@@ -405,7 +405,9 @@
       "padding": {
         "section_padding_heading": "Padding",
         "padding_top": "Top",
-        "padding_bottom": "Bottom"
+        "padding_bottom": "Bottom",
+        "padding_right": "Right",
+        "padding_left": "Left"
       },
       "spacing": "Spacing",
       "colors": {

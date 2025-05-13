@@ -43,7 +43,7 @@
   {%- endif %}
 {%- endcapture -%}
 <div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="video-section video-wrapper isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+  <div class="video-section {% if section.settings.show_text_below %} banner-container-content-mobile {% endif %} video-wrapper isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
     <div class="image-treatment-overlay pointer-events-none"></div>
     <div class="video-content">
       {%- unless section.settings.heading == blank -%}
@@ -115,7 +115,8 @@
               data-loop="true"
               data-title="{{ section.settings.description | escape }}"
               data-controls="0"
-              data-lazyload="true"/>
+              data-lazyload="true" 
+              data-classes="{% if section.settings.show_text_below %} container-content-mobile {% endif %}"/>
         </div>
         {% if section.settings.video_url_mobile != blank %}
           <div class="video-hero external-video md:block-hidden block" data-media-id="{{ video_id }}">
@@ -125,7 +126,8 @@
                 data-loop="true"
                 data-title="{{ section.settings.description | escape }}"
                 data-controls="0"
-                data-lazyload="true"/>
+                data-lazyload="true" 
+                data-classes="{% if section.settings.show_text_below %} container-content-mobile {% endif %}"/>
           </div>
         {% endif %}
       {%- else -%}
@@ -459,6 +461,12 @@
           }
         ],
         "default": "end"
+      },
+      {
+        "type": "checkbox",
+        "default": false,
+        "id": "show_text_below",
+        "label": "t:sections.image-banner.settings.show_text_below.label"
       },
       {
         "type": "range",

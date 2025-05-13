@@ -1424,6 +1424,62 @@ button.shopify-payment-button__button--unbranded {
   padding: 1.2rem 2.6rem;
 }
 
+.button.button--primary {
+  padding: 1rem 3rem;
+  border-color: transparent;
+  border-radius: 20px;
+}
+
+.button.button--primary:hover {
+  --color-button: var(--color-secondary-button);
+  --color-button-text: var(--color-secondary-button-text);
+}
+
+.button.button--secondary {
+  vertical-align: middle;
+  -webkit-transition-property: color, background-color, border-color, border-bottom-color;
+  transition-property: color, background-color, border-color, border-bottom-color;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: cubic-bezier(0.33, 0, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.33, 0, 0.3, 1);
+}
+
+@keyframes cta-underline-animation {
+  0% {
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+  }
+
+  100% {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+.button.button--secondary:hover:after,
+.button.button--secondary:focus:after {
+  -webkit-animation: cta-underline-animation 0.2s both;
+  animation: cta-underline-animation 0.2s both;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.button.button--secondary::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 2px;
+  background-color: currentColor;
+  margin: 0 30px;
+}
+
 /* Shopify Accelerated Checkout */
 
 shopify-accelerated-checkout {

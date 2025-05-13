@@ -10,12 +10,13 @@ if (!customElements.get('video-external')) {
         this.loop = this.getAttribute('data-loop') === 'true';
         this.controls = this.getAttribute('data-controls');
         this.lazyload = this.getAttribute('data-lazyload') === 'true';
+        this.classes = this.getAttribute('data-classes');
         this.externalListened = false;
         this.ytIframeId = 0;
         this.vimeoIframeId = 0;
       }
       connectedCallback() {
-        this.externalLoad(this.host, this.id, this.loop, this.title, this.controls, this.lazyload);
+        this.externalLoad(this.host, this.id, this.loop, this.title, this.controls, this.lazyload, this.classes);
       }
       play(el) {
         let video = el.getElementsByClassName('video')[0];
