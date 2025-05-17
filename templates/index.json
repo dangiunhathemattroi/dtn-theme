@@ -102,45 +102,40 @@
         "column_LV7w4D": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
             "link": ""
           }
         },
         "column_8DHWck": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
+            "image": "shopify://shop_images/Backlit_Keypad-min.webp",
+            "title": "Smart Locks",
+            "text": "<p>Unlock peace of mind, from anywhere.</p>",
+            "link_label": "SHOP NOW",
             "link": ""
           }
         },
         "column_7irHiB": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
+            "image": "shopify://shop_images/Outdoor_CasaGP_House_V3_4fcf50a7-6496-4139-af17-74ded4ca9ea3-min.webp",
+            "title": "Smart Lighting",
+            "text": "<p>Brilliance, on command.</p>",
+            "link_label": "SHOP NOW",
             "link": ""
           }
         },
         "column_fkagTP": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_G9LMPq": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
+            "image": "shopify://shop_images/Duo_Cam_Doorbell_Silver_rs_sm.jpg",
+            "title": "Video Doorbells",
+            "text": "<p>Never miss a moment.</p>",
+            "link_label": "SHOP NOW",
             "link": ""
           }
         }
@@ -149,17 +144,16 @@
         "column_LV7w4D",
         "column_8DHWck",
         "column_7irHiB",
-        "column_fkagTP",
-        "column_G9LMPq"
+        "column_fkagTP"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "WHAT'S HOT",
+        "title": "Build your smarter home.",
         "heading_size": "h1",
         "heading_alignment": "center",
         "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "Button label",
+        "image_ratio": "portrait",
+        "button_label": "",
         "button_link": "",
         "columns_desktop": 3,
         "column_alignment": "left",
