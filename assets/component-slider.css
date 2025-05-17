@@ -180,6 +180,11 @@ slider-component.slider-component-full-width {
     scroll-margin-left: var(--desktop-margin-left-first-item);
   }
 
+  .page-width .slider--desktop .slider__slide:first-child {
+    margin-left: 0;
+    scroll-margin-left: 0;
+  }
+
   .slider--desktop.slider-page-width .slider__slide:first-child {
     margin-left: 0;
     scroll-margin-left: 0;

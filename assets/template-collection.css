@@ -146,7 +146,7 @@
   pointer-events: none;
 }
 
-.fc-tab-content:hover .carousel-system__button-wrap {
+slider-component:hover .carousel-system__button-wrap {
   border: initial;
   clip: auto;
   height: unset;
@@ -161,8 +161,8 @@
   position: absolute;
 }
 
-.fc-tab-content:not(:hover) .carousel-system__button-wrap:has(button:focus),
-.fc-tab-content:not(:hover) .carousel-system__button-wrap:has(button:focus-visible) {
+slider-component:not(:hover) .carousel-system__button-wrap:has(button:focus),
+slider-component:not(:hover) .carousel-system__button-wrap:has(button:focus-visible) {
   border: initial;
   clip: auto;
   height: unset;
@@ -251,7 +251,7 @@
     height: calc(100% - var(--grid-desktop-horizontal-spacing));
   }
 
-  .fc-tab-content:hover .carousel-system__button-wrap {
+  slider-component:hover .carousel-system__button-wrap {
     height: calc(100% - var(--grid-desktop-horizontal-spacing));
   }
 }
