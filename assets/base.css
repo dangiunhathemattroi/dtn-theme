@@ -1435,7 +1435,7 @@ button.shopify-payment-button__button--unbranded {
   --color-button-text: var(--color-secondary-button-text);
 }
 
-.button.button--secondary {
+.banner__buttons .button.button--secondary {
   vertical-align: middle;
   -webkit-transition-property: color, background-color, border-color, border-bottom-color;
   transition-property: color, background-color, border-color, border-bottom-color;
@@ -1459,8 +1459,8 @@ button.shopify-payment-button__button--unbranded {
   }
 }
 
-.button.button--secondary:hover:after,
-.button.button--secondary:focus:after {
+.banner__buttons .button.button--secondary:hover:after,
+.banner__buttons .button.button--secondary:focus:after {
   -webkit-animation: cta-underline-animation 0.2s both;
   animation: cta-underline-animation 0.2s both;
   -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1469,7 +1469,7 @@ button.shopify-payment-button__button--unbranded {
   animation-delay: 0.1s;
 }
 
-.button.button--secondary::after {
+.banner__buttons .button.button--secondary::after {
   content: '';
   position: absolute;
   left: 0;

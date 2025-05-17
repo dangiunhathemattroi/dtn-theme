@@ -46,8 +46,8 @@ class PredictiveSearch extends SearchForm {
     this.getSearchResults(this.searchTerm);
   }
 
-  onFormSubmit(event) {
-    if (!this.getQuery().length || this.querySelector('[aria-selected="true"] a')) event.preventDefault();
+  onFormSubmit(event) {        
+    if (!this.getQuery().length || this.querySelector('[aria-selected="true"] a')) return;
   }
 
   onFormReset(event) {
@@ -167,7 +167,7 @@ class PredictiveSearch extends SearchForm {
     if (selectedOption) selectedOption.click();
   }
 
-  getSearchResults(searchTerm) {
+  getSearchResults(searchTerm) {    
     const queryKey = searchTerm.replace(' ', '-').toLowerCase();
     this.setLiveRegionLoadingState();
 
