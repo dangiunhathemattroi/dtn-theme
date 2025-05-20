@@ -138,14 +138,14 @@
     },
     "content_for_index": [],
     "blocks": {
-      "13768625480086291342": {
-        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
-        "disabled": false,
-        "settings": {}
-      },
       "8208493610395315515": {
         "type": "shopify://apps/dondy-whatsapp-chat-marketing/blocks/app-block/7f5a70cb-e171-4cc7-ac02-e2220203abd6",
         "disabled": true,
+        "settings": {}
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
         "settings": {}
       }
     },
