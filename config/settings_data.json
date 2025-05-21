@@ -152,6 +152,11 @@
         "type": "shopify://apps/mailchimp-email-sms/blocks/mailchimp_for_shopify_script/e3b67dce-fd41-4b61-b3cf-961c12344cde",
         "disabled": false,
         "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
