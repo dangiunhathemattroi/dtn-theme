@@ -524,6 +524,17 @@
           "label": "End"
         },
         "label": "Align content"
+      },
+      "full_width": "Full page width",
+      "columns": "Columns",
+      "columns_mobile": {
+        "label": "Mobile columns",
+        "options__1": {
+          "label": "1"
+        },
+        "options__2": {
+          "label": "2"
+        }
       }
     },
     "announcement-bar": {
@@ -3629,6 +3640,45 @@
       },
       "presets": {
         "name": "Featured collection list"
+      }
+    },
+    "product-recommendations": {
+      "name": "Product recommendations",
+      "settings": {
+        "heading": {
+          "content": "Heading",
+          "label": "Heading"
+        },
+        "heading_alignment": {
+          "label": "Heading alignment"
+        },
+        "description": {
+          "label": "Description"
+        },
+        "description_alignment": {
+          "label": "Description alignment"
+        },
+        "products_to_show": {
+          "label": "Products to show"
+        },
+        "desktop_layout": {
+          "content": "Desktop layout"
+        },
+        "mobile_layout": {
+          "content": "Mobile layout"
+        },
+        "enable_carousel_desktop": {
+          "label": "Enable carousel on desktop"
+        },
+        "enable_swiper_mobile": {
+          "label": "Enable swipe on mobile"
+        },
+        "product_card": {
+          "content": "Product card"
+        }
+      },
+      "presets": {
+        "name": "Product recommendations"
       }
     }
   }
