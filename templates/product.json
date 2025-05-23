@@ -252,12 +252,12 @@
         "quick_add": "none",
         "enable_carousel_desktop": true,
         "columns_desktop": 4,
-        "padding_top": 28,
-        "padding_bottom": 28,
+        "padding_top": 0,
+        "padding_bottom": 0,
         "enable_swiper_mobile": true,
         "columns_mobile": "2",
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 20
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
       }
     }
   },
