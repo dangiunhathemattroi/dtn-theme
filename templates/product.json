@@ -236,10 +236,10 @@
       "type": "product-recomendations",
       "name": "t:sections.product-recommendations.presets.name",
       "settings": {
-        "heading": "",
-        "heading_size": "h2",
+        "heading": "YOU MAY ALSO LIKE",
+        "heading_size": "h0",
         "heading_alignment": "center",
-        "description": "",
+        "description": "Discover the latest products and find the perfect items for you!",
         "description_style": "body",
         "products_to_show": 25,
         "full_width": false,
