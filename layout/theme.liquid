@@ -21,6 +21,18 @@
         crossorigin>
     {%- endunless -%}
 
+    {%- style -%}
+      @font-face {
+        font-family: 'sallaicons';
+        font-style: normal;
+        font-weight: 100 900;
+        font-stretch: 100%;
+        font-display: swap;
+        src: url('{{ "sallaicons.ttf" | asset_url }}') format("truetype");
+        unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC;
+      }
+    {%- endstyle -%}
+
     <title>
       {{ page_title }}
       {%- if current_tags %}
@@ -56,6 +68,7 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+    
 
     <link
       rel="stylesheet"

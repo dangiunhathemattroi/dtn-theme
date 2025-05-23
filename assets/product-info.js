@@ -400,6 +400,14 @@ if (!customElements.get('product-info')) {
         return document.querySelector(`product-recommendations[data-section-id^="${relatedProductsSectionId}"]`);
       }
 
+      get productRecommendations() {
+        const productRecommendationsSectionId = SectionId.getIdForSection(
+          SectionId.parseId(this.sectionId),
+          'product-recommendations'
+        );
+        return document.querySelector(`product-recommendations[data-section-id^="${productRecommendationsSectionId}"]`);
+      }
+
       get quickOrderList() {
         const quickOrderListSectionId = SectionId.getIdForSection(
           SectionId.parseId(this.sectionId),
