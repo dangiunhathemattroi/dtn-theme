@@ -34,7 +34,7 @@ if (!customElements.get('featured-collection')) {
 
       loadContent(index) {
         this.currentTab = index;
-        const skeleton = document.getElementById(`skeleton-${this.sectionId}-${index}`);
+        const skeleton = document.getElementById(`fc-skeleton-${this.sectionId}-${index}`);
         skeleton?.classList.remove('hidden');
 
         this.querySelectorAll('.fc-tab-content').forEach((tab) => {
