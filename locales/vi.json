@@ -381,6 +381,10 @@
       "min_error": "Mặt hàng này có tối thiểu {{ min }}",
       "max_error": "Mặt hàng này có tối đa {{ max }}",
       "step_error": "Bạn chỉ có thể thêm mặt hàng này theo đơn vị giao dịch {{ step }}"
+    },
+    "product_recommendations": {
+      "related_products": "Sản phẩm liên quan",
+      "viewed_products": "Sản phẩm đã xem"
     }
   },
   "localization": {
