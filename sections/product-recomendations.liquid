@@ -43,263 +43,277 @@
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div
-    class="product-recommendation section-{{ section.id }}-padding {% unless section.settings.full_width %} page-width {% endunless %}"
+    class="product-recommendation section-{{ section.id }}-padding {% unless section.settings.full_width %} page-width {% endunless %} isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     id="product-recommendation-{{ section.id }}"
     data-id="{{ section.id }}">
-      <div class="suggestions-viewed-products-{{ section.id }}">
-        <suggestion-viewed-products
-          class="suggestions-viewed-products"
-          data-max-to-show="{{ section.settings.products_to_show }}"
-          data-section-id="{{ section.id }}"
-          data-product-id="{{ product.id }}">
-          <div class="text-{{ section.settings.heading_alignment }} heading-suggestions-viewed-products hidden" id="heading-{{ section.id }}">
-            {%- if section.settings.heading != blank -%}
-              <h2 class="title inline-richtext {{ section.settings.heading_size }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                {{ section.settings.heading | escape }}
-              </h2>
-            {%- endif -%}
-            {%- if section.settings.description != blank -%}
-                <div class="description {{ section.settings.description_style }} rte {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in {% endif %}">
-                  {{ section.settings.description | escape -}}
-                </div>
-              {%- endif -%}
-          </div>
-          <div class="tabbed-carousel page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            <div class="tabbed-carousel__context-wrapper {% if section.settings.show_view_all %} items-center {%- endif -%}">
-              <div class="tabbed-carousel__title-and-tabs-wrapper">
-                <div class="tabs-container">
-                  <button data-tab="related-products" id="btn-related-products-{{ section.id }}" class="btn-title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} hidden lg:ml-0 rtl:ml-6 md:pr-4">
-                    <span class="hover-text-link leading-snug">
-                      {{ 'sections.product_recommendations.related_products' | t }}
-                    </span>
-                  </button>
-                  <button data-tab="viewed-products" id="btn-viewed-products-{{ section.id }}" class="btn-title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} hidden lg:ml-2.5 rtl:ml-0 md:pr-0">
-                    <span class="hover-text-link leading-snug">
-                      {{ 'sections.product_recommendations.viewed_products' | t }}
-                    </span>
-                  </button>
-                </div>
+    <div class="suggestions-viewed-products-{{ section.id }}">
+      <suggestion-viewed-products
+        class="suggestions-viewed-products"
+        data-max-to-show="{{ section.settings.products_to_show }}"
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}">
+        <div class="text-{{ section.settings.heading_alignment }} heading-suggestions-viewed-products" id="heading-{{ section.id }}">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="title inline-richtext {{ section.settings.heading_size }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.heading | escape }}
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.description != blank -%}
+            <div class="description {{ section.settings.description_style }} rte {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in {% endif %}">
+              {{ section.settings.description | escape -}}
+            </div>
+          {%- endif -%}
+        </div>
+        <div class="tabbed-carousel page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <div class="tabbed-carousel__context-wrapper {% if section.settings.show_view_all %} items-center {%- endif -%}">
+            <div class="tabbed-carousel__title-and-tabs-wrapper">
+              <div class="tabs-container">
+                <button
+                  data-tab="related-products"
+                  id="btn-related-products-{{ section.id }}"
+                  class="btn-title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} lg:ml-0 rtl:ml-6 md:pr-4">
+                  <span class="hover-text-link leading-snug">
+                    {{ 'sections.product_recommendations.related_products' | t }}
+                  </span>
+                </button>
+                <button
+                  data-tab="viewed-products"
+                  id="btn-viewed-products-{{ section.id }}"
+                  class="btn-title {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} lg:ml-2.5 rtl:ml-0 md:pr-0">
+                  <span class="hover-text-link leading-snug">
+                    {{ 'sections.product_recommendations.viewed_products' | t }}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
+        </div>
+        <related-products 
+          data-max-to-show="{{ section.settings.products_to_show }}"
+          data-section-id="{{ section.id }}"
+          data-product-id="{{ product.id }}" 
+          id="related-products-{{ section.id }}" 
+          class="tab-content hidden">
+          {%- liquid
+            assign products_to_display = recommendations.products_count
+            if recommendations.products_count > section.settings.products_to_show
+              assign products_to_display = section.settings.products_to_show
+            endif
+            assign show_mobile_slider = false
+            if section.settings.enable_swiper_mobile and products_to_display > columns_mobile_int
+              assign show_mobile_slider = true
+            endif
+
+            assign max_columns_to_show = columns_mobile_int
+            if columns_desktop_int > columns_mobile_int
+              assign max_columns_to_show = columns_desktop_int
+            endif
+
+            assign show_desktop_slider = false
+            if section.settings.enable_carousel_desktop and products_to_display > section.settings.columns_desktop
+              assign show_desktop_slider = true
+            endif
+          -%}
           {% if recommendations.performed and recommendations.products_count > 0 %}
-            <div id="related-products-{{ section.id }}" class="tab-content hidden">
-              {%- liquid
-                assign products_to_display = recommendations.products_count
-
-                if recommendations.products_count > section.settings.products_to_show
-                  assign products_to_display = section.settings.products_to_show
-                endif
-                assign show_mobile_slider = false
-                if section.settings.enable_swiper_mobile and products_to_display > columns_mobile_int
-                  assign show_mobile_slider = true
-                endif
-
-                assign max_columns_to_show = columns_mobile_int
-                if columns_desktop_int > columns_mobile_int
-                  assign max_columns_to_show = columns_desktop_int
-                endif
-
-                assign show_desktop_slider = false
-                if section.settings.enable_carousel_desktop and products_to_display > section.settings.columns_desktop
-                  assign show_desktop_slider = true
-                endif
-              -%}
-              <related-products class="related-products isolate {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                  <ul
-                    id="Slider-{{ section.id }}"
-                    data-id="{{ section.id }}"
-                    class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if recommendations.products == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}{% unless section.settings.full_page %} slider-page-width {% endunless %}"
-                    role="list"
-                    aria-label="{{ 'general.slider.name' | t }}">
-                    {% assign skip_card_product_styles = false %}
-                    {% assign lazy_load = false %}
-                    {% paginate recommendations.products by section.settings.products_to_show %}
-                      {% for recommendation in recommendations.products limit: section.settings.products_to_show %}
-                        {% if lazy_load == false and forloop.index > max_columns_to_show %}
-                          {% assign lazy_load = true %}
-                        {% endif %}
-                        <li
-                          id="Slide-{{ section.id }}-{{ forloop.index }}"
-                          class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                          {% if settings.animations_reveal_on_scroll %}
-                          data-cascade
-                          style="--animation-order: {{ forloop.index }};"
-                          {% endif %}>
-                          {% render 'card-product'
-                            , card_product: recommendation
-                            , media_aspect_ratio: section.settings.image_ratio
-                            , image_shape: section.settings.image_shape
-                            , lazy_load: lazy_load
-                            , show_secondary_image: section.settings.show_secondary_image
-                            , show_vendor: section.settings.show_vendor
-                            , show_rating: section.settings.show_rating
-                            , skip_styles: skip_card_product_styles
-                            , section_id: section.id
-                            , quick_add: section.settings.quick_add
-                          %}
-                        </li>
-                        {%- assign skip_card_product_styles = true -%}
-                      {% endfor %}
-                    {% endpaginate %}
-                  </ul>
-                  {%- if show_mobile_slider or show_desktop_slider -%}
-                    <div class="carousel-system__button-wrap-prev carousel-system__button-wrap">
-                      <button
-                        type="button"
-                        class="slider-button slider-button--prev"
-                        name="previous"
-                        aria-label="{{ 'general.slider.previous_slide' | t }}"
-                        aria-controls="Slider-{{ section.id }}">
-                        <span class="svg-wrapper">
-                          {%- render 'icon-alls'
-                            , icon: 'icon-caret' -%}
-                        </span>
-                      </button>
-                    </div>
-
-                    <div class="slider-counter caption hidden">
-                      <span class="slider-counter--current">1</span>
-                      <span aria-hidden="true">
-                        /
+            <div class="related-products isolate {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                <ul
+                  id="Slider-{{ section.id }}"
+                  data-id="{{ section.id }}"
+                  class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if recommendations.products == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}{% unless section.settings.full_page %} slider-page-width {% endunless %}"
+                  role="list"
+                  aria-label="{{ 'general.slider.name' | t }}">
+                  {% assign skip_card_product_styles = false %}
+                  {% assign lazy_load = false %}
+                  {% paginate recommendations.products by section.settings.products_to_show %}
+                    {% for recommendation in recommendations.products limit: section.settings.products_to_show %}
+                      {% if lazy_load == false and forloop.index > max_columns_to_show %}
+                        {% assign lazy_load = true %}
+                      {% endif %}
+                      <li
+                        id="Slide-{{ section.id }}-{{ forloop.index }}"
+                        class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: {{ forloop.index }};"
+                        {% endif %}>
+                        {% render 'card-product'
+                          , card_product: recommendation
+                          , media_aspect_ratio: section.settings.image_ratio
+                          , image_shape: section.settings.image_shape
+                          , lazy_load: lazy_load
+                          , show_secondary_image: section.settings.show_secondary_image
+                          , show_vendor: section.settings.show_vendor
+                          , show_rating: section.settings.show_rating
+                          , skip_styles: skip_card_product_styles
+                          , section_id: section.id
+                          , quick_add: section.settings.quick_add
+                        %}
+                      </li>
+                      {%- assign skip_card_product_styles = true -%}
+                    {% endfor %}
+                  {% endpaginate %}
+                </ul>
+                {%- if show_mobile_slider or show_desktop_slider -%}
+                  <div class="carousel-system__button-wrap-prev carousel-system__button-wrap">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--prev"
+                      name="previous"
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      <span class="svg-wrapper">
+                        {%- render 'icon-alls'
+                          , icon: 'icon-caret' -%}
                       </span>
-                      <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-                      <span class="slider-counter--total">{{ products_to_display }}</span>
-                    </div>
-                    <div class="carousel-system__button-wrap-next carousel-system__button-wrap">
-                      <button
-                        type="button"
-                        class="slider-button slider-button--next"
-                        name="next"
-                        aria-label="{{ 'general.slider.next_slide' | t }}"
-                        aria-controls="Slider-{{ section.id }}">
-                        <span class="svg-wrapper">
-                          {%- render 'icon-alls'
-                            , icon: 'icon-caret' -%}
-                        </span>
-                      </button>
-                    </div>
-                  {%- endif -%}
-                </slider-component>
-              </related-products>
-              {% if section.settings.image_shape == 'arch' %}
-                {%- render 'icon-alls'
-                  , icon: 'icon-mask-arch' -%}
-              {%- endif -%}
+                    </button>
+                  </div>
+                  <div class="slider-counter caption hidden">
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true">
+                      /
+                    </span>
+                    <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                    <span class="slider-counter--total">{{ products_to_display }}</span>
+                  </div>
+                  <div class="carousel-system__button-wrap-next carousel-system__button-wrap">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--next"
+                      name="next"
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      <span class="svg-wrapper">
+                        {%- render 'icon-alls'
+                          , icon: 'icon-caret' -%}
+                      </span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </slider-component>
             </div>
+            {% if section.settings.image_shape == 'arch' %}
+              {%- render 'icon-alls'
+                , icon: 'icon-mask-arch' -%}
+            {%- endif -%}            
           {% endif %}
+        </related-products>
+        <viewed-products
+          data-max-to-show="{{ section.settings.products_to_show }}"
+          data-section-id="{{ section.id }}"
+          data-product-id="{{ product.id }}"
+          id="viewed-products-{{ section.id }}"
+          class="tab-content hidden">
+          {%- liquid
+            assign products_to_display = search.results_count
+
+            if search.results_count > section.settings.products_to_show
+              assign products_to_display = section.settings.products_to_show
+            endif
+            assign show_mobile_slider = false
+            if section.settings.enable_swiper_mobile and products_to_display > columns_mobile_int
+              assign show_mobile_slider = true
+            endif
+
+            assign max_columns_to_show = columns_mobile_int
+            if columns_desktop_int > columns_mobile_int
+              assign max_columns_to_show = columns_desktop_int
+            endif
+
+            assign show_desktop_slider = false
+            if section.settings.enable_carousel_desktop and products_to_display > section.settings.columns_desktop
+              assign show_desktop_slider = true
+            endif
+          -%}
           {%- if search.performed and search.results_count > 0 -%}
-            <div id="viewed-products-{{ section.id }}" class="tab-content hidden">
-              {%- liquid
-                assign products_to_display = search.results_count
-
-                if search.results_count > section.settings.products_to_show
-                  assign products_to_display = section.settings.products_to_show
-                endif
-                assign show_mobile_slider = false
-                if section.settings.enable_swiper_mobile and products_to_display > columns_mobile_int
-                  assign show_mobile_slider = true
-                endif
-
-                assign max_columns_to_show = columns_mobile_int
-                if columns_desktop_int > columns_mobile_int
-                  assign max_columns_to_show = columns_desktop_int
-                endif
-
-                assign show_desktop_slider = false
-                if section.settings.enable_carousel_desktop and products_to_display > section.settings.columns_desktop
-                  assign show_desktop_slider = true
-                endif
-              -%}
-              <viewed-products class="viewed-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                  <ul
-                    id="Slider-{{ section.id }}"
-                    data-id="{{ section.id }}"
-                    class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if search.results == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}{% unless section.settings.full_page %} slider-page-width {% endunless %}"
-                    role="list"
-                    aria-label="{{ 'general.slider.name' | t }}">
-                    {% assign skip_card_product_styles = false %}
-                    {% assign lazy_load = false %}
-                    {% paginate search.results by section.settings.products_to_show %}
-                      {% for product in search.results limit: section.settings.products_to_show %}
-                        {% if lazy_load == false and forloop.index > max_columns_to_show %}
-                          {% assign lazy_load = true %}
-                        {% endif %}
-                        <li
-                          id="Slide-{{ section.id }}-{{ forloop.index }}"
-                          class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                          {% if settings.animations_reveal_on_scroll %}
-                          data-cascade
-                          style="--animation-order: {{ forloop.index }};"
-                          {% endif %}>
-                          {% render 'card-product'
-                            , card_product: product
-                            , media_aspect_ratio: section.settings.image_ratio
-                            , image_shape: section.settings.image_shape
-                            , lazy_load: lazy_load
-                            , show_secondary_image: section.settings.show_secondary_image
-                            , show_vendor: section.settings.show_vendor
-                            , show_rating: section.settings.show_rating
-                            , skip_styles: skip_card_product_styles
-                            , section_id: section.id
-                            , quick_add: section.settings.quick_add
-                          %}
-                        </li>
-                        {%- assign skip_card_product_styles = true -%}
-                      {% endfor %}
-                    {% endpaginate %}
-                  </ul>
-                  {%- if show_mobile_slider or show_desktop_slider -%}
-                    <div class="carousel-system__button-wrap-prev carousel-system__button-wrap">
-                      <button
-                        type="button"
-                        class="slider-button slider-button--prev"
-                        name="previous"
-                        aria-label="{{ 'general.slider.previous_slide' | t }}"
-                        aria-controls="Slider-{{ section.id }}">
-                        <span class="svg-wrapper">
-                          {%- render 'icon-alls'
-                            , icon: 'icon-caret' -%}
-                        </span>
-                      </button>
-                    </div>
-
-                    <div class="slider-counter caption hidden">
-                      <span class="slider-counter--current">1</span>
-                      <span aria-hidden="true">
-                        /
+            <div class="viewed-products {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                <ul
+                  id="Slider-{{ section.id }}"
+                  data-id="{{ section.id }}"
+                  class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if search.results == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}{% unless section.settings.full_page %} slider-page-width {% endunless %}"
+                  role="list"
+                  aria-label="{{ 'general.slider.name' | t }}">
+                  {% assign skip_card_product_styles = false %}
+                  {% assign lazy_load = false %}
+                  {% paginate search.results by section.settings.products_to_show %}
+                    {% for product in search.results limit: section.settings.products_to_show %}
+                      {% if lazy_load == false and forloop.index > max_columns_to_show %}
+                        {% assign lazy_load = true %}
+                      {% endif %}
+                      <li
+                        id="Slide-{{ section.id }}-{{ forloop.index }}"
+                        class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                        {% if settings.animations_reveal_on_scroll %}
+                        data-cascade
+                        style="--animation-order: {{ forloop.index }};"
+                        {% endif %}>
+                        {% render 'card-product'
+                          , card_product: product
+                          , media_aspect_ratio: section.settings.image_ratio
+                          , image_shape: section.settings.image_shape
+                          , lazy_load: lazy_load
+                          , show_secondary_image: section.settings.show_secondary_image
+                          , show_vendor: section.settings.show_vendor
+                          , show_rating: section.settings.show_rating
+                          , skip_styles: skip_card_product_styles
+                          , section_id: section.id
+                          , quick_add: section.settings.quick_add
+                        %}
+                      </li>
+                      {%- assign skip_card_product_styles = true -%}
+                    {% endfor %}
+                  {% endpaginate %}
+                </ul>
+                {%- if show_mobile_slider or show_desktop_slider -%}
+                  <div class="carousel-system__button-wrap-prev carousel-system__button-wrap">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--prev"
+                      name="previous"
+                      aria-label="{{ 'general.slider.previous_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      <span class="svg-wrapper">
+                        {%- render 'icon-alls'
+                          , icon: 'icon-caret' -%}
                       </span>
-                      <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-                      <span class="slider-counter--total">{{ products_to_display }}</span>
-                    </div>
-                    <div class="carousel-system__button-wrap-next carousel-system__button-wrap">
-                      <button
-                        type="button"
-                        class="slider-button slider-button--next"
-                        name="next"
-                        aria-label="{{ 'general.slider.next_slide' | t }}"
-                        aria-controls="Slider-{{ section.id }}">
-                        <span class="svg-wrapper">
-                          {%- render 'icon-alls'
-                            , icon: 'icon-caret' -%}
-                        </span>
-                      </button>
-                    </div>
-                  {%- endif -%}
-                </slider-component>
-              </viewed-products>
-              {% if section.settings.image_shape == 'arch' %}
-                {%- render 'icon-alls'
-                  , icon: 'icon-mask-arch' -%}
-              {%- endif -%}
+                    </button>
+                  </div>
+
+                  <div class="slider-counter caption hidden">
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true">
+                      /
+                    </span>
+                    <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                    <span class="slider-counter--total">{{ products_to_display }}</span>
+                  </div>
+                  <div class="carousel-system__button-wrap-next carousel-system__button-wrap">
+                    <button
+                      type="button"
+                      class="slider-button slider-button--next"
+                      name="next"
+                      aria-label="{{ 'general.slider.next_slide' | t }}"
+                      aria-controls="Slider-{{ section.id }}">
+                      <span class="svg-wrapper">
+                        {%- render 'icon-alls'
+                          , icon: 'icon-caret' -%}
+                      </span>
+                    </button>
+                  </div>
+                {%- endif -%}
+              </slider-component>
             </div>
+            {% if section.settings.image_shape == 'arch' %}
+              {%- render 'icon-alls'
+                , icon: 'icon-mask-arch' -%}
+            {%- endif -%}
           {%- endif -%}
-        </suggestion-viewed-products>
-      </div>
+        </viewed-products>
+      </suggestion-viewed-products>
     </div>
   </div>
+</div>
 <script src="{{ 'suggestion-viewed-products.js' | asset_url }}" defer></script>
 {% schema %}
   {
