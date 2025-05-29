@@ -233,7 +233,7 @@
       }
     },
     "product_recomendations_XUGJfD": {
-      "type": "product-recomendations",
+      "type": "suggestion-viewed-products",
       "name": "t:sections.product-recommendations.presets.name",
       "settings": {
         "heading": "YOU MAY ALSO LIKE",
