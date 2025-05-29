@@ -67,7 +67,6 @@
         "collection_GMCdbE",
         "collection_H7wF8k"
       ],
-      "name": "t:sections.featured-collection-list.presets.name",
       "settings": {
         "heading": "",
         "products_to_show": 25,
@@ -80,13 +79,13 @@
         "columns_desktop": 4,
         "enable_desktop_slider": true,
         "full_page": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": true,
-        "quick_add": "none",
+        "quick_add": "standard",
         "padding_top": 24,
         "padding_bottom": 24,
         "view_all_style": "solid",
@@ -146,7 +145,6 @@
         "column_7irHiB",
         "column_fkagTP"
       ],
-      "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Build your smarter home.",
         "heading_size": "h0",
@@ -200,7 +198,6 @@
         "text_8gXfTN",
         "buttons_WfkTRj"
       ],
-      "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/2024_Home_GBM_Product_Marketing_Neo_QLED_8K_PC_1440x810_d9924013-d058-47b1-b54d-5a647f1c358d.webp",
         "image_overlay_opacity": 10,
@@ -237,7 +234,6 @@
         "heading_TiVXPw",
         "text_VqxAt4"
       ],
-      "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/storeInformatio.webp",
         "height": "adapt",
