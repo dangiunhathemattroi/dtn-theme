@@ -146,6 +146,8 @@ slider-component:not(:hover) .carousel-system__button-wrap:has(button:focus-visi
 .suggestion {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .button-explore-now {
@@ -219,7 +221,6 @@ slider-component:not(:hover) .carousel-system__button-wrap:has(button:focus-visi
 
 @media screen and (max-width: 767px) {
   .button-explore-now {
-    margin-top: 25px;
     font-size: 14px;
     line-height: 19.6px;
   }
