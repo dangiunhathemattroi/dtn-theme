@@ -243,7 +243,7 @@
         "products_to_show": 25,
         "full_width": false,
         "color_scheme": "",
-        "collection_no_results": "",
+        "collection_no_results": "all-product",
         "link_no_results": "",
         "image_ratio": "adapt",
         "image_shape": "default",
