@@ -3675,6 +3675,15 @@
         },
         "product_card": {
           "content": "Product card"
+        },
+        "no_results": {
+          "content": "No search results"
+        },
+        "collection_no_results": {
+          "label": "Collection"
+        },
+        "link_no_results": {
+          "label": "Link"
         }
       },
       "presets": {

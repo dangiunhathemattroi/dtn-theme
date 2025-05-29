@@ -16,26 +16,12 @@ if (!customElements.get('suggestion-viewed-products')) {
       }
 
       connectedCallback() {
-        this._initIntersectionObserver();
         this.relatedBtn = document.getElementById(`btn-related-products-${this.section}`);
         this.viewedBtn = document.getElementById(`btn-viewed-products-${this.section}`);
         this.relatedTab = this.querySelector(`related-products#related-products-${this.section}`);
         this.viewedTab = this.querySelector(`viewed-products#viewed-products-${this.section}`);
 
         this._setupTabListeners();
-      }
-
-      _initIntersectionObserver() {
-        this.observer?.unobserve(this);
-        this.observer = new IntersectionObserver(
-          async (entries, observer) => {
-            if (!entries[0].isIntersecting) return;
-            observer.unobserve(this);
-            await this._showPreferredTab();
-          },
-          { rootMargin: '0px 0px 800px 0px' }
-        );
-        this.observer.observe(this);
       }
 
       _setupTabListeners() {
@@ -64,17 +50,9 @@ if (!customElements.get('suggestion-viewed-products')) {
 
         if (tabName === 'related-products') {
           if (!this.relatedTab) return;
-          await customElements.whenDefined('related-products');
-          if (!this.relatedTab.loaded) {
-            await this.relatedTab.loadRelatedProducts(this.productId);
-          }
           this.relatedTab.classList.remove('hidden');
         } else if (tabName === 'viewed-products') {
           if (!this.viewedTab) return;
-          await customElements.whenDefined('viewed-products');
-          if (!this.viewedTab.loaded) {
-            await this.viewedTab.loadViewedProducts(this.productId);
-          }
           this.viewedTab.classList.remove('hidden');
         }
       }
@@ -83,34 +61,6 @@ if (!customElements.get('suggestion-viewed-products')) {
         [this.relatedTab, this.viewedTab].forEach((tab) => {
           tab?.classList.add('hidden');
         });
-      }
-
-      async _showPreferredTab() {
-        if (this.relatedTab) {
-          await customElements.whenDefined('related-products');
-          await this.relatedTab.loadRelatedProducts(this.productId);
-          if (this.relatedTab.innerHTML.trim().length > 0) {
-            this._activateButton(this.relatedBtn);
-            this.relatedTab.classList.remove('hidden');
-            this.viewedTab?.classList.add('hidden');
-            return;
-          }
-        }
-
-        if (this.viewedTab) {
-          await customElements.whenDefined('viewed-products');
-          await this.viewedTab.loadViewedProducts(this.productId);
-          if (this.viewedTab.innerHTML.trim().length > 0) {
-            this._activateButton(this.viewedBtn);
-            this.viewedTab.classList.remove('hidden');
-            this.relatedTab?.classList.add('hidden');
-            return;
-          }
-        }
-
-        this._hideAllTabs();
-        this.relatedBtn?.classList.remove('active');
-        this.viewedBtn?.classList.remove('active');
       }
     }
   );
@@ -187,8 +137,12 @@ if (!customElements.get('viewed-products')) {
           if (newContent?.innerHTML.trim().length) {
             this.innerHTML = newContent.innerHTML;
             this.classList.remove('hidden');
-            this.loaded = true;
+          } else {
+            const suggestProductsContent = html.querySelector(`#suggest-products-${this.section}`);
+            this.innerHTML = suggestProductsContent.innerHTML;
+            this.classList.remove('hidden');
           }
+          this.loaded = true;
         } catch (e) {
           console.error(e);
         }
@@ -242,8 +196,12 @@ if (!customElements.get('related-products')) {
           if (newContent?.innerHTML.trim().length) {
             this.innerHTML = newContent.innerHTML;
             this.classList.remove('hidden');
-            this.loaded = true;
+          } else {
+            const suggestProductsContent = html.querySelector(`#suggest-products-${this.section}`);
+            this.innerHTML = suggestProductsContent.innerHTML;
+            this.classList.remove('hidden');
           }
+          this.loaded = true;
         } catch (e) {
           console.error(e);
         }

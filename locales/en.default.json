@@ -128,6 +128,7 @@
       "sku": "SKU",
       "on_sale": "Sale",
       "product_variants": "Product variants",
+      "explore_now": "Explore Now",
       "media": {
         "gallery_viewer": "Gallery Viewer",
         "load_image": "Load image {{ index }} in gallery view",
@@ -220,7 +221,9 @@
       "sort_button": "Sort",
       "sort_by_label": "Sort by:",
       "to": "To",
-      "clear_filter": "Remove filter"
+      "clear_filter": "Remove filter",
+      "no_results": "No matching products found at the moment.",
+      "suggestion": "You may like to explore the suggested product list below."
     }
   },
   "templates": {
