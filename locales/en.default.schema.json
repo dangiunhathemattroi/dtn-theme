@@ -2646,6 +2646,12 @@
         },
         "article_show_author": {
           "label": "Author"
+        },
+        "header_search_no_result": {
+          "label": "No search results"
+        },
+        "collection_no_search_result": {
+          "label": "Key search no results",
         }
       }
     },
