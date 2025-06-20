@@ -108,6 +108,76 @@
             "link": ""
           }
         },
+        "column_fTpTKA": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_thMKmN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_NiyGDh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_crnTrN": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_GQaRB4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_dUD3Yi": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
+        "column_e3MAPb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Shot02-13-2-min.webp",
+            "title": "Cameras",
+            "text": "<p>Protect every corner.</p>",
+            "link_label": "SHOP NOW",
+            "link": ""
+          }
+        },
         "column_8DHWck": {
           "type": "column",
           "settings": {
@@ -141,6 +211,13 @@
       },
       "block_order": [
         "column_LV7w4D",
+        "column_fTpTKA",
+        "column_thMKmN",
+        "column_NiyGDh",
+        "column_crnTrN",
+        "column_GQaRB4",
+        "column_dUD3Yi",
+        "column_e3MAPb",
         "column_8DHWck",
         "column_7irHiB",
         "column_fkagTP"
