@@ -1,0 +1,882 @@
+.account-container .my-address {
+    margin: 30px 0;
+  }
+  
+  .account-container .my-address-wrapper {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block,
+  .account-container .my-address-wrapper .customer-address {
+    border: 1px solid var(--Primary-Color, #001a2d);
+    display: flex;
+    flex-direction: column;
+    max-width: 444px;
+  }
+  
+  .account-container .my-address-wrapper .add-new-textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address {
+    display: none;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block {
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-icon svg {
+    width: 39.27px;
+    height: 37.45px;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-icon svg path {
+    fill: #001a2d;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-title {
+    color: #001a2d;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-content {
+    color: #001a2d;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.0015em;
+  
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-button {
+    background-color: #001a2d;
+    color: #fff;
+    width: fit-content;
+    height: 38px;
+    padding: 8px 20px 8px 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.0015em;
+  }
+  
+  .account-container .my-address-wrapper .add-new-block .add-new-button:hover {
+    cursor: pointer;
+    color: #55ff06;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-heading .address-action {
+    display: flex;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-heading .address-action .address-remove {
+    margin-left: 5px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-heading .address-name-wrapper {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-heading .address-name {
+    color: #001a2d;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.0015em;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-description .address-detail,
+  .account-container .my-address-wrapper .customer-address .address-description .subdistrict-district,
+  .account-container .my-address-wrapper .customer-address .address-description .province,
+  .account-container .my-address-wrapper .customer-address .address-description .phone {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-description span {
+    font-size: 17px;
+    line-height: 24px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .set-default {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .set-default .icon-turn-off,
+  .account-container .my-address-wrapper .customer-address .set-default .icon-turn-on {
+    display: inline-flex;
+    margin-right: 10px;
+    height: 22px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .set-default .icon-turn-off svg,
+  .account-container .my-address-wrapper .customer-address .set-default .icon-turn-on svg {
+    height: 22px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .set-default .content {
+    font-size: 17px;
+    line-height: 23px;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-edit:hover,
+  .account-container .my-address-wrapper .customer-address .address-remove:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .icon-turn-off:hover {
+    cursor: pointer;
+  }
+  
+  .account-container .my-address-wrapper .customer-address .address-edit path {
+    stroke: #001a2d;
+  }
+  
+  .account-container .my-address-wrapper.show-customer-address .customer-address {
+    display: flex;
+  }
+  
+  .my-address .address-form-wrapper,
+  .my-address .notify-popup-wrapper {
+    opacity: 0;
+    background-color: #0000004D;
+    display: flex;
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .my-address .address-form-wrapper .address-form,
+  .my-address .notify-popup-wrapper .remove-address-confirm,
+  .my-address .notify-popup-wrapper .invalid-address {
+    background-color: #fff;
+  }
+  
+  .my-address .address-form-wrapper .address-form .close-button {
+    margin-bottom: 10px;
+  }
+  
+  .my-address .address-form-wrapper .address-form .close-button,
+  .my-address .notify-popup-wrapper .remove-address-confirm .close-button,
+  .my-address .notify-popup-wrapper .invalid-address .close-button {
+    height: 20px;
+    padding: 2px;
+    text-align: right;
+  }
+  
+  .my-address .address-form-wrapper .address-form .close-button:hover,
+  .my-address .notify-popup-wrapper .remove-address-confirm .close-button:hover,
+  .my-address .notify-popup-wrapper .invalid-address .close-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  
+  .my-address .address-form-wrapper .address-form .form-address-title,
+  .my-address .notify-popup-wrapper .remove-address-confirm .form-address-title,
+  .my-address .notify-popup-wrapper .invalid-address .form-address-title {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  
+  .my-address .address-form-wrapper.show {
+    z-index: 100;
+    opacity: 1;
+    transition-duration: 500ms;
+  }
+  
+  .my-address .address-form-wrapper .form-address-title .update-title,
+  .my-address .address-form-wrapper .form-address-title .address-invalid-message {
+    display: none;
+  }
+  
+  .my-address .address-form-wrapper .form-address-title .add-title,
+  .my-address .address-form-wrapper .form-address-title.update .update-title,
+  .my-address .address-form-wrapper .form-address-title.invalid-address .address-invalid-message {
+    display: block;
+  }
+  
+  .my-address .address-form-wrapper .form-address-title.invalid-address .address-invalid-message {
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #d01345;
+    font-style: italic;
+    letter-spacing: .0015em;
+    text-transform: none;
+  }
+  
+  .my-address .address-form-wrapper .form-address-title.update .add-title {
+    display: none;
+  }
+  
+  .my-address .address-form-wrapper .add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .my-address .address-form-wrapper .add-form .postal-sub-district select:disabled,
+  .my-address .address-form-wrapper .add-form .district-province select:disabled {
+    background-color: #e8e8e8;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .my-address .address-form-wrapper .add-form .postal-sub-district select,
+  .my-address .address-form-wrapper .add-form .district-province select {
+    background-color: #fff;
+  }
+  
+  .my-address .address-form-wrapper .add-form .postal-sub-district div {
+    width: 100%;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field span.require-message,
+  .my-address .address-form-wrapper .add-form .require-field span.invalid-message {
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #d01345;
+    display: none;
+    font-style: italic;
+    padding: 0 10px;
+    letter-spacing: 0.0015em;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field.error-required input,
+  .my-address .address-form-wrapper .add-form .require-field.error-required select {
+    border: 1px solid #d01345;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field.error-required span.require-message {
+    display: block;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field.error-invalid input,
+  .my-address .address-form-wrapper .add-form .require-field.error-invalid select {
+    border: 1px solid #d01345;
+  }
+  
+  .my-address .address-form-wrapper .add-form .require-field.error-invalid span.invalid-message {
+    display: block;
+  }
+  
+  .my-address .address-form-wrapper .add-form .iti {
+    width: 100%;
+  }
+  
+  .my-address .address-form-wrapper .add-form input,
+  .my-address .address-form-wrapper .add-form select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.0015em;
+    color: var(--primary-color);
+    width: 100%;
+  }
+  
+  .my-address .address-form-wrapper .add-form input::placeholder,
+  .my-address .address-form-wrapper .add-form select::placeholder {
+    color: #999;
+  }
+  
+  .my-address .address-form-wrapper .add-form button.iti__selected-country {
+    display: block;
+    width: 60px;
+  }
+  
+  .my-address .address-form-wrapper .add-form button.iti__selected-country .iti__selected-country-primary {
+    padding-left: 28px;
+  }
+  
+  .my-address .address-form-wrapper .add-form button.iti__selected-country .iti__selected-country-primary .iti__flag {
+    border-radius: 0;
+    transform: scale(2);
+  }
+  
+  .my-address .address-form-wrapper .add-form .iti__tel-input {
+    padding-left: 66px !important;
+  }
+  
+  .my-address .address-form-wrapper .add-form input:focus {
+    border: 1px solid #000 !important;
+  }
+  
+  .my-address .address-form-wrapper .add-form .name-field,
+  .my-address .address-form-wrapper .add-form .postal-sub-district,
+  .my-address .address-form-wrapper .add-form .district-province,
+  .my-address .address-form-wrapper .add-form .action-button {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .my-address .address-form-wrapper .add-form .action-button {
+    margin-top: 40px;
+  }
+  
+  .my-address .address-form-wrapper .add-form .action-button button {
+    cursor: pointer;
+    color: #fff;
+    height: 42px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #001a2d;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.0015em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  .my-address .address-form-wrapper .add-form .action-button button:hover {
+    color: #55ff06;
+    background-color: #001a2d;
+  }
+  
+  .my-address .address-form-wrapper .add-form .action-button .back-button {
+    color: #001a2d;
+  }
+  
+  .my-address .address-form-wrapper .add-form .action-button .save-button {
+    background-color: #001a2d;
+  }
+  
+  .my-address .address-form-wrapper .add-form .address-field,
+  .my-address .address-form-wrapper .add-form .postal-sub-district,
+  .my-address .address-form-wrapper .add-form .district-province,
+  .my-address .address-form-wrapper .add-form .require-field {
+    position: relative;
+  }
+  
+  .my-address .address-form-wrapper .add-form label {
+    color: #00000080;
+    font-weight: 400;
+    letter-spacing: 0.0015em;
+    padding: 0;
+    position: absolute;
+    font-size: 12px;
+    line-height: 18px;
+    display: none;
+  }
+  
+  .my-address .address-form-wrapper .add-form input:not(:placeholder-shown)+label,
+  .my-address .address-form-wrapper .add-form select.filled+label {
+    display: block;
+    top: 5px;
+    left: 20px;
+  }
+  
+  .my-address .address-form-wrapper .add-form input:not([name="phone-number"]):not(:placeholder-shown) {
+    padding: 20px 20px 5px 20px;
+  }
+  
+  .my-address .address-form-wrapper .add-form select.filled {
+    padding: 20px 52px 5px 20px;
+  }
+  
+  .my-address .address-form-wrapper .add-form select:not(.filled) {
+    color: #999999;
+  }
+  
+  .my-address .address-form-wrapper .add-form select:not(.filled) option {
+    color: #000;
+  }
+  
+  .my-address .address-form-wrapper .add-form select {
+    background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%228%22%20viewBox%3D%220%200%2015%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M8.20685%207.70441C8.01933%207.89188%207.76502%207.9972%207.49985%207.9972C7.23469%207.9972%206.98038%207.89188%206.79285%207.70441L1.13585%202.04741C1.04034%201.95517%200.964162%201.84482%200.911753%201.72282C0.859344%201.60081%200.831758%201.46959%200.830604%201.33681C0.82945%201.20404%200.854752%201.07236%200.905033%200.94946C0.955314%200.826563%201.02957%200.714911%201.12346%200.621018C1.21735%200.527125%201.329%200.452872%201.4519%200.402591C1.5748%200.35231%201.70648%200.327009%201.83926%200.328163C1.97204%200.329317%202.10325%200.356903%202.22526%200.409312C2.34726%200.461721%202.45761%200.537903%202.54985%200.633413L7.49985%205.58341L12.4499%200.633413C12.6385%200.451255%2012.8911%200.350461%2013.1533%200.352739C13.4155%200.355017%2013.6663%200.460186%2013.8517%200.645594C14.0371%200.831002%2014.1423%201.08182%2014.1445%201.34401C14.1468%201.60621%2014.046%201.85881%2013.8639%202.04741L8.20685%207.70441Z%22%20fill%3D%22black%22/%3E%3C/svg%3E");
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: auto 15%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  .my-address .notify-popup-wrapper.confirm-remove,
+  .my-address .notify-popup-wrapper.invalid-address {
+    z-index: 100;
+    opacity: 1;
+    transition-duration: 0.5s;
+  }
+  
+  .my-address .close-button path {
+    fill: #001a2d;
+  }
+  
+  .my-address .notify-popup-wrapper.confirm-remove .remove-address-confirm {
+    display: block;
+  }
+  
+  .my-address .notify-popup-wrapper.invalid-address .invalid-address {
+    display: block;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm,
+  .my-address .notify-popup-wrapper .invalid-address {
+    display: none;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .close-button,
+  .my-address .notify-popup-wrapper .invalid-address .close-button {
+    padding: 2px;
+    text-align: right;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .close-button:hover,
+  .my-address .notify-popup-wrapper .invalid-address .close-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .confirm-title,
+  .my-address .notify-popup-wrapper .invalid-address .confirm-title,
+  .my-address .notify-popup-wrapper .remove-address-confirm .invalid-address-title,
+  .my-address .notify-popup-wrapper .invalid-address .invalid-address-title {
+    color: #001a2d;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .content,
+  .my-address .notify-popup-wrapper .invalid-address .content {
+    color: #001a2d;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .action-button,
+  .my-address .notify-popup-wrapper .invalid-address .action-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .allowed-remove,
+  .my-address .notify-popup-wrapper .invalid-address .allowed-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .not-allowed-remove,
+  .my-address .notify-popup-wrapper .invalid-address .not-allowed-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .not-remove,
+  .my-address .notify-popup-wrapper .invalid-address .not-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .remove,
+  .my-address .notify-popup-wrapper .invalid-address .remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .back-button,
+  .my-address .notify-popup-wrapper .invalid-address .back-button {
+    display: none;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .not-remove,
+  .my-address .notify-popup-wrapper .invalid-address .not-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .remove,
+  .my-address .notify-popup-wrapper .invalid-address .remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .back-button,
+  .my-address .notify-popup-wrapper .invalid-address .back-button {
+    width: 100%;
+    text-transform: uppercase;
+    border: 1px solid #001a2d;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .not-remove:hover,
+  .my-address .notify-popup-wrapper .invalid-address .not-remove:hover,
+  .my-address .notify-popup-wrapper .remove-address-confirm .remove:hover,
+  .my-address .notify-popup-wrapper .invalid-address .remove:hover,
+  .my-address .notify-popup-wrapper .remove-address-confirm .back-button:hover,
+  .my-address .notify-popup-wrapper .invalid-address .back-button:hover {
+    background-color: #001a2d;
+    cursor: pointer;
+    color: #55ff06;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .remove,
+  .my-address .notify-popup-wrapper .invalid-address .remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm .back-button,
+  .my-address .notify-popup-wrapper .invalid-address .back-button {
+    color: #fff;
+    background-color: #001a2d;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm .not-remove,
+  .my-address .notify-popup-wrapper .invalid-address .not-remove {
+    color: #001a2d;
+    background-color: #fff;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm.allowed .allowed-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm.allowed .not-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm.allowed .remove {
+    display: block;
+  }
+  
+  .my-address .notify-popup-wrapper .remove-address-confirm.not-allowed .not-allowed-remove,
+  .my-address .notify-popup-wrapper .remove-address-confirm.not-allowed .back-button {
+    display: block;
+  }
+  
+  .my-address .notify-popup-wrapper .invalid-address .back-button {
+    display: block;
+  }
+  
+  .my-address .paginate-nav {
+    align-items: center;
+    display: flex;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 400;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  .my-address .paginate-nav,
+  .my-address .previous,
+  .my-address .next {
+    height: 24px;
+  }
+  
+  .my-address .next {
+    transform: rotate(180deg);
+  }
+  
+  .my-address .paginate-nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  .my-address .paginate-nav .current-page,
+  .my-address .paginate-nav a:hover {
+    font-weight: 700;
+  }
+  
+  .my-address .paginate-nav .disabled {
+    cursor: not-allowed;
+    opacity: .3;
+  }
+  
+  @media screen and (width: 1920px) {
+    .account-container .my-address-wrapper .customer-address {
+      padding: 20px 30px 10px 30px;
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .account-container .my-address-wrapper {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  
+  @media screen and (width: 1440px) {
+    .account-container .my-address-wrapper {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  @media screen and (max-width: 1439px) {
+    .account-container .my-address-wrapper {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  @media screen and (max-width: 1039px) {
+    .account-container .my-address-wrapper {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .my-address .mobile-heading {
+      display: none;
+    }
+  
+    .my-address-wrapper .add-new-block {
+      padding: 27px 71px;
+    }
+  
+    .account-container .my-address-wrapper .add-new-block .add-new-button {
+      font-size: 12.84px;
+      line-height: 18.35px;
+    }
+  
+    .my-address-wrapper .customer-address {
+      padding: 20px 30px 10px 30px;
+    }
+  
+    .my-address-wrapper .add-new-block,
+    .my-address-wrapper .customer-address {
+      min-height: 232px;
+    }
+  
+    .my-address .address-form {
+      padding: 20px 30px 48px 30px;
+      width: 628px;
+      min-height: 559px;
+    }
+  
+    .my-address .address-form .add-form input,
+    .my-address .address-form .add-form select {
+      height: 56px;
+      line-height: 22px;
+    }
+  
+    .my-address .address-form .add-form input {
+      padding: 10px 20px;
+    }
+  
+    .my-address .address-form .add-form select {
+      padding: 10px 52px 10px 20px;
+    }
+  
+    .my-address .address-form .add-form input::placeholder,
+    .my-address .address-form .add-form select::placeholder {
+      color: #999;
+    }
+  
+    .my-address .address-form .add-form .action-button {
+      margin-top: 40px;
+    }
+  
+    .my-address .address-form .add-form .action-button button {
+      cursor: pointer;
+      color: #fff;
+      height: 42px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #001a2d;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 22px;
+      letter-spacing: 0.0015em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  
+    .my-address .address-form .add-form .action-button button:hover {
+      color: #55ff06;
+      background-color: #001a2d;
+    }
+  
+    .my-address .address-form .add-form .action-button .back-button {
+      color: #001a2d;
+    }
+  
+    .my-address .address-form .add-form .action-button .save-button {
+      background-color: #001a2d;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm,
+    .notify-popup-wrapper .invalid-address {
+      padding: 20px 10px 30px 10px;
+      width: 486px;
+      height: 263px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .close-button,
+    .notify-popup-wrapper .invalid-address .close-button {
+      height: 20px;
+      padding: 2px;
+      margin-bottom: 10px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .confirm-title,
+    .notify-popup-wrapper .invalid-address .confirm-title,
+    .notify-popup-wrapper .remove-address-confirm .invalid-address-title,
+    .notify-popup-wrapper .invalid-address .invalid-address-title {
+      font-size: 25px;
+      line-height: 35px;
+      margin-bottom: 10px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .content,
+    .notify-popup-wrapper .invalid-address .content {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .action-button,
+    .notify-popup-wrapper .invalid-address .action-button {
+      gap: 16px;
+      height: 47px;
+      margin-top: 57px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .not-remove,
+    .notify-popup-wrapper .invalid-address .not-remove,
+    .notify-popup-wrapper .remove-address-confirm .remove,
+    .notify-popup-wrapper .invalid-address .remove,
+    .notify-popup-wrapper .remove-address-confirm .back-button,
+    .notify-popup-wrapper .invalid-address .back-button {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .my-address {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    .my-address .mobile-heading {
+      display: block;
+      margin-bottom: 20px;
+    }
+  
+    .my-address .mobile-heading .mobile-title {
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 35px;
+      text-align: center;
+      padding: 9px 0;
+      margin-bottom: 5px;
+    }
+  
+    .my-address .mobile-heading .mobile-description {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0.0015em;
+      text-align: center;
+    }
+  
+    .my-address .my-address-wrapper {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  
+    .my-address .my-address-wrapper .add-new-block {
+      max-width: 100%;
+      max-height: 234px;
+      height: 234px;
+      min-height: 234px;
+      padding: 28px 49px;
+    }
+  
+    .my-address .my-address-wrapper .add-new-block .add-new-content {
+      max-width: 302px;
+    }
+  
+    .account-container .my-address-wrapper .add-new-block .add-new-button {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  
+    .my-address .my-address-wrapper .customer-address {
+      max-width: 100%;
+      min-height: 253px;
+      padding: 20px 30px 10px 30px;
+    }
+  
+    .my-address .address-form-wrapper {
+      align-items: end;
+    }
+  
+    .my-address .address-form-wrapper .address-form {
+      min-height: 511px;
+      padding: 20px 10px 30px 10px;
+      width: 100%;
+    }
+  
+    .my-address .address-form .add-form input::placeholder {
+      line-height: 20px !important;
+      height: 20px;
+    }
+  
+    .my-address .address-form .add-form input,
+    .my-address .address-form .add-form select {
+      height: 50px;
+      line-height: 20px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm,
+    .notify-popup-wrapper .invalid-address {
+      padding: 16px 10px 24px 10px;
+      width: 360px;
+      height: 203px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .close-button,
+    .notify-popup-wrapper .invalid-address .close-button {
+      height: 20px;
+      padding: 2px;
+      margin-bottom: 8px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .confirm-title,
+    .notify-popup-wrapper .invalid-address .confirm-title,
+    .notify-popup-wrapper .remove-address-confirm .invalid-address-title,
+    .notify-popup-wrapper .invalid-address .invalid-address-title {
+      font-size: 21px;
+      line-height: 30px;
+      margin-bottom: 8px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .content,
+    .notify-popup-wrapper .invalid-address .content {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .action-button,
+    .notify-popup-wrapper .invalid-address .action-button {
+      gap: 12px;
+      height: 35px;
+      margin-top: 42px;
+    }
+  
+    .notify-popup-wrapper .remove-address-confirm .not-remove,
+    .notify-popup-wrapper .invalid-address .not-remove,
+    .notify-popup-wrapper .remove-address-confirm .remove,
+    .notify-popup-wrapper .invalid-address .remove,
+    .notify-popup-wrapper .remove-address-confirm .back-button,
+    .notify-popup-wrapper .invalid-address .back-button {
+      font-size: 13px;
+      line-height: 18px;
+    }
+  }

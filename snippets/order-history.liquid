@@ -1,0 +1,279 @@
+{{ 'order-history.css' | asset_url | stylesheet_tag }}
+
+{%- assign page_url = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | replace:'\/','/' | replace:'%20',' ' | replace:'\u0026','&' -%}
+  
+{% liquid
+  if page_url contains 'limit'
+    assign limit_value = page_url | split:'limit=' | last | split:'&' | first | plus: 0
+  else
+    assign limit_value = 5 
+  endif
+
+  if limit_value != 5 and limit_value != 15 and limit_value != 25 and limit_value != 35
+    assign limit_value = 5
+  endif
+
+  assign current_page_value = null
+  if page_url contains 'page'
+    assign current_page_value = page_url | split:'page=' | last | split:'&' | first
+  endif
+
+  assign customer_order_size = customer.orders_count
+  assign previous_page = current_page_value | minus: 1
+  assign current_index = limit_value | times: previous_page | plus: 1
+%}
+{% if customer_order_size < current_index %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var currentUrl = new URL(window.location.href);
+
+          if (currentUrl.searchParams.has('tab') && currentUrl.searchParams.get('tab') == 'order-history-tab') {
+            currentUrl.searchParams.set('page', '1');
+            window.location.href = currentUrl.toString();
+          }
+        });
+    </script>
+{% endif %}
+
+<div class="order-history">
+    {% paginate customer.orders by limit_value %}
+        {%- if customer.orders.size > 0 -%}
+            {% comment %} Mobile {% endcomment %}
+            <div class="order-history-mobile">
+                {% for order in customer.orders %}
+                {% assign gateway_display_name = order.transactions.first.gateway_display_name | capitalize | replace: "_", " " %}
+                <div class="order-card">
+                    <p>
+                        <span>{{ 'customer.orders.order_number' | t }}</span>
+                        <span>{{ order.name }}</span>
+                    </p>
+                    <p>
+                        <span>
+                            {{ 'customer.orders.date' | t }}
+                        </span>
+                        <span>{{ order.created_at | date: "%d/%m/%Y" }}</span>
+                    </p>
+                    <p>
+                        <span>
+                            {{ 'customer.orders.payment' | t }}
+                        </span>
+                        {% if gateway_display_name contains 'Cash on delivery (cod)' %}
+                            <span>Cash on Delivery</span>
+                        {% elsif gateway_display_name contains '2c2p' %}
+                            <span>Credit card / Bank transfer</span>
+                        {% else %}
+                            <span>{{ gateway_display_name }}</span>
+                        {% endif %}
+                    </p>
+                    <p>
+                        <span>
+                            {{ 'customer.orders.status' | t }}
+                        </span>
+                        <span>{{ order.financial_status | capitalize }}</span>
+                    </p>
+                    <p>
+                        <span>
+                            {{ 'customer.orders.total' | t }}
+                        </span>
+                        <span class="order-total">{{ order.total_net_amount | money}}</span>
+                    </p>
+                    <div class="detail-button-block">
+                        <a class="order-detail-button" href="{{ order.customer_url }}">
+                            {{ 'customer.orders.order_details' | t }}
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="pagination-container">
+                    <div class="row-per-page">
+                        <span>Rows per page:</span>
+                        <select class="rows-per-page-select" id="rows-per-page">
+                            <option value="5" {% if limit_value == 5 %}selected{% endif %}>05</option>
+                            <option value="15" {% if limit_value == 15 %}selected{% endif %}>15</option>
+                            <option value="25" {% if limit_value == 25 %}selected{% endif %}>25</option>
+                            <option value="35" {% if limit_value == 35 %}selected{% endif %}>35</option>
+                        </select>
+                    </div>
+                    {%- liquid
+                        assign current_offset = paginate.current_offset
+                        assign end_offset = paginate.current_offset | plus: paginate.page_size
+                        if current_offset <= 0 
+                            assign current_offset=1 
+                        elsif current_offset > customer_order_size
+                            assign current_offset = customer_order_size
+                        endif
+
+                        if end_offset > customer_order_size
+                            assign end_offset = customer_order_size
+                        endif
+                        -%}
+                        <span class="count-order">
+                            {{ current_offset }}-{{ end_offset }} of {{ customer_order_size }}
+                        </span>
+                        <div class="arrow-button">
+                            {%- if paginate.previous -%}
+                            <a href="{{ paginate.previous.url }}&tab=order-history-tab"
+                                aria-label="{{ 'general.pagination.previous' | t }}">
+                                <span class="previous">
+                                    {% render 'icon-alls', icon: 'paginate-arrow' %}
+                                </span>
+                            </a>
+                            {%- else -%}
+                            <span class="disabled">
+                                {% render 'icon-alls', icon: 'paginate-arrow' %}
+                            </span>
+                            {%- endif -%}
+                            {%- if paginate.next -%}
+                            <a href="{{ paginate.next.url }}&tab=order-history-tab"
+                                aria-label="{{ 'general.pagination.next' | t }}">
+                                <span class="next">
+                                    {% render 'icon-alls', icon: 'paginate-arrow' %}
+                                </span>
+                            </a>
+                            {%- else -%}
+                            <span class="next disabled">
+                                {% render 'icon-alls', icon: 'paginate-arrow' %}
+                            </span>
+                            {%- endif -%}
+                        </div>
+                </div>
+            </div>
+
+            {% comment %} Desktop {% endcomment %}
+            <div class="order-history-desktop">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>{{ 'customer.orders.order' | t }}</th>
+                            <th>{{ 'customer.orders.date' | t }}</th>
+                            <th>{{ 'customer.orders.payment' | t }}</th>
+                            <th>{{ 'customer.orders.status' | t }}</th>
+                            <th>{{ 'customer.orders.total' | t }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in customer.orders %}
+                        {% assign gateway_display_name = order.transactions.first.gateway_display_name | capitalize | replace: "_", " " %}
+                        <tr>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.created_at | date: "%d/%m/%Y" }}</td>
+                            <td>
+                                {% if gateway_display_name contains 'Cash on delivery (cod)' %}
+                                Cash on Delivery
+                                {% elsif gateway_display_name contains '2c2p' %}
+                                <span>Credit card / Bank transfer</span>
+                                {% else %}
+                                {{ gateway_display_name }}
+                                {% endif %}
+                            </td>
+                            <td>{{ order.financial_status | capitalize | replace: "_", " " }}</td>
+                            <td>{{ order.total_price | money}}</td>
+                            <td>
+                                <a href="{{ order.customer_url }}" class="order-detail-button">
+                                    {{ 'customer.orders.order_details' | t }}
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% comment %} Pagination {% endcomment %}
+                <div class="pagination-container">
+                    <div class="row-per-page">
+                        <span>Rows per page:</span>
+                        <select class="rows-per-page-select" id="rows-per-page">
+                            <option value="5" {% if limit_value == 5 %}selected{% endif %}>05</option>
+                            <option value="15" {% if limit_value == 15 %}selected{% endif %}>15</option>
+                            <option value="25" {% if limit_value == 25 %}selected{% endif %}>25</option>
+                            <option value="35" {% if limit_value == 35 %}selected{% endif %}>35</option>
+                        </select>
+                    </div>
+                    {%- liquid
+                        assign current_offset = paginate.current_offset
+                        assign end_offset = paginate.current_offset | plus: paginate.page_size
+                        if current_offset <= 0 
+                            assign current_offset=1 
+                        elsif current_offset > customer_order_size
+                            assign current_offset = customer_order_size
+                        endif
+
+                        if end_offset > customer_order_size
+                            assign end_offset = customer_order_size
+                        endif
+                        -%}
+                        <span class="count-order">
+                            {{ current_offset }}-{{ end_offset }} of {{ customer_order_size }}
+                        </span>
+                        <div class="arrow-button">
+                            {%- if paginate.previous -%}
+                            <a href="{{ paginate.previous.url }}&tab=order-history-tab"
+                                aria-label="{{ 'general.pagination.previous' | t }}">
+                                <span class="previous">
+                                    {% render 'icon-alls', icon: 'paginate-arrow' %}
+                                </span>
+                            </a>
+                            {%- else -%}
+                            <span class="disabled">
+                                {% render 'icon-alls', icon: 'paginate-arrow' %}
+                            </span>
+                            {%- endif -%}
+                            {%- if paginate.next -%}
+                            <a href="{{ paginate.next.url }}&tab=order-history-tab"
+                                aria-label="{{ 'general.pagination.next' | t }}">
+                                <span class="next">
+                                    {% render 'icon-alls', icon: 'paginate-arrow' %}
+                                </span>
+                            </a>
+                            {%- else -%}
+                            <span class="next disabled">
+                                {% render 'icon-alls', icon: 'paginate-arrow' %}
+                            </span>
+                            {%- endif -%}
+                        </div>
+                </div>
+            </div>
+        {%- elsif customer_order_size <= 0 and customer.orders.size <= 0-%}
+            <div class="no-order">
+                {% assign no_order_image = block.settings.no_order_image %}
+                {% if no_order_image %}
+                {{ no_order_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '375, 450, 750, 900, 1100, 1500,
+                1780, 2000, 3000, 3840', class: 'no-order-img' }}
+                {% endif %}
+                <span class="no-order-title">
+                    {{ 'customer.order.no_order_title' | t }}
+                </span>
+                <span class="no-order-description">
+                    {{ 'customer.order.no_order_description' | t }}
+                </span>
+            </div>
+            <div class="start-shopping">
+                <a href="{{ routes.root_url }}">
+                    {{ 'customer.order.start_shopping' | t }}
+                </a>
+            </div>
+        {%- endif -%}
+    {% endpaginate %}
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const selects = document.querySelectorAll(".rows-per-page-select");
+
+    selects?.forEach((select) => {
+        select?.addEventListener("change", function () {
+            const selectedValue = select.value;
+            const customerOrderCount = Number('{{ customer_order_size }}')
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set("limit", selectedValue);
+            const page = currentUrl.searchParams.get('page');
+
+            if (customerOrderCount < (selectedValue * (page - 1)) + 1) {
+                currentUrl.searchParams.set('page', '1');
+            } 
+
+            window.location.href = currentUrl.toString();
+        });
+    })
+  });
+</script>

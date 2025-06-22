@@ -1466,5 +1466,15 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Shopify access token",
+    "settings": [
+      {
+        "type": "text",
+        "id": "shopify_access_token",
+        "label": "Token",
+      }
+    ]
   }
 ]

@@ -1,0 +1,84 @@
+{{ 'my-information.css' | asset_url | stylesheet_tag }}
+{{ 'intlTelInput.25.2.0.css' |  asset_url | stylesheet_tag }}
+<my-information data-token="{{ settings.shopify_access_token }}"> 
+    <div class="my-information">
+        <div class="heading">
+            <h2 class="title">{{ 'customer.information.heading' | t }}</h2>
+            <span class="description">{{ 'customer.information.content' | t }}</span>
+        </div>
+        <div class="information-form">
+            <input type="text" name="customer-id" value="{{ customer.id }}" hidden disabled>
+            <div class="form-row">
+                <div class="required-field">
+                    <input type="text" name="first-name" required placeholder="{{ 'customer.addresses.first_name' | t }}" value="{{ customer.first_name }}">
+                    <label for="first-name">{{ 'customer.addresses.full_name' | t }}</label>
+                    <span class="pen-icon">
+                        {% render 'icon-alls', icon: 'customer-information-field' %}
+                    </span>
+                    <span class="require-message">
+                        {{ 'customer.addresses.require_error' | t }}
+                    </span>
+                </div>
+                <input type="text" name="last-name"  placeholder="{{ 'customer.addresses.last_name' | t }}" value="{{ customer.last_name }}" hidden>
+            </div>
+            <div class="form-row">
+                <div class="required-field">
+                    <input type="email" required name="email" placeholder="{{ 'customer.information.email' | t }}" value="{{ customer.email }}" disabled>
+                    <label for="email">{{ 'customer.information.email' | t }}</label> 
+                    <span class="require-message">
+                        {{ 'customer.addresses.require_error' | t }}
+                    </span>    
+                    <span class="unique-message">
+                        {{ 'customer.information.unique_email' | t }}
+                    </span>
+                    <span class="invalid-message">
+                      {{ 'customer.information.invalid_email' | t }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="required-field">
+                    <input type="tel" pattern="[0-9]*" inputmode="numeric" name="phone" id="phone" placeholder="{{ 'customer.information.phone' | t }}" required value="{{ customer.phone }}">
+                    <label for="phone">{{ 'customer.information.phone' | t }}</label>
+                    <span class="pen-icon">
+                        {% render 'icon-alls', icon: 'customer-information-field' %}
+                    </span>     
+                    <span class="require-message">
+                        {{ 'customer.addresses.require_error' | t }}
+                    </span>    
+                    <span class="invalid-message">
+                      {{ 'customer.information.invalid_phone' | t }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="required-field">
+                    <input type="password" name="confirm-password" placeholder="{{ 'customer.information.confirm_password' | t }}" value="" required>
+                    <label for="password">{{ 'customer.information.confirm_password' | t }}</label>
+                    <span class="pen-icon">
+                        {% render 'icon-alls', icon: 'customer-information-field' %}
+                    </span>     
+                    <span class="require-message">
+                        {{ 'customer.addresses.require_error' | t }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <button class="btn-save">{{ 'customer.information.save' | t }}</button>
+    </div>
+    <loading-state class="loading-container" aria-hidden="true" role="status" aria-label="Loading">
+        <div class="loading-overlay"></div>
+        <div class="loading-wrapper">
+            <div class="loading-spinner">
+                <span class="svg-wrapper">
+                    {%- render 'icon-alls', icon: 'icon-loading-spinner' -%}
+                </span>
+            </div>
+        </div>
+  </loading-state>
+</my-information>
+
+<script src="{{ 'my-information.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'loading.js' | asset_url }}" defer="defer"></script>
