@@ -1,0 +1,488 @@
+.my-information {
+  margin: 0 auto;
+  --primary-color: #001a2d;
+}
+
+.my-information .heading {
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.my-information .heading .title {
+  color: var(--primary-color);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 35px;
+  margin: 5px 0 15px 0;
+}
+
+.my-information .heading .description {
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21.82px;
+}
+
+.my-information .information-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.my-information .information-form .form-row {
+  display: flex;
+  gap: 5px;
+}
+
+.my-information .information-form .form-row input,
+.my-information .information-form .form-row select {
+  border: 1px solid #7e7e7e;
+  border-radius: 5px;
+  color: var(--primary-color);
+  height: 44px;
+  padding: 10px;
+  width: 100%;
+  font-weight: 400;
+}
+
+.my-information .information-form .form-row select {
+  background-color: #fff;
+}
+
+.my-information .information-form .form-row input#phone {
+  color: var(--primary-color);
+  height: 42px;
+}
+
+.my-information .information-form .form-row .iti--allow-dropdown {
+  border: 1px solid #7e7e7e !important;
+  border-radius: 5px;
+}
+
+.my-information .information-form .form-row input[type='text'] {
+  padding: 10px 40px 10px 10px;
+}
+
+.my-information .information-form .form-row .field,
+.my-information .information-form .form-row .required-field {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.my-information .information-form .form-row .field .pen-icon,
+.my-information .information-form .form-row .required-field .pen-icon {
+  line-height: 30px;
+  position: absolute;
+  right: 0;
+  padding: 10px;
+}
+
+.my-information .information-form .form-row input#phone:disabled {
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
+.my-information .information-form .form-row input::placeholder {
+  color: #00000080;
+}
+
+.my-information .information-form .form-row .field label,
+.my-information .information-form .form-row .required-field label {
+  color: #00000080;
+  font-weight: 400;
+  letter-spacing: 0.0015em;
+  padding: 0;
+  position: absolute;
+  font-size: 12px;
+  line-height: 18px;
+  display: none;
+}
+
+.my-information .information-form .form-row .field input:not(:placeholder-shown):not([name='birthday-origin']) + label,
+.my-information
+  .information-form
+  .form-row
+  .required-field
+  input:not(:placeholder-shown):not([name='birthday-origin'])
+  + label,
+.my-information .information-form .form-row .field select.filled + label,
+.my-information .information-form .form-row .required-field select.filled + label {
+  display: block;
+  top: 5px;
+  left: 10px;
+}
+
+.my-information
+  .information-form
+  .form-row
+  .field
+  input:not(:placeholder-shown):not([name='birthday']):not([name='birthday-origin']),
+.my-information
+  .information-form
+  .form-row
+  .required-field
+  input:not(:placeholder-shown):not([name='birthday']):not([name='birthday-origin']) {
+  padding: 20px 40px 5px 10px;
+}
+
+.my-information
+  .information-form
+  .form-row
+  .field
+  input[name='phone']:not(:placeholder-shown):not([name='birthday']):not([name='birthday-origin']),
+.my-information
+  .information-form
+  .form-row
+  .required-field
+  input[name='phone']:not(:placeholder-shown):not([name='birthday']):not([name='birthday-origin']) {
+  padding: 10px 40px 10px 10px;
+}
+
+.my-information .information-form .form-row .field select.filled,
+.my-information .information-form .form-row .required-field select.filled {
+  padding: 20px 40px 4px 9px;
+}
+
+.my-information .information-form .form-row .field select:not(.filled),
+.my-information .information-form .form-row .required-field select:not(.filled) {
+  color: #00000080;
+}
+
+.my-information .information-form .form-row .field select:not(.filled) option,
+.my-information .information-form .form-row .required-field select:not(.filled) option {
+  color: #000;
+}
+
+.my-information .information-form .form-row .field select[name='gender'],
+.my-information .information-form .form-row .required-field select[name='gender'] {
+  background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2215%22%20height%3D%228%22%20viewBox%3D%220%200%2015%208%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M8.20685%207.70441C8.01933%207.89188%207.76502%207.9972%207.49985%207.9972C7.23469%207.9972%206.98038%207.89188%206.79285%207.70441L1.13585%202.04741C1.04034%201.95517%200.964162%201.84482%200.911753%201.72282C0.859344%201.60081%200.831758%201.46959%200.830604%201.33681C0.82945%201.20404%200.854752%201.07236%200.905033%200.94946C0.955314%200.826563%201.02957%200.714911%201.12346%200.621018C1.21735%200.527125%201.329%200.452872%201.4519%200.402591C1.5748%200.35231%201.70648%200.327009%201.83926%200.328163C1.97204%200.329317%202.10325%200.356903%202.22526%200.409312C2.34726%200.461721%202.45761%200.537903%202.54985%200.633413L7.49985%205.58341L12.4499%200.633413C12.6385%200.451255%2012.8911%200.350461%2013.1533%200.352739C13.4155%200.355017%2013.6663%200.460186%2013.8517%200.645594C14.0371%200.831002%2014.1423%201.08182%2014.1445%201.34401C14.1468%201.60621%2014.046%201.85881%2013.8639%202.04741L8.20685%207.70441Z%22%20fill%3D%22black%22/%3E%3C/svg%3E');
+  background-position: right 13px center;
+  background-repeat: no-repeat;
+  background-size: auto 20%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.my-information .information-form .form-row .field input[name='birthday'],
+.my-information .information-form .form-row .required-field input[name='birthday'],
+.my-information .information-form .form-row .field input[name='birthday-origin'],
+.my-information .information-form .form-row .required-field input[name='birthday-origin'] {
+  width: 100%;
+}
+
+.my-information .information-form .form-row .field input[name='birthday'],
+.my-information .information-form .form-row .required-field input[name='birthday'] {
+  background-color: #fff;
+}
+
+.my-information .information-form .form-row .field input[name='birthday-origin'],
+.my-information .information-form .form-row .required-field input[name='birthday-origin'] {
+  background-color: transparent;
+  position: absolute;
+  z-index: 3;
+}
+
+.my-information .information-form .form-row .field input[name='birthday-origin']::-webkit-datetime-edit,
+.my-information .information-form .form-row .required-field input[name='birthday-origin']::-webkit-datetime-edit {
+  display: none;
+}
+
+.my-information .information-form .form-row .field input[name='birthday-origin']::-webkit-calendar-picker-indicator,
+.my-information
+  .information-form
+  .form-row
+  .required-field
+  input[name='birthday-origin']::-webkit-calendar-picker-indicator {
+  background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2221%22%20height%3D%2222%22%20viewBox%3D%220%200%2021%2022%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%3Cpath%20d%3D%22M2.46154%204.42188C2.07392%204.42188%201.70217%204.57586%201.42808%204.84995C1.15398%205.12404%201%205.49579%201%205.88342V19.0373C1%2019.4249%201.15398%2019.7967%201.42808%2020.0708C1.70217%2020.3449%202.07392%2020.4988%202.46154%2020.4988H18.5385C18.9261%2020.4988%2019.2979%2020.3449%2019.572%2020.0708C19.8461%2019.7967%2020.0001%2019.4249%2020.0001%2019.0373V5.88342C20.0001%205.49579%2019.8461%205.12404%2019.572%204.84995C19.2979%204.57586%2018.9261%204.42188%2018.5385%204.42188H15.6154%22%20stroke%3D%22%23001A2D%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3Cpath%20d%3D%22M1%2010.2734H20.0001%22%20stroke%3D%22%23001A2D%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3Cpath%20d%3D%22M5.38477%201.5V7.34617%22%20stroke%3D%22%23001A2D%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3Cpath%20d%3D%22M15.6152%201.5V7.34617%22%20stroke%3D%22%23001A2D%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3Cpath%20d%3D%22M5.38477%204.42188H12.6925%22%20stroke%3D%22%23001A2D%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%0A%3C/svg%3E');
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 9px;
+  top: 9px;
+}
+
+.my-information .information-form .form-row .field input[name='birthday-origin']::-webkit-date-and-time-value,
+.my-information .information-form .form-row .required-field input[name='birthday-origin']::-webkit-date-and-time-value {
+  display: none;
+}
+
+.my-information .information-form .form-row .field .calendar-icon,
+.my-information .information-form .form-row .required-field .calendar-icon {
+  display: none;
+}
+
+.my-information .information-form .form-row .required-field .require-message,
+.my-information .information-form .form-row .required-field .unique-message,
+.my-information .information-form .form-row .required-field .invalid-message,
+.my-information .information-form .form-row .required-field .error-message {
+  display: none;
+  font-size: 11px;
+  line-height: 16px;
+  color: #d01345;
+  display: none;
+  font-style: italic;
+}
+
+.my-information .information-form .form-row .required-field.error-required .require-message,
+.my-information .information-form .form-row .required-field.unique-error .unique-message,
+.my-information .information-form .form-row .required-field.invalid-error .invalid-message,
+.my-information .information-form .form-row .required-field.error .error-message {
+  display: block;
+}
+
+.my-information .information-form .form-row .required-field.error-required input:not([name='birthday']),
+.my-information .information-form .form-row .required-field.error-required select,
+.my-information .information-form .form-row .required-field.unique-error input,
+.my-information .information-form .form-row .required-field.error input,
+.my-information .information-form .form-row .required-field.invalid-error input {
+  border: 1px solid #d01345;
+}
+
+.my-information button.btn-save {
+  background-color: var(--primary-color);
+  color: #fff;
+  margin-top: 30px;
+  padding: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.0015em;
+}
+
+.my-information button.btn-save:hover {
+  color: #55ff06;
+  cursor: pointer;
+}
+
+.my-information .iti--show-flags {
+  width: 100%;
+  height: 44px;
+}
+
+.my-information button.iti__selected-country {
+  display: block;
+  width: 50px;
+}
+
+.my-information button.iti__selected-country .iti__selected-country-primary {
+  padding-left: 19px;
+}
+
+.my-information button.iti__selected-country .iti__selected-country-primary .iti__flag {
+  border-radius: 0;
+  transform: scale(2);
+}
+
+.my-information .iti__tel-input {
+  padding-left: 50px !important;
+}
+
+.my-information input:focus {
+  border: 1px solid #000 !important;
+}
+
+.my-information button.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading-wrapper {
+  display: none;
+  text-align: center;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 3px;
+  width: 56px;
+  height: 56px;
+  position: fixed;
+  left: 50%;
+  right: auto;
+  box-shadow: 0 1px 4px #0000004d;
+  top: 50%;
+  align-items: center;
+  justify-content: center;
+}
+.loading-container.loading--visible {
+  display: flex;
+  z-index: 9999;
+}
+
+.loading-container.loading--visible .loading-wrapper {
+  display: flex;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loading-container .svg-wrapper {
+  width: 30px;
+  height: 30px;
+}
+
+.loading--visible .loading-overlay:after {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  content: '';
+  background: #00000080;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.loading-overlay:empty {
+  display: block;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .my-information {
+    margin-top: 30px;
+    max-width: 635px;
+    width: 635px;
+  }
+
+  .my-information .heading {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .my-information .heading .description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21.82px;
+  }
+
+  .my-information .information-form .form-row input,
+  .my-information .information-form .form-row select.filled {
+    border: 1px solid #7e7e7e;
+    border-radius: 5px;
+    color: var(--primary-color);
+    height: 44px;
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .my-information .information-form .form-row {
+    display: flex;
+    gap: 5px;
+  }
+
+  .my-information .information-form .form-row input.iti__tel-input {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.0015em;
+  }
+
+  .my-information input::placeholder,
+  .my-information .information-form .form-row select {
+    font-size: 16px;
+    line-height: 22px !important;
+  }
+
+  .my-information .information-form .form-row .field,
+  .my-information .information-form .form-row .required-field {
+    width: 100%;
+  }
+
+  .my-information .information-form .form-row .field .pen-icon,
+  .my-information .information-form .form-row .required-field .pen-icon {
+    position: absolute;
+    right: 0;
+    padding: 10px;
+  }
+
+  .my-information button.btn-save {
+    height: 42px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .my-information button.btn-save:hover {
+    cursor: pointer;
+  }
+
+  .my-information .iti--show-flags {
+    width: 100%;
+    height: 44px;
+  }
+
+  .my-information button.iti__selected-country {
+    display: block;
+    width: 50px;
+  }
+
+  .my-information button.iti__selected-country .iti__selected-country-primary {
+    padding-left: 19px;
+  }
+
+  .my-information button.iti__selected-country .iti__selected-country-primary .iti__flag {
+    border-radius: 0;
+    transform: scale(2);
+  }
+
+  .my-information .iti__tel-input {
+    padding-left: 50px !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .my-information {
+    margin: 30px 0;
+    width: 100%;
+  }
+
+  .my-information .heading .description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.0015em;
+  }
+
+  .my-information .information-form {
+    padding: 0 10px;
+  }
+
+  .my-information button.btn-save {
+    height: 40px;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+  }
+
+  .my-information .information-form .form-row input,
+  .my-information .information-form .form-row input::-webkit-input-placeholder,
+  .my-information .information-form .form-row select {
+    font-size: 14px;
+    line-height: 20px !important;
+    letter-spacing: 0.0015em;
+  }
+
+  .my-information .information-form .form-row .required-field .calendar-icon {
+    display: block;
+    position: absolute;
+    right: 12px;
+    top: 11px;
+    height: 19px;
+  }
+
+  .my-information
+    .information-form
+    .form-row
+    .required-field
+    input[name='birthday-origin']::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+}

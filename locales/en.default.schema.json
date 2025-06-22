@@ -1823,7 +1823,25 @@
       }
     },
     "main-account": {
-      "name": "Account"
+      "name": "Account",
+      "blocks": {
+        "my_information": {
+          "label": "My Information"
+        },
+        "order_history": {
+          "label": "Order History",
+          "settings": {
+            "no_order_image": "No order image"
+          }
+        },
+        "my_address": {
+          "label": "My Address"
+        }
+      },
+      "settings": {
+        "first_tab": "First tab",
+        "first_tab_info": "The input value is one of the following values: my-information-tab, order-history-tab, my-address-tab"
+      }
     },
     "main-activate-account": {
       "name": "Account activation"
