@@ -122,6 +122,7 @@
     "show_vendor": true,
     "show_cart_note": true,
     "cart_drawer_collection": "",
+    "shopify_access_token": "d55bd0b36d4cca1a01dfe64ed465d2f5",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
