@@ -220,7 +220,9 @@
       "filter_selected_accessibility": "{{ type }} (Đã chọn {{ count }} bộ lọc)",
       "show_more": "Hiển thị thêm",
       "show_less": "Rút gọn",
-      "filter_and_operator_subtitle": "Phù hợp với tất cả"
+      "filter_and_operator_subtitle": "Phù hợp với tất cả",
+      "no_results": "Hiện tại không tìm thấy sản phẩm phù hợp.",
+      "suggestion": "Bạn có thể muốn khám phá danh sách sản phẩm được đề xuất bên dưới."
     }
   },
   "templates": {
@@ -251,7 +253,8 @@
         "other": "{{ count }} sản phẩm"
       },
       "suggestions": "Gợi ý",
-      "pages": "Trang"
+      "pages": "Trang",
+      "most_searched_products": "Sản phẩm được tìm kiếm nhiều nhất"
     },
     "cart": {
       "cart": "Giỏ hàng"
@@ -401,7 +404,11 @@
       "title": "Tài khoản",
       "details": "Chi tiết tài khoản",
       "view_addresses": "Xem địa chỉ",
-      "return": "Quay lại Chi tiết tài khoản"
+      "return": "Quay lại Chi tiết tài khoản",
+      "my_account": "Tài khoản của tôi",
+      "information_tab": "Thông tin của tôi",
+      "order_history_tab": "Lịch sử đơn hàng",
+      "address_tab": "Địa chỉ của tôi"
     },
     "account_fallback": "Tài khoản",
     "activate_account": {
@@ -433,7 +440,31 @@
       "cancel": "Hủy",
       "edit": "Chỉnh sửa",
       "delete": "Xóa",
-      "delete_confirm": "Bạn có chắc chắn muốn xóa địa chỉ này không?"
+      "delete_confirm": "Bạn có chắc chắn muốn xóa địa chỉ này không?",
+      "add_new_address": "Thêm địa chỉ mới",
+      "add_new_content": "Tiết kiệm thời gian khi thanh toán bằng cách thêm địa chỉ trước.",
+      "full_name": "Họ tên đầy đủ",
+      "address_new": "Địa chỉ",
+      "postal_code": "Mã bưu chính",
+      "sub_district": "Quận phụ",
+      "district": "Huyện",
+      "phone_number": "Số điện thoại",
+      "save_address": "CỨU",
+      "back": "MẶT SAU",
+      "invalid_postal_error": "Mã bưu chính không hợp lệ",
+      "is_default": "Địa chỉ mặc định",
+      "require_error": "Đây là trường bắt buộc",
+      "remove_address_title": "XÓA ĐỊA CHỈ",
+      "allowed_remove_address": "Bạn có muốn xóa địa chỉ này không?",
+      "not_allow_remove_address": "Không thể xóa địa chỉ mặc định của khách hàng",
+      "yes": "ĐÚNG",
+      "no": "KHÔNG",
+      "mobile_title": "Tạo địa chỉ của bạn",
+      "mobile_description": "Để có trải nghiệm mua sắm nhanh hơn",
+      "invalid_phone_error": "Số điện thoại không hợp lệ",
+      "invalid_address_title": "Địa chỉ không hợp lệ",
+      "invalid_address": "Vui lòng cập nhật địa chỉ của bạn và thử lại",
+      "invalid_address_message": "Vui lòng kiểm tra chính tả của Sub-district và District"
     },
     "log_in": "Đăng nhập",
     "log_out": "Đăng xuất",
@@ -448,7 +479,8 @@
       "title": "Đăng nhập",
       "sign_in": "Đăng nhập",
       "submit": "Gửi",
-      "alternate_provider_separator": "hoặc"
+      "alternate_provider_separator": "hoặc",
+      "phone": "Điện thoại"
     },
     "orders": {
       "title": "Lịch sử đặt hàng",
@@ -458,7 +490,11 @@
       "payment_status": "Trạng thái thanh toán",
       "fulfillment_status": "Trạng thái thực hiện",
       "total": "Tổng",
-      "none": "Bạn chưa đặt đơn hàng nào."
+      "none": "Bạn chưa đặt đơn hàng nào.",
+      "order": "Đặt hàng",
+      "payment": "Sự chi trả",
+      "status": "Trạng thái",
+      "order_details": "Chi tiết đơn hàng"
     },
     "recover_password": {
       "title": "Đặt lại mật khẩu",
@@ -504,8 +540,37 @@
       "tracking_number": "Mã theo dõi",
       "subtotal": "Tổng phụ",
       "total_duties": "Thuế hải quan",
-      "total_refunded": "Đã hoàn tiền"
-    }
+      "total_refunded": "Đã hoàn tiền",
+      "order_title": "Thứ tự: {{ name }}",
+      "status": "Trạng thái",
+      "order_summary": "Tóm tắt đơn hàng",
+      "shipping_fee": "Phí vận chuyển",
+      "tax_invoice": "Hóa đơn thuế",
+      "free": "Miễn phí",
+      "review": "Ôn tập",
+      "no_order_title": "Bạn không có lịch sử đặt hàng!",
+      "no_order_description": "Có vẻ như bạn vẫn chưa mua hàng.",
+      "start_shopping": "BẮT ĐẦU MUA SẮM"
+    },
+    "information": {
+      "heading": "Quản lý hồ sơ của bạn",
+      "content": "Vì vậy, chúng tôi có thể cá nhân hóa trải nghiệm mua sắm của bạn.",
+      "gender": "Giới tính",
+      "birthday": "Sinh nhật",
+      "email": "E-mail",
+      "save": "Cứu",
+      "male": "Nam giới",
+      "phone": "Điện thoại",
+      "female": "Nữ giới",
+      "confirm_password": "Xác nhận mật khẩu",
+      "select_gender": "Chọn giới tính của bạn",
+      "unique_email": "Email đã được sử dụng, vui lòng thử email khác.",
+      "invalid_email": "Email không hợp lệ",
+      "invalid_phone": "Điện thoại không hợp lệ"
+    },
+    "my_order": "Đơn hàng của tôi",
+    "wishlist": "Danh sách mong muốn",
+    "sign_out": "Đăng xuất"
   },
   "gift_cards": {
     "issued": {
