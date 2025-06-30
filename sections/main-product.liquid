@@ -260,6 +260,7 @@
                           {%- render 'icon-alls', icon: 'icon-minus' -%}
                         </span>
                       </button>
+                      {{ product.inventory_quantity | json }}
                       <input
                         class="quantity__input"
                         type="number"
@@ -268,6 +269,7 @@
                         data-cart-quantity="{{ cart_qty }}"
                         data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                         min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                        data-inventory-quantity=""
                         {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
                           data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
                           max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
