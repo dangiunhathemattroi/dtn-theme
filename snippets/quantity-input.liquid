@@ -17,6 +17,7 @@
     </span>
     <span class="svg-wrapper">{%- render 'icon-alls', icon: 'icon-minus' -%}</span>
   </button>
+  {{ variant.inventory_quantity | json }}
   <input
     class="quantity__input"
     data-quantity-variant-id="{{ variant.id }}"
