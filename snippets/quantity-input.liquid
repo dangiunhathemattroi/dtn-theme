@@ -28,6 +28,7 @@
     data-cart-quantity="{{ cart | item_count_for_variant: variant.id }}"
     min="{{ min }}"
     data-min="{{ variant.quantity_rule.min }}"
+    data-max=""
     {% if variant.quantity_rule.max != null %}
       max="{{ variant.quantity_rule.max }}"
     {% endif %}
