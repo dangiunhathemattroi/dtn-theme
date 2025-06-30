@@ -260,7 +260,7 @@
                           {%- render 'icon-alls', icon: 'icon-minus' -%}
                         </span>
                       </button>
-                      {{ product.inventory_quantity | json }}
+                      {{ product.selected_or_first_available_variant.inventory_quantity | json }}
                       <input
                         class="quantity__input"
                         type="number"
