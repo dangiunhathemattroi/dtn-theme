@@ -23,6 +23,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_liquid_TBm3Mb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"margin:0 auto;\" class=\"pxFormGenerator\" id=\"Qh9r8KL9NTlb2JcORKB_6g\"></div>"
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -97,17 +103,12 @@
           "settings": {
             "share_label": "Share"
           }
-        },
-        "custom_liquid_TBm3Mb": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"margin:0 auto;\" class=\"pxFormGenerator\" id=\"Qh9r8KL9NTlb2JcORKB_6g\"></div>"
-          }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "custom_liquid_TBm3Mb",
         "caption",
         "price",
         "variant_picker",
@@ -118,8 +119,7 @@
         "collapsible-row-1",
         "collapsible-row-2",
         "collapsible-row-3",
-        "share",
-        "custom_liquid_TBm3Mb"
+        "share"
       ],
       "settings": {
         "enable_sticky_info": true,
