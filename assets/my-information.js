@@ -6,7 +6,8 @@ class MyInformation extends HTMLElement {
     this.storefrontUrl = `/api/2025-07/graphql.json`;
     this.storefrontAccessToken = this.dataset.token;
     this.phoneLibSrc = 'https://cdn.jsdelivr.net/npm/intl-tel-input@25.2.0/build';
-    this.vnCountryCode = 'vn'; 
+    this.vnCountryCode = 'vn';
+    this.loading = false;
   }
 
   connectedCallback() {
