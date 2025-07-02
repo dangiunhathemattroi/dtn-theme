@@ -42,7 +42,6 @@
                         {{ 'customer.addresses.add_new_address' | t }}
                     </button>
                 </div>
-                {{ customer.addresses | json }}
                 {%- for address in customer.addresses -%}
                 <div class="customer-address"
                     data-address='{"id": "{{ address.id }}", "firstName": "{{ address.first_name | strip_newlines }}", "lastName": "{{ address.last_name | strip_newlines }}", "address1": "{{ address.address1 | strip_newlines }}", "address2": "{{ address.address2 | strip_newlines }}", "postal": "{{ address.zip | strip_newlines }}", "province": "{{ address.province }}", "phoneNumber": "{{ address.phone | strip_newlines }}", "company": "{{ address.company | strip_newlines }}", "city": "{{ address.city | strip_newlines }}" }'>
