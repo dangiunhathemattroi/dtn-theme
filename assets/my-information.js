@@ -182,8 +182,8 @@ class MyInformation extends HTMLElement {
       emailRequiredField.classList = 'required-field invalid-error';
       valid = false;
     }
-    console.log(this.confirmPassword);
-    if (this.confirmPassword && this.confirmPassword?.trim()) {
+    console.log(this.confirmPassword?.value.trim());
+    if (this.confirmPassword?.value && this.confirmPassword?.value.trim()) {
       const confirmRequiredField = this.confirmPassword.closest('.required-field');
       confirmRequiredField.classList = 'required-field invalid-error';
       valid = false;
