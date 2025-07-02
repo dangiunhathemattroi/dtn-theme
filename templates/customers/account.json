@@ -19,11 +19,16 @@
         "order_history_7Drfbr": {
           "type": "order_history",
           "settings": {}
+        },
+        "my_address_HpWkWB": {
+          "type": "my_address",
+          "settings": {}
         }
       },
       "block_order": [
         "my_information_iNNEa8",
-        "order_history_7Drfbr"
+        "order_history_7Drfbr",
+        "my_address_HpWkWB"
       ],
       "settings": {
         "first_tab": "my-information-tab",
