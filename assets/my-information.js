@@ -59,9 +59,11 @@ class MyInformation extends HTMLElement {
   }
 
   async updateCustomer() {
+    if (this.loading) return;
     const updateData = this.getFormData();
     if (!this.validateData(updateData)) return;
     if (JSON.stringify(updateData) == JSON.stringify(this.customerInformation)) return;
+    this.loading = true;
 
     document.dispatchEvent(
       new CustomEvent('loading-state', {
@@ -76,6 +78,7 @@ class MyInformation extends HTMLElement {
       await this.callCustomerUpdate(token, updateData);
       location.reload();
     } catch (err) {
+      this.loading = false;
       document.dispatchEvent(
         new CustomEvent('loading-state', {
           detail: {
@@ -89,6 +92,7 @@ class MyInformation extends HTMLElement {
         errorMessage.classList.add('visible');
       }
     } finally {
+      this.loading = false;
       document.dispatchEvent(
         new CustomEvent('loading-state', {
           detail: {
