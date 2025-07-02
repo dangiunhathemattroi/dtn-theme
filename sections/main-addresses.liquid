@@ -165,6 +165,8 @@
       </div>
     </div>
 
+    {{ customer.addresses | json }}
+
     <ul role="list">
       {%- for address in customer.addresses -%}
         <li data-address>
