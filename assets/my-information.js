@@ -183,7 +183,7 @@ class MyInformation extends HTMLElement {
       valid = false;
     }
 
-    if (this.confirmPassword?.value) {
+    if (this.confirmPassword?.trim()) {
       const confirmRequiredField = this.confirmPassword.closest('.required-field');
       confirmRequiredField.classList = 'required-field invalid-error';
       valid = false;
