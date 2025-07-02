@@ -62,8 +62,12 @@ class MyInformation extends HTMLElement {
     if (this.loading) return;
     const updateData = this.getFormData();
     if (!this.validateData(updateData)) return;
+    console.log(JSON.stringify(updateData),
+                JSON.stringify(this.customerInformation));
     if (JSON.stringify(updateData) == JSON.stringify(this.customerInformation)) return;
     this.loading = true;
+
+    console.log(1);
 
     document.dispatchEvent(
       new CustomEvent('loading-state', {
