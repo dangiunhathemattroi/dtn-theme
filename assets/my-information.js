@@ -59,6 +59,7 @@ class MyInformation extends HTMLElement {
   }
 
   async updateCustomer() {
+    console.log(1);
     if (this.loading) return;
     const updateData = this.getFormData();
     if (!this.validateData(updateData)) return;
