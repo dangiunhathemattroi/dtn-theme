@@ -249,7 +249,7 @@
                                   {%- render 'icon-alls', icon: 'icon-minus' -%}
                                 </span>
                               </button>
-                              {{ item | json }}
+                              {{ item.successfully_fulfilled_quantity | json }}
                               <input
                                 class="quantity__input"
                                 data-quantity-variant-id="{{ item.variant.id }}"
