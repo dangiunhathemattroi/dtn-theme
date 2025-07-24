@@ -163,6 +163,20 @@
         "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": true,
         "settings": {}
+      },
+      "6522862630592814843": {
+        "type": "shopify://apps/search-app/blocks/search-filters-core/95364197-7587-4731-8238-28af961a5e6f",
+        "disabled": false,
+        "settings": {
+          "search_input_selector": "[name=q]"
+        }
+      },
+      "2603585115921586884": {
+        "type": "shopify://apps/search-app/blocks/search-suggestion/95364197-7587-4731-8238-28af961a5e6f",
+        "disabled": false,
+        "settings": {
+          "search_input_selector": "[name=q]"
+        }
       }
     },
     "color_schemes": {
