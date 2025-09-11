@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="js scrollbar-smooth" lang="{{ request.locale.iso_code }}">
   <head>
+{% include 'limespot' %}
 	<!-- Added by AVADA SEO Suite -->
 	{% include 'avada-seo' %}
 	<!-- /Added by AVADA SEO Suite -->
@@ -145,6 +146,7 @@
       role="main"
       tabindex="-1">
       {{ content_for_layout }}
+<limespot></limespot>
     </main>
 
     {% sections 'footer-group' %}
