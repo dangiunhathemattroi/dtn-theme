@@ -98,6 +98,15 @@
     "multicolumn_Uidkbe": {
       "type": "multicolumn",
       "blocks": {
+        "column_PDczXy": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "column_e3MAPb": {
           "type": "column",
           "settings": {
@@ -140,6 +149,7 @@
         }
       },
       "block_order": [
+        "column_PDczXy",
         "column_e3MAPb",
         "column_8DHWck",
         "column_7irHiB",
