@@ -274,7 +274,7 @@
         "shop_the_look_shop_the_look_pDniUG": {
           "type": "shopify://apps/shop-the-look/blocks/shop-the-look/36dde5f1-9b4e-442e-b806-01ba76d9468d",
           "settings": {
-            "use_theme_settings": true,
+            "use_theme_settings": false,
             "heading_size": 14,
             "heading_color": "",
             "title_size": 14,
