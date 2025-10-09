@@ -50,7 +50,7 @@
         "collection_GMCdbE": {
           "type": "collection",
           "settings": {
-            "collection": "tivi-lg",
+            "collection": "frontpage",
             "title": "LG"
           }
         },
